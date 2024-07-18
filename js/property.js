@@ -1,61 +1,104 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const propertyForm = document.getElementById('property-form');
-    const propertiesDiv = document.getElementById('properties');
+    // Function to load properties from local storage and display them
+    function loadProperties() {
+        const properties = JSON.parse(localStorage.getItem('properties')) || [];
+        const propertiesContainer = document.getElementById('properties');
+        propertiesContainer.innerHTML = '';
 
-    // Load properties from local storage
-    let properties = JSON.parse(localStorage.getItem('properties')) || [];
-    displayProperties();
-
-    propertyForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById('property-name').value;
-        const address = document.getElementById('property-address').value;
-        const area = document.getElementById('property-area').value;
-        const type = document.getElementById('property-type').value;
-        const capacity = document.getElementById('property-capacity').value;
-        const parking = document.getElementById('property-parking').checked;
-        const publicTransport = document.getElementById('property-public-transport').checked;
-        const availability = document.getElementById('property-availability').checked;
-        const rentalTerm = document.getElementById('property-rental-term').value;
-        const price = document.getElementById('property-price').value;
-
-        const property = {
-            name, address, area, type, capacity, parking, publicTransport, availability, rentalTerm, price
-        };
-
-        properties.push(property);
-        localStorage.setItem('properties', JSON.stringify(properties));
-        displayProperties();
-        propertyForm.reset();
-    });
-
-    function displayProperties() {
-        propertiesDiv.innerHTML = '';
-
-        properties.forEach((property, index) => {
+        properties.forEach(property => {
             const propertyDiv = document.createElement('div');
-            propertyDiv.classList.add('property');
+            propertyDiv.className = 'innerPageContent3 dynamicallyCreatedDiv';
             propertyDiv.innerHTML = `
-                <h3>${property.name}</h3>
-                <p>Address: ${property.address}</p>
-                <p>Area: ${property.area} sq meters</p>
-                <p>Type: ${property.type}</p>
-                <p>Capacity: ${property.capacity} people</p>
-                <p>Includes Parking: ${property.parking ? 'Yes' : 'No'}</p>
-                <p>Reachable by Public Transport: ${property.publicTransport ? 'Yes' : 'No'}</p>
-                <p>Currently Available: ${property.availability ? 'Yes' : 'No'}</p>
-                <p>Rental Term: ${property.rentalTerm}</p>
-                <p>Price: $${property.price} per ${property.rentalTerm}</p>
-                <button onclick="removeProperty(${index})">Remove</button>
+                <h2>${property.name}</h2>
+                <p>${property.address}</p>
+                <p>${property.city}, ${property.province}</p>
+                <p>${property.area} sq Meters, Max Occupants: ${property.maxOccupants}</p>
+                <p>Parking: ${property.parking ? 'Yes' : 'No'}</p>
+                <p>Public Transport: ${property.transport ? 'Yes' : 'No'}</p>
+                <div>
+                    <h3>${property.type} (type)</h3>
+                </div>
+                <div>
+                    <p>$${property.price.toFixed(2)} - ${property.rentalTerm}</p>
+                    <p>${property.available ? 'Available Now' : 'Not Available'}</p>
+                </div>
             `;
-            propertiesDiv.appendChild(propertyDiv);
+            propertiesContainer.appendChild(propertyDiv);
         });
     }
 
-    window.removeProperty = function (index) {
-        properties.splice(index, 1);
-        localStorage.setItem('properties', JSON.stringify(properties));
-        displayProperties();
-    };
+    // Load properties on page load
+    loadProperties();
+
+    // Show add property form
+    document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
+        document.getElementById('addNewPropertyOuterDiv').style.display = 'block';
+    });
+
+    // Hide add property form
+    document.getElementById('cancelAddProperty').addEventListener('click', function () {
+        document.getElementById('addNewPropertyOuterDiv').style.display = 'none';
+    });
+
+    // Add new property
+    document.getElementById('addNewPropertyButton').addEventListener('click', function () {
+        const name = document.getElementById('propertyNameInput').value;
+        const address = document.getElementById('propertyAddressInput').value;
+        const city = document.getElementById('propertyCityInput').value;
+        const province = document.getElementById('propertyProvinces').value;
+        const type = document.getElementById('propertyTypeInput').value;
+        const area = parseFloat(document.getElementById('propertAreaInput').value);
+        const maxOccupants = parseInt(document.getElementById('propertyMaxOccupancyInput').value, 10);
+        const parking = document.querySelector('input[name="parking"]:checked').value === 'yes';
+        const transport = document.querySelector('input[name="transport"]:checked').value === 'yes';
+        const price = parseFloat(document.getElementById('propertyPriceInput').value);
+        const rentalTerm = document.getElementById('rentalTermSelect').value;
+        const available = document.querySelector('input[name="availability"]:checked').value === 'yes';
+
+        if (name && address && city && province && type && !isNaN(area) && !isNaN(maxOccupants) && !isNaN(price) && rentalTerm) {
+            const newProperty = {
+                name,
+                address,
+                city,
+                province,
+                type,
+                area,
+                maxOccupants,
+                parking,
+                transport,
+                price,
+                rentalTerm,
+                available
+            };
+
+            // Retrieve existing properties
+            const properties = JSON.parse(localStorage.getItem('properties')) || [];
+            properties.push(newProperty);
+
+            // Store updated properties in local storage
+            localStorage.setItem('properties', JSON.stringify(properties));
+
+            // Clear form inputs
+            document.getElementById('propertyNameInput').value = '';
+            document.getElementById('propertyAddressInput').value = '';
+            document.getElementById('propertyCityInput').value = '';
+            document.getElementById('propertyProvinces').value = '';
+            document.getElementById('propertyTypeInput').value = '';
+            document.getElementById('propertAreaInput').value = '';
+            document.getElementById('propertyMaxOccupancyInput').value = '';
+            document.querySelector('input[name="parking"]:checked').checked = false;
+            document.querySelector('input[name="transport"]:checked').checked = false;
+            document.getElementById('propertyPriceInput').value = '';
+            document.getElementById('rentalTermSelect').value = '';
+            document.querySelector('input[name="availability"]:checked').checked = false;
+
+            // Hide add property form
+            document.getElementById('addNewPropertyOuterDiv').style.display = 'none';
+
+            // Reload properties to show the new one
+            loadProperties();
+        } else {
+            alert('Please fill in all required fields.');
+        }
+    });
 });
