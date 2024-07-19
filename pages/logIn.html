@@ -5,11 +5,59 @@
     <meta charset="UTF-8">
     <meta name="author" content="Deepanshi, Kajal, and Kailan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/logIn.css">
 </head>
 
 <body>
-    
+    <div class="mainPageContent">
+        <div id="headerBar">
+            <h1>Log In</h1>
+            <nav>
+                <ul id="pageNavigation">
+                    <li><a href="createAccount.html">Create Account</a></li>
+                    <li><a href="../home.html">Home Page</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="logInMainSection">
+            <!-- -->
+            <div class="halfPageLayout innerPageContent3b">
+                <form>
+                    <!-- labels and input inside div forcing rows-->
+                    <!-- row layout changes to column for small screens-->
+                    <div class="addFlexRowProperty">
+                        <!--propertyInputLabels sets label width to align input fields evenly-->
+                        <div class="propertyInputLabels">
+                            <label for="userNameLogIn">User Name: </label>
+                        </div>
+                        <input type="text" id="userNameLogIn" name="userNameLogIn">
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div  class="propertyInputLabels">
+                            <label for="passwordLogIn">Password: </label>
+                        </div>
+                       
+                        <input type="password" id="passwordLogIn" name="passwordLogIn">
+                    </div>
+
+                </form>
+                
+            </div>
+            <div class="halfPageLayout">
+                <p>Don't have an account? Click <a href="signUp.html">here</a> to create one!</p>
+            </div>
+
+        </div>
+        <div id="footerBar">
+            <p>&copy; 2024 DKK All rights reserved!</p>
+            <p>social meda social media!</p>
+        </div>
+
+
+
+    </div>
 </body>
 
 </html>
