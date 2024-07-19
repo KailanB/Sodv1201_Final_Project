@@ -1,0 +1,111 @@
+<DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>Create Account</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Deepanshi, Kajal, and Kailan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/signUp.css">
+</head>
+
+<body>
+    <div class="mainPageContent">
+        <div id="headerBar">
+            <h1>Create Account</h1>
+            <nav>
+                <ul id="pageNavigation">
+                    <li><a href="logIn.html">Log in</a></li>
+                    <li><a href="../home.html">Home Page</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="innerPageContent1">
+            <div class="innerPageContent2">
+                <form id="createNewUserForm">
+                <div class="innerPageContent3">
+                    <!-- User input fields -->
+                     <!-- labels and input inside div forcing rows-->
+                    <!-- row layout changes to column for small screens-->
+                    <div class="addFlexRowProperty">
+                        <!--propertyInputLabels sets label width to align input fields evenly-->
+                        <div class="propertyInputLabels">
+                            <label for="UserFirstNameInput">*First Name: </label>
+                        </div>
+                        <input type="text" placeholder="Sally" class="newPropInput" id="userFirstNameInput" required>
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div class="propertyInputLabels">
+                            <label for="UserLastNameInput">*Last Name: </label>
+                        </div>
+                        <input type="text" placeholder="Southington" class="newPropInput" id="userLastNameInput" required>
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div class="propertyInputLabels">
+                            <label for="propertyAddressInput">*Email: </label>
+                        </div>
+                        <input type="email" placeholder="sallyS@gmail.com" class="newPropInput" id="userEmailAddressInput" required>
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div class="propertyInputLabels">
+                            <label for="userPhoneInput">*Phone Number: </label>
+                        </div>
+                        <input type="tel" placeholder="123-456-7890" id="userPhoneInput" required>
+                    </div>
+                    <br>
+                
+                    <div class="addFlexRowProperty">
+                        <div class="propertyInputLabels">
+                            <label for="userCityInput">City: </label>
+                        </div>
+                        <input type="text" placeholder="Calgary" class="newPropInput" id="userCityInput">
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div class="propertyInputLabels">
+                            <label for="propertyProvinces">Province: </label>
+                        </div>
+                        <div>
+                            <select name="provinces" id="propertyProvinces">
+                                <option value=""></option>
+                                <option value="AB">AB</option>
+                                <option value="SK">SK</option>
+                                <option value="BC">BC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <p><em>Fields marked with an * are required</em></p>   
+
+                    <div id="forTesting"> <!-- PLEASE DELETE THIS DIV ONCE TESTING IS CONCLUDED-->
+                        <!-- this is used to display user list output-->
+                    </div>          
+                       
+                </div>
+                <div>
+                    <input type="submit" value="Create Account" class="standardButton">
+                </div>
+            </form>
+            </div>
+            
+        </div>
+
+        <div class="centerAlignContent">
+            <p>Already have an account? Click <a href="logIn.html">here</a> to sign in!</p>
+        </div>
+
+        <div id="footerBar">
+            <p>&copy; 2024 DKK All rights reserved!</p>
+            <p>social meda social media!</p>
+        </div>
+
+
+
+    </div>
+    <script src="../js/createAccountScript.js"></script>
+</body>
+
+</html>
