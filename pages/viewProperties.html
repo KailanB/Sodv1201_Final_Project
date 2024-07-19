@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sodv1201 Group Project. Deepanshi, Kajal, and Kailan</title>
+    <title>View Properties</title>
     <meta charset="UTF-8">
     <meta name="author" content="Deepanshi, Kajal, and Kailan">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/viewPropertyStyle.css">
 </head>
 <body>
     <div class="mainPageContent">
@@ -19,7 +20,8 @@
             </nav>
         </div>
         <div class="innerPageContent1">
-            <div class="innerPageContent2" id="propertyDynamicDisplayDiv">
+            <!-- rearranged the properties container to include the dummy property and allow for equal spacing-->
+            <div class="innerPageContent2" id="properties">
                 <!-- Existing property examples -->
                 <div class="innerPageContent3 dynamicallyCreatedDiv">
                     <h2>Dramatic Theatres</h2>
@@ -52,40 +54,42 @@
                     </div>
                 </div>
                 <!-- Property list container -->
-                <div id="properties"></div>
-                <div>
-                    <button class="standardButton" id="openAddPropertyDiv">Add New Property</button>
-                </div>
+                <!-- <div id="properties"></div>
+                <div> -->
+                    
+                <!-- </div> -->
             </div>
+            <!-- put the button outside of the properties container so that it is not deleted -->
+            <button class="standardButton" id="openAddPropertyDiv">Add New Property</button>
         </div>
         <div class="innerPageContent1">
-            <div class="innerPageContent2" id="addNewPropertyOuterDiv" style="display: none;">
+            <!-- remove display none from here and put it into CSS under the id addNewPropertyOuterDiv to avoid styling conflicts-->
+            <div class="innerPageContent2" id="addNewPropertyOuterDiv">
                 <button id="cancelAddProperty">X</button>
-                <p>Add property page appears here.</p>
                 <div class="innerPageContent3" id="addNewPropertyDiv">
                     <!-- Property input fields -->
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyNameInput">Property Name: </label>
                         </div>
                         <input type="text" placeholder="My Art Studio" class="newPropInput" id="propertyNameInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyAddressInput">Property Address: </label>
                         </div>
                         <input type="text" placeholder="123 Main street" class="newPropInput" id="propertyAddressInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyCityInput">City: </label>
                         </div>
                         <input type="text" placeholder="Calgary" class="newPropInput" id="propertyCityInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyProvinces">Province: </label>
                         </div>
@@ -99,28 +103,28 @@
                         </div>
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyTypeInput">Type: </label>
                         </div>
                         <input type="text" placeholder="Art studio, Recording studio etc.." class="newPropInput" id="propertyTypeInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertAreaInput">Square Meters: </label>
                         </div>
                         <input type="number" placeholder="400" id="propertAreaInput" class="numberInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyMaxOccupancyInput">Maximum Occupants: </label>
                         </div>
                         <input type="number" placeholder="5" id="propertyMaxOccupancyInput" class="numberInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label>Parking: </label>
                         </div>
@@ -132,7 +136,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label>Public Transport: </label>
                         </div>
@@ -144,14 +148,14 @@
                         </div>
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="propertyPriceInput">Price (per term): </label>
                         </div>
                         <input type="number" placeholder="295.99" class="numberInput" id="propertyPriceInput">
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label for="rentalTermSelect">Rental Term: </label>
                         </div>
@@ -166,7 +170,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="propertyFields">
+                    <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
                             <label>Available Now: </label>
                         </div>
