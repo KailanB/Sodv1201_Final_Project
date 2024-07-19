@@ -3,9 +3,9 @@
 :root {
     --mainContentColor: #ddbeeb;
     --pageInnerContent2: #b099bb;
+    --pageInnerContent3:#d0b2dd;
     --accentColor1: #6a477a;
     --accentColor2: #984fb9;
-
     --filterContainer: 230px;
 }
 
@@ -21,6 +21,14 @@ li a {
     text-decoration: none;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 .mainPageContent {
     display: flex;
     flex-direction: column;
@@ -35,6 +43,8 @@ li a {
 .innerPageContent1 {
     padding: 10px 10px;
     background-color:var(--mainContentColor);
+    display: flex;
+    flex-direction: column;
     /* border: 2px solid yellow; */
 }
 
@@ -44,8 +54,8 @@ li a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
+
 
 .innerPageContent3 {
     background-color: var(--mainContentColor);
@@ -54,6 +64,28 @@ li a {
     /* border: 2px solid red; */
 }
 
+.innerPageContent3b {
+    background-color: var(--pageInnerContent3);
+    padding: 10px;
+}
+
+.centerAlignContent {
+
+    flex-grow: 1;
+    /* border: 2px solid red; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerAlignContentColumn {
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+
+}
 /* ensures the window stays a reasonable size, and adjusts smaller for small screens */
 .newPropInput {
     width: clamp(200px, 45vw, 500px);
@@ -71,14 +103,13 @@ li a {
     padding: 5px;
     background-color:var(--mainContentColor);
     margin: 5px 0px 15px 0px;
+    /* border: 2px solid lightblue; */
 }
 
-.propertyFields {
+.addFlexRowProperty {
 
     /* border: 2px solid red; */
     display: flex;
-    /* justify-content: space-between ; */
-
 }
 
 .propertyInputLabels{
@@ -98,71 +129,14 @@ li a {
 }
 
 #headerBar {
-    background-color:#b099bb;
+    /* border: 2px solid red; */
+    background-color:var(--pageInnerContent2);
     padding: 10px 10px;
 }
 
 #headerBar h1 {
     text-align: center;
     padding-bottom: 10px;
-}
-
-/* container that holds the advanced search filter container, the search bar and the search results*/
-#searchAndFilterContainer {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    justify-content: space-around;
-}
-
-#searchAndResultsContainer {
-
-    margin-left: calc(var(--filterContainer) + 30px); /*this keeps the results window of the search to the right of the filter window that is placed absolutely on the left */
-}
-
-
-#addNewPropertyOuterDiv{
-
-    position:relative;
-    /* this is supposed to be display none, for now it is flex, until the button has been programmed*/
-    /* display: none; */
-    display: flex;
-
-}
-
-#cancelAddProperty {
-/* button to cancel the add property */
-    color: var(--accentColor1);
-    background-color: var(--mainContentColor);
-    font-size: 1.2em;
-    width: 25px;
-    Height: 25px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
-
-#addNewPropertyDiv {
-
-    width: clamp(300px, 70vw, 800px);
-    display: flex;  
-    justify-content: center;
-    flex-direction: column;
-    /* border: 2px solid teal; */
-}
-
-
-
-/* Add query for screen sizes less than 700px to change how advanced search filter behaves */
-#advancedSearchFilters { /* this is the window for the search filters */
-
-    width: var(--filterContainer);
-    height: min-content;
-    position: absolute; /* keeps the filter window floating on the left side */
-    align-items: baseline; /* this is overriding the align-items in class innerPageContent2 which this ID uses for standard color / padding */
-    top: 10px;
-    left: 10px;
-    border: 2px solid var(--accentColor1);
 }
 
 #footerBar {
@@ -178,29 +152,9 @@ li a {
     position: relative;
 }
 
-/* these divs are selected in this way as these divs area created dynamically from their arrays */
-.dynamicallyCreatedDiv div:nth-last-of-type(2) { /* this refers to the div that will display in the top right of the property display window in both the search page and view properties page */
-
-    /* border: 2px solid red; */
-    position: absolute;
-    right: 10px;
-    top: 0px;
-}
-.dynamicallyCreatedDiv div:last-of-type { /* this refers to the div that will display in the bottom right of the property display window in both the search page and view properties page */
-
-    /* border: 2px solid red; */
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-}
-/* end of dynamically displayed div custom select */
-
-
-
-
 @media only screen and (max-width: 700px)
 { 
-    .propertyFields { /* this changes the property inputs to align in neat columns instead of rows. For small screens */
+    .addFlexRowProperty { /* this changes the property inputs to align in neat columns instead of rows. For small screens */
         flex-direction: column;
     }
     /* the input fields need to be adjusted to a large size since they will now be in a column instead of side by side */
@@ -213,14 +167,4 @@ li a {
         width: clamp(175px, 50vw, 450px); 
     }
 
-
-    /* the below 2 elements refer to the divs that will display in the property display window in both the search page and view properties page */
-    .dynamicallyCreatedDiv div:nth-last-of-type(2) { /* this position changes allows the items to neatly align in columns for small screens */
-
-        position: static;
-    }
-    .dynamicallyCreatedDiv div:last-of-type {
-    
-        position: static;
-    }
 }
