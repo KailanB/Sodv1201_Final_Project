@@ -32,12 +32,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Show add property form
     document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
-        document.getElementById('addNewPropertyOuterDiv').style.display = 'block';
+        document.getElementById('addNewPropertyOuterDiv').style.display = 'flex'; // changed this from block to flex, so that the add property div is center aligned again
     });
 
     // Hide add property form
     document.getElementById('cancelAddProperty').addEventListener('click', function () {
         document.getElementById('addNewPropertyOuterDiv').style.display = 'none';
+
+        // added clear property inputs to the hide / X since this seems like a cancel to me.
+        // this is optional. If we want to keep it, I'd put the clear property as it's own function
+        document.getElementById('propertyNameInput').value = '';
+        document.getElementById('propertyAddressInput').value = '';
+        document.getElementById('propertyCityInput').value = '';
+        document.getElementById('propertyProvinces').value = '';
+        document.getElementById('propertyTypeInput').value = '';
+        document.getElementById('propertAreaInput').value = '';
+        document.getElementById('propertyMaxOccupancyInput').value = '';
+        document.querySelector('input[name="parking"]:checked').checked = false;
+        document.querySelector('input[name="transport"]:checked').checked = false;
+        document.getElementById('propertyPriceInput').value = '';
+        document.getElementById('rentalTermSelect').value = '';
+        document.querySelector('input[name="availability"]:checked').checked = false;
+        // above are clear property inputs added
     });
 
     // Add new property
