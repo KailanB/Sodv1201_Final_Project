@@ -1,0 +1,26 @@
+
+
+/* container that holds the advanced search filter container, the search bar and the search results*/
+#searchAndFilterContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-around;
+}
+
+#searchAndResultsContainer {
+
+    margin-left: calc(var(--filterContainer) + 30px); /*this keeps the results window of the search to the right of the filter window that is placed absolutely on the left */
+}
+
+/* Add query for screen sizes less than 700px to change how advanced search filter behaves */
+#advancedSearchFilters { /* this is the window for the search filters */
+
+    width: var(--filterContainer);
+    height: min-content;
+    position: absolute; /* keeps the filter window floating on the left side */
+    align-items: baseline; /* this is overriding the align-items in class innerPageContent2 which this ID uses for standard color / padding */
+    top: 10px;
+    left: 10px;
+    border: 2px solid var(--accentColor1);
+}
