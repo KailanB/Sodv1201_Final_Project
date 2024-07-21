@@ -53,7 +53,7 @@
                         <div class="propertyInputLabels">
                             <label for="userPhoneInput">*Phone Number: </label>
                         </div>
-                        <input type="tel" placeholder="123-456-7890" id="userPhoneInput" required>
+                        <input type="number" placeholder="123-456-7890" id="userPhoneInput" required>
                     </div>
                     <br>
                 
@@ -69,12 +69,24 @@
                             <label for="propertyProvinces">Province: </label>
                         </div>
                         <div>
-                            <select name="provinces" id="propertyProvinces">
+                            <select name="provinces" id="userProvince">
                                 <option value=""></option>
                                 <option value="AB">AB</option>
                                 <option value="SK">SK</option>
                                 <option value="BC">BC</option>
                             </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div class="propertyInputLabels">
+                            <label>I am a: </label>
+                        </div>
+                        <div>
+                            <input type="radio" name="ownerRenter" value="Renter" id="userRenterInput">
+                            <label for="userRenter">Renter</label>
+                            <input type="radio" name="ownerRenter" value="Owner" id="userOwnerInput">
+                            <label for="userOwner">Owner</label>
                         </div>
                     </div>
                     <br>
