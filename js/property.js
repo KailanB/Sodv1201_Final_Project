@@ -57,7 +57,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Add new property
+    // FOR TESTING ONLY ***********************
+    document.getElementById('propertyNameInput').value = "Sally Studio";
+    document.getElementById('propertyAddressInput').value = "123 Main Street";
+    document.getElementById('propertyCityInput').value = "Calgary";
+    document.getElementById('propertyProvinces').value = "AB";
+    document.getElementById('propertyTypeInput').value = "Recording Studio";
+    document.getElementById('propertAreaInput').value = "200";
+    document.getElementById('propertyMaxOccupancyInput').value = "10";
+    document.getElementById('propertyPriceInput').value = "300.00";
+    document.getElementById('rentalTermSelect').value = "Daily";
+
+
+
+    // END FOR TESTING ****************
+
+
+
+
+
     document.getElementById('addNewPropertyButton').addEventListener('click', function () {
+
+        // for testing and edits!
+        // localStorage.clear();
+
         const name = document.getElementById('propertyNameInput').value;
         const address = document.getElementById('propertyAddressInput').value;
         const city = document.getElementById('propertyCityInput').value;
@@ -70,6 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const price = parseFloat(document.getElementById('propertyPriceInput').value);
         const rentalTerm = document.getElementById('rentalTermSelect').value;
         const available = document.querySelector('input[name="availability"]:checked').value === 'yes';
+
+
+        const ownerId = parseInt(getUserCookie("userId"));
 
         if (name && address && city && province && type && !isNaN(area) && !isNaN(maxOccupants) && !isNaN(price) && rentalTerm) {
             const newProperty = {
@@ -84,7 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 transport,
                 price,
                 rentalTerm,
-                available
+                available,
+                ownerId,
             };
 
             // Retrieve existing properties
