@@ -23,15 +23,15 @@
         <div id="logInMainSection">
             <!-- -->
             <div class="halfPageLayout innerPageContent3b">
-                <form>
+                <form id="userLogInForm">
                     <!-- labels and input inside div forcing rows-->
                     <!-- row layout changes to column for small screens-->
                     <div class="addFlexRowProperty">
                         <!--propertyInputLabels sets label width to align input fields evenly-->
                         <div class="propertyInputLabels">
-                            <label for="userNameLogIn">User Name: </label>
+                            <label for="userNameLogIn">User Email: </label>
                         </div>
-                        <input type="text" id="userNameLogIn" name="userNameLogIn">
+                        <input type="email" id="userEmailLogIn" name="userNameLogIn">
                     </div>
                     <br>
                     <div class="addFlexRowProperty">
@@ -40,6 +40,10 @@
                         </div>
                        
                         <input type="password" id="passwordLogIn" name="passwordLogIn">
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit" value="Log In" class="standardButton">
                     </div>
 
                 </form>
@@ -54,6 +58,8 @@
             <p>&copy; 2024 DKK All rights reserved!</p>
             <p>social meda social media!</p>
         </div>
+        <script src="../js/LogIn.js"></script>
+        <script src="../js/common.js"></script>
 
 
 
