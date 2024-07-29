@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
         addPropertyOuterDiv.style.display = 'block';
-        resetForm();
         editIndex = -1; // Reset edit mode
+        resetForm(); //position
     });
 
     function saveProperty() {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('properties', JSON.stringify(properties));
         displayProperties();
         addPropertyOuterDiv.style.display = 'none';
-        resetForm();
+                        resetForm(); //position
     }
 
     function displayProperties() {
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 addPropertyOuterDiv.style.display = 'block';
             });
         });
-
+        
         document.querySelectorAll('.remove-button').forEach(button => {
             button.addEventListener('click', function () {
                 const index = this.getAttribute('data-index');
@@ -115,11 +115,25 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('propertyPriceInput').value = property.price;
     }
 
+    // function resetForm() {
+    //     propertyForm.reset();
+    //     document.querySelectorAll('input[name="parking"]').forEach(radio => radio.checked = false);
+    //     document.querySelectorAll('input[name="transport"]').forEach(radio => radio.checked = false);
+    //     document.querySelectorAll('input[name="availability"]').forEach(radio => radio.checked = false);
+    //     document.getElementById('rentalTermSelect').value = '';
+    // }
     function resetForm() {
-        propertyForm.reset();
+        document.getElementById('propertyNameInput').value = '';
+        document.getElementById('propertyAddressInput').value = '';
+        document.getElementById('propertyCityInput').value = '';
+        document.getElementById('propertyProvinces').value = '';
+        document.getElementById('propertAreaInput').value = '';
+        document.getElementById('propertyTypeInput').value = '';
+        document.getElementById('propertyMaxOccupancyInput').value = '';
         document.querySelectorAll('input[name="parking"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="transport"]').forEach(radio => radio.checked = false);
         document.querySelectorAll('input[name="availability"]').forEach(radio => radio.checked = false);
         document.getElementById('rentalTermSelect').value = '';
+        document.getElementById('propertyPriceInput').value = '';
     }
 });
