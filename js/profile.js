@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentUser = user;
                 
             }
-            
-            
 
         });
         return currentUser;
@@ -60,15 +58,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById("pageNavigation").appendChild(newLink);
 
                 }
+                let button = document.getElementById("editProfileButton")
+                button.addEventListener("click", editProfile);
+                button.innerHTML = "Edit Profile";
+                button.removeEventListener("click", displayUser);
             }
                         
         
     }
     displayUser();
 
-    document.getElementById("editProfileButton").addEventListener("click", editProfile)
-
-    document.getElementById("saveProfileButton").addEventListener("click", saveProfile)
+    document.getElementById("editProfileButton").addEventListener("click", editProfile);
       
 
     function editProfile()
@@ -94,13 +94,18 @@ document.addEventListener('DOMContentLoaded', function () {
             <button class="standardButton" id="saveProfileButton">Save Changes</button>
         
         `;
+        document.getElementById("saveProfileButton").addEventListener("click", saveProfile);
+        let button = document.getElementById("editProfileButton")
+        button.removeEventListener("click", editProfile);
+        button.innerHTML = "X";
+        button.addEventListener("click", displayUser);
 
     }
 
+
     function saveProfile()
     {
-
-        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const users = JSON.parse(localStorage.getItem('users')) || [];
 
         let currentUser = getCurrentUser();
         let firstName = document.getElementById("firstNameInput").value;
@@ -110,22 +115,58 @@ document.addEventListener('DOMContentLoaded', function () {
         let city = document.getElementById("cityInput").value;
         let province = document.getElementById("provinceInput").value;
 
-        //find isn't working properly
-        if(!(users.find(user => user.email === emailInput)))
+
+        let notInUse = false;
+        // check if email is unchanged 
+        // change both to lower case first, since email are not case sensitive.
+        if(currentUser.email.toLowerCase() === email.toLowerCase())
         {
-            currentUser.firstName = firstName;
-            currentUser.lastName = lastName;
-            currentUser.email = email;
-            currentUser.phone = phone;
-            currentUser.city = city;
-            currentUser.province = province;
+            notInUse = true;
         }
-        else
+        // check if email is in use by another account
+        else if(!(users.find(user => user.email.toLowerCase() === email.toLowerCase())))
         {
+            notInUse = true;
+        }
+        else // otherwise return false and allow update
+        {
+            notInUse = false;
+        }
+
+        
+        if(notInUse)
+        {
+
+            // since email is NOT in use, iterate through users array and find current user
+            // I used a for loop here because other methods were not altering the array
+            for(let i = 0; i< users.length ; i++)
+            {
+                if(users[i].userID === currentUser.userID)
+                {
+                    // update their information
+                    users[i].firstName = firstName;
+                    users[i].lastName = lastName;
+                    users[i].email = email;
+                    users[i].phoneNumber = phone;
+                    users[i].city = city;
+                    users[i].province = province;
+                }
+            } 
+            // save data 
+            localStorage.setItem('users', JSON.stringify(users));
+            // return to regular profile page
+            displayUser();
+            
+
+        }
+        else //otherwise if email is in use...
+        {
+            // display some output for the user, ideally not an alert box. 
+            // this can be changed
             alert("Email already in use!");
         }
 
-        displayUser();
+        
 
 
 
