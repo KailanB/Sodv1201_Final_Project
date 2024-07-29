@@ -32,25 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const users = JSON.parse(localStorage.getItem('users')) || [];
 
-
-        // add user check for existing email not working!
-        // needs updates! 
+        let userExists = false;
+        // check if email is already in use. Returns undefined if not
+        userExists = users.find( user => user.email.toLowerCase() === email.toLowerCase());
         
-        // alert(users.length);
-        // let userExists = false;
 
-        // users.forEach( user => {
-
-        //     // check that the email is not already used;
-        //     if (user.email = email)
-        //     {
-        //         alert("Sorry email already in use!");
-        //         userExists = true;
-        //         return;
-        //     }
-
-        // });
-        if (true ) //!userExists
+        if (!userExists)
         {
             let userID;
             if (localStorage.getItem('userID')) // check that a userID save has been created
@@ -83,9 +70,15 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("userProvince").value = "";
             document.querySelector('input[name="ownerRenter"]:checked').checked = false;
         }
+        else 
+        {
 
-       
+            // DISPLAY AN OUTPUT IF EMAIL IS ALREADY A REGISTERED USER!
 
+            // let newp = document.createElement("p");
+            // document.getElementById("forTesting").appendChild(newp);
+            // newp.innerHTML = `${userExists.email} is already in use, please try another!`;
+        }
         
         // temporary output to test and view user data
         document.getElementById("forTesting").innerHTML = "";
@@ -93,19 +86,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let newp = document.createElement("p");
             
-            document.getElementById("forTesting").appendChild(newp);
+            let forTestingDiv = document.getElementById("forTesting").appendChild(newp);
             
             newp.innerHTML = ` ${user.firstName} ${user.lastName} Role: ${user.role}, lives in: ${user.city}, userID: ${user.userID} user Email: ${user.email}`;
+            if(userExists)
+            {
+                let emailInUseOutput = document.createElement("p");
+                forTestingDiv.appendChild(emailInUseOutput);
+                emailInUseOutput.innerHTML = "Email already in use! Please try another!";
+            }
             
         })
         // above used for testing
 
-
         // commented out for testing, however page should redirect so that user can log in after creating an account 
         // window.location.href="logIn.html";
-        
-        
-
 
     }
 
