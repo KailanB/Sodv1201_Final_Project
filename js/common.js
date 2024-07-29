@@ -3,12 +3,15 @@
 // COOKIEEEES https://www.w3schools.com/js/js_cookies.asp
 function setUserCookie(userEmail, userId)
 {
+
     let days = 1; // update these variables to set cookie expiration
     let hours = 5;
     const expireDate = new Date();
+    
     expireDate.setTime(expireDate.getTime() + (days*hours*60*60*1000));
     document.cookie = "userEmail=" + userEmail + ";" + expireDate + ";path=/";
     document.cookie = "userId=" + userId + ";" + expireDate + ";path=/";
+
 }
 
 function getUserCookie(cname)

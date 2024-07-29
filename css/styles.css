@@ -1,12 +1,14 @@
 /*Commented out borders are for my testing purposes  */
 
 :root {
-    --mainContentColor: #ddbeeb;
-    --pageInnerContent2: #b099bb;
-    --pageInnerContent3:#d0b2dd;
-    --accentColor1: #6a477a;
+    --mainContentColor: #daeffd;
+    --pageInnerContent2: #e4ffd8;
+    --pageInnerContent3:#f5dcff;
+    --accentColor1: #6e6799;
     --accentColor2: #984fb9;
     --filterContainer: 230px;
+
+    --darkFont: #000000;
 }
 
 
@@ -19,6 +21,7 @@
 
 li a {
     text-decoration: none;
+    color: var(--darkFont);
 }
 
 form {
@@ -34,7 +37,7 @@ form {
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    background-color:#ddbeeb;
+    background-color: var(--mainContentColor);
     align-items:stretch;
     min-height: 100vh;
     /* border: 5px solid lightseagreen; */
@@ -99,7 +102,10 @@ form {
 
 /* some standard settings for buttons on the pages */
 .standardButton{
+
+
     font-size: 1.3rem;
+    border-radius: 10px;
     padding: 5px;
     background-color:var(--mainContentColor);
     margin: 5px 0px 15px 0px;
@@ -130,7 +136,7 @@ form {
 
 #headerBar {
     /* border: 2px solid red; */
-    background-color:var(--pageInnerContent2);
+    background-color:var(--accentColor1);
     padding: 10px 10px;
 }
 
@@ -140,7 +146,7 @@ form {
 }
 
 #footerBar {
-    background-color:#b099bb;
+    background-color: var(--accentColor1);
     padding: 10px 10px;
     margin-top: auto;
 }
@@ -162,6 +168,7 @@ form {
 .dynamicallyCreatedDiv {
 
     /* display: flex; */
+    border-radius: 20px;
     width: clamp(300px, 70vw, 800px);
     position: relative;
 }

@@ -14,19 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if(userEmail)
         {    
-            
-            //forEach iterates fully here before changing locations
-            // users.forEach(user => {
-            //     if(user.email === userEmail)
-            //     {
-                    
-            //         setUserCookie(userEmail, user.userID); 
-            //         // alert(document.cookie);
-            //         window.location.href="../home.html";   
-            //     }
-
-            // });
-            
+           
             // better method. Needs further testing for multiple users. Perhaps user dummy data
             const users = JSON.parse(localStorage.getItem('users'));
 
