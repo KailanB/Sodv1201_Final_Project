@@ -145,6 +145,20 @@ form {
     margin-top: auto;
 }
 
+#profileDisplay{
+
+    position: relative;
+}
+
+#editProfileButton{
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    
+}
+
+
 .dynamicallyCreatedDiv {
 
     /* display: flex; */
