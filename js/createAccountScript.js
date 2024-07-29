@@ -13,13 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         this.userID = userID;
         this.properties = [];
 
-        /*
-        // we could use booleans instead which may make it easier for checks that way you can simply write
-        // if (user.owner) for if statements, otherwise you would have to write if (user.role === "Owner") which seems tedious
-        this.owner = owner;
-        this.renter = renter;
-        */
-
     }
 
     document.getElementById("createNewUserForm").addEventListener("submit", createNewUser);
@@ -37,39 +30,27 @@ document.addEventListener('DOMContentLoaded', function () {
         let province = document.getElementById("userProvince").value;
         let role = document.querySelector('input[name="ownerRenter"]:checked').value;
 
-        /*
-        //using bools method.
-        let owner;
-        let renter;
-        if (role === "Owner")
-        {
-            owner = true;
-            renter = false;
-        }
-        else 
-        {
-            owner = false;
-            renter = true;
-        }
-        let newUser = new User(firstName, lastName, email, phoneNumber, owner, renter);
-        */
-
-
-
         const users = JSON.parse(localStorage.getItem('users')) || [];
-        let userExists = false;
-        users.forEach( user => {
 
-            // check that the email is not already used;
-            if (user.email = email)
-            {
-                alert("Sorry email already in use!");
-                userExists = true;
-                return;
-            }
 
-        });
-        if (!userExists)
+        // add user check for existing email not working!
+        // needs updates! 
+        
+        // alert(users.length);
+        // let userExists = false;
+
+        // users.forEach( user => {
+
+        //     // check that the email is not already used;
+        //     if (user.email = email)
+        //     {
+        //         alert("Sorry email already in use!");
+        //         userExists = true;
+        //         return;
+        //     }
+
+        // });
+        if (true ) //!userExists
         {
             let userID;
             if (localStorage.getItem('userID')) // check that a userID save has been created
@@ -110,12 +91,11 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("forTesting").innerHTML = "";
         users.forEach(user => {
 
-            
             let newp = document.createElement("p");
             
             document.getElementById("forTesting").appendChild(newp);
             
-            newp.innerHTML = ` ${user.firstName} ${user.lastName} Role: ${user.role}, lives in: ${user.city}, userID: ${user.userID}`;
+            newp.innerHTML = ` ${user.firstName} ${user.lastName} Role: ${user.role}, lives in: ${user.city}, userID: ${user.userID} user Email: ${user.email}`;
             
         })
         // above used for testing
