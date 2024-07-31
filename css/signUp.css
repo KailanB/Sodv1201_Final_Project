@@ -19,6 +19,10 @@ select{
     padding: 8px; 
 }
 
+input[type="radio"], .standardButton{
+    cursor: pointer;
+}
+
 /* Style for radio button labels */
 input[type="radio"] + label {
     font-size: 1rem; 
