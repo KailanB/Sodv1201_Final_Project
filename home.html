@@ -31,13 +31,39 @@
         <div class="innerPageContent1" id="searchAndFilterContainer">
             <aside  class="innerPageContent2" id="advancedSearchFilters">
                 <div class="innerPageContent3">
-                    <p>Here we have</p>
+                    <!-- <p>Here we have</p>
                     <p>advanced filters</p>
                     <p>advanced filters</p>
                     <p>advanced filters</p>
                     <p>advanced filters</p>
                     <p>advanced filters</p>
-                    <p>advanced filters</p>
+                    <p>advanced filters</p> -->
+                    <!-- Some Changes I made for the advanced filter option and for fetch the data we need to use API -->
+                    <p>Advanced Filters</p>
+                    <label for="filterAvailability">Availability:</label>
+                    <select id="filterAvailability">
+                        <option value=""></option>
+                        <option value="">Any</option>
+                        <option value="available">Available</option>
+                        <option value="unavailable">Unavailable</option>
+                    </select><br>
+                    <label for="filterParking">Parking:</label>
+                    <select id="filterParking">
+                        <option value=""></option>
+                        <option value="">Any</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select><br>
+                    <label for="filterTransport">Public Transport:</label>
+                    <select id="filterTransport">
+                        <option value=""></option>
+                        <option value="">Any</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select><br>
+                    <label for="filterType">Type:</label>
+                    <input type="text" id="filterType" placeholder="Enter type">
+                    <button onclick="fetchAndFilterResults()">Apply Filters</button>
                 </div>   
             </aside>
             <div class="innerPageContent2" id="searchAndResultsContainer">
@@ -61,7 +87,7 @@
 
 
 
-
+<script src = "js/filter.js"></script>
     
 
 </body>
