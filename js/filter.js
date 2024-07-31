@@ -71,3 +71,44 @@ function displayResults(filteredProperties) {
 
 // Fetch properties when the page loads
 window.onload = fetchProperties;
+
+
+
+
+//For Testing- to check apply filter works or not 
+function fetchAndFilterResults() {
+    // Get filter values
+    const availability = document.getElementById('filterAvailability').value;
+    const parking = document.getElementById('filterParking').value;
+    const transport = document.getElementById('filterTransport').value;
+    const type = document.getElementById('filterType').value;
+
+    // Mock data - replace this with actual API call
+    const properties = [
+        { name: 'Property 1', availability: 'available', parking: 'yes', transport: 'no', type: 'studio' },
+        { name: 'Property 2', availability: 'unavailable', parking: 'no', transport: 'yes', type: 'gallery' },
+        // Add more properties as needed
+    ];
+
+    // Filter properties based on criteria
+    const filteredProperties = properties.filter(property => {
+        return (availability === '' || property.availability === availability) &&
+               (parking === '' || property.parking === parking) &&
+               (transport === '' || property.transport === transport) &&
+               (type === '' || property.type.toLowerCase().includes(type.toLowerCase()));
+    });
+
+    // Display filtered properties
+    const resultsContainer = document.getElementById('resultsContainer');
+    resultsContainer.innerHTML = ''; // Clear existing results
+
+    if (filteredProperties.length > 0) {
+        filteredProperties.forEach(property => {
+            const propertyDiv = document.createElement('div');
+            propertyDiv.textContent = property.name; // Customize this to display more property details
+            resultsContainer.appendChild(propertyDiv);
+        });
+    } else {
+        resultsContainer.textContent = 'No properties found';
+    }
+}
