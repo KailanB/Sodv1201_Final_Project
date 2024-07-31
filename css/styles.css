@@ -1,5 +1,4 @@
 /*Commented out borders are for my testing purposes  */
-
 :root {
     --mainContentColor: #daeffd;
     --pageInnerContent2: #e4ffd8;
@@ -7,7 +6,12 @@
     --accentColor1: #6e6799;
     --accentColor2: #984fb9;
     --filterContainer: 230px;
-
+    --buttonBackground: #6e6799;
+    --buttonText: #ffffff;
+    --buttonHoverBackground: #484a6d;
+    --buttonHoverText: #ffffff;
+    --inputBackground: #ffffff;
+    --inputBorder: #ccc;
     --darkFont: #000000;
 }
 
