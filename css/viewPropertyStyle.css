@@ -1,5 +1,3 @@
-
-
 #addNewPropertyOuterDiv{
 
     position:relative;
@@ -22,21 +20,63 @@
 }
 
 #addNewPropertyDiv {
-
-    width: clamp(300px, 70vw, 800px);
-    display: flex;  
-    justify-content: center;
+    display: flex;
     flex-direction: column;
-    /* border: 2px solid teal; */
+    padding: 20px;
+    width: clamp(300px, 70vw, 800px);
+    margin: 15px auto; /* Center the form in its container */
 }
 
 #openAddPropertyDiv {
-   
-    margin: 20px auto 0px auto;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; 
+    /* margin: 20px auto 0px auto; */
 }
 
+/* Style for individual input fields and selects */
+.newPropInput, .numberInput{
+    width: clamp(200px, 45vw, 500px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
+select{
+    padding: 8px; 
+    border: 1px solid var(--inputBorder); 
+    border-radius: 4px; 
+    background-color: var(--inputBackground); 
+}
 
+/* Radio button */
+input[type="radio"]{
+    cursor: pointer;
+}
+
+/* Style for radio button labels */
+input[type="radio"] + label {
+    font-size: 1rem; 
+    margin-right: 20px; 
+    cursor: pointer; 
+}
+
+/* Ensuring button is centered within its parent */
+#addNewPropertyButton {
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block; /* Make the button a block-level element */
+    margin: 20px auto; /* Center it with auto margins */
+}
+
+/* Style for labels */
+.propertyInputLabels label {
+    display: block;
+    font-weight: bold;
+}
 
 /* these divs are selected in this way as these divs area created dynamically from their arrays */
 .dynamicallyCreatedDiv div:nth-last-of-type(2) { /* this refers to the div that will display in the top right of the property display window in both the search page and view properties page */
@@ -55,6 +95,16 @@
 }
 /* end of dynamically displayed div custom select */
 
+/* Styling for Edit and Remove Buttons */
+.edit-button, .remove-button{
+    background-color: var(--accentColor1); /* Change to your desired background color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 1em;
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 700px)
 { 
