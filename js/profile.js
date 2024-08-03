@@ -2,24 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {   
     
     //function to return current user object so that data may be displayed 
-    function getCurrentUser()
-    {
-        let currentUser;
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        users.find(user => 
-        {
-
-            
-            if(user.userID === parseInt(getUserCookie("userId")))
-            {
-                currentUser = user;
-                
-            }
-
-        });
-        return currentUser;
-
-    }
+    
 
     function displayUser() {
        
@@ -166,10 +149,8 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("Email already in use!");
         }
 
-        
-
-
-
     }
 
 });
+
+
