@@ -35,14 +35,12 @@ form {
 }
 
 
-
 .mainPageContent {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
+    /* justify-content: space-between;
+    align-items: stretch; */
     background-color: var(--mainContentColor);
-    align-items:stretch;
     min-height: 100vh;
     /* border: 5px solid lightseagreen; */
 }
@@ -163,9 +161,15 @@ form {
 #editProfileButton{
 
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 5px;
     
+}
+#removeProfileButton {
+    position: absolute;
+    top: 45px; /* Position it below the edit button */
+    right: 5px;
+    margin-top: 40px;
 }
 
 
@@ -176,6 +180,156 @@ form {
     width: clamp(300px, 70vw, 800px);
     position: relative;
 }
+
+/* added css for profile page */
+
+
+/* Profile Image Section (Left Side) */
+#profileImageContainer {
+    flex: 0 0 30%; /* Take up 30% of the width */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; Center content horizontally */
+    padding: 20px;
+    background-color: var(--pageInnerContent2);
+    border-radius: 10px;
+    position: relative;
+    /* Border for testing */
+    /* border: 2px solid lightcoral; */
+}
+
+#profileImage {
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid var(--accentColor1);
+    margin-bottom: 10px;
+    border-radius: 0; /* Square image */
+}
+
+
+/* Image Upload Form (Right Side of Image) */
+#uploadImageForm {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--pageInnerContent3);
+    border-radius: 10px;
+    padding: 40px;
+    padding-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    
+    max-width: 100%;
+    position: absolute;
+    right: calc(100% + 20px); /* Positioned right of the profile image container */
+}
+
+#uploadImageForm label {
+    margin-bottom: 10px;
+}
+
+#uploadImageForm input[type="file"] {
+    margin-bottom: 10px;
+}
+
+#uploadImageForm button {
+    margin-right: 10px;
+}
+
+/* Profile Actions Section (Right Side) */
+#profileActionsContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--pageInnerContent3);
+    border-radius: 10px;
+    /* Border for testing */
+    /* border: 2px solid lightblue; */
+}
+
+.standardButton {
+    font-size: 1.2rem; /* Adjust font size */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--buttonBackground);
+    color: var(--buttonText);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.standardButton:hover {
+    background-color: var(--buttonHoverBackground);
+    color: var(--buttonHoverText);
+}
+
+#editProfileForm {
+    /* display: none; Hide initially */
+    background-color: var(--pageInnerContent3);
+    border-radius: 2px;
+    padding-top: 5px;
+    text-align: 1rem;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 200px; 
+    right: 200px; 
+    top: 115px;
+    width: 100%; 
+    max-width: 200px; 
+    
+}
+
+#editProfileForm label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+#editProfileForm input {
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid var(--inputBorder);
+    border-radius: 5px;
+}
+
+#editProfileForm button {
+    margin-right: 10px;
+}
+
+
+/* i hide it innitially when we will click on edit profile the inbox will show or either we can display it as it is now on browser */
+/* .hidden {
+    display: none;
+} */
+
+
+/* Responsive Design */
+@media only screen and (max-width: 700px) {
+    .profileSection {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #profileImageContainer,
+    #profileActionsContainer {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #profileImage {
+        width: 100px; /* Adjust size for smaller screens */
+        height: 100px;
+    }
+
+    #uploadImageForm {
+        width: 100%;
+        left: 0; /* Center form on small screens */
+        top: auto;
+        transform: none;
+    }
+
+
+
 
 @media only screen and (max-width: 700px)
 { 
@@ -192,4 +346,5 @@ form {
         width: clamp(175px, 50vw, 450px); 
     }
 
+}
 }

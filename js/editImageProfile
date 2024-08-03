@@ -1,0 +1,73 @@
+const editImageButton = document.getElementById('editImageButton');
+const uploadImageForm = document.getElementById('uploadImageForm');
+const cancelImageButton = document.getElementById('cancelImageButton');
+const editProfileButton = document.getElementById('editProfileButton');
+const removeProfileButton = document.getElementById('removeProfileButton');
+const saveChangesButton = document.querySelector('#editProfileForm button[type="submit"]');
+const cancelEditButton = document.getElementById('cancelEditButton');
+const editProfileForm = document.getElementById('editProfileForm');
+const profileImageContainer = document.getElementById('profileImageContainer');
+const profileImage = document.getElementById('profileImage');
+
+// Function to show or hide the upload image form
+function toggleUploadImageForm() {
+    uploadImageForm.classList.toggle('hidden');
+}
+
+// Function to remove the profile image
+function removeProfileImage() {
+    profileImage.src = 'path/to/default/image.jpg'; // Reset to default image
+    
+}
+
+// Function to show the edit profile form
+function showEditProfileForm() {
+    editProfileForm.classList.remove('hidden');
+}
+
+// Function to handle image upload
+function handleImageUpload(event) {
+    event.preventDefault();
+    const fileInput = document.getElementById('imageUpload');
+    const file = fileInput.files[0];
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            profileImage.src = e.target.result;
+            toggleUploadImageForm(); // Hide form after upload
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+// Function to save profile changes
+function saveProfileChanges(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    // need to add here to link with create account page so if we click on edit profile create account page should open 
+    console.log('Profile changes saved:', { name, email });
+
+    alert('Profile changes saved.');
+    editProfileForm.classList.add('hidden'); // Hide form after saving
+}
+
+// Function to cancel profile changes
+function cancelProfileChanges() {
+    editProfileForm.classList.add('hidden');
+}
+
+// Event Listeners
+editImageButton.addEventListener('click', toggleUploadImageForm);
+removeProfileButton.addEventListener('click', removeProfileImage);
+editProfileButton.addEventListener('click', showEditProfileForm);
+cancelImageButton.addEventListener('click', toggleUploadImageForm);
+document.getElementById('imageForm').addEventListener('submit', handleImageUpload);
+saveChangesButton.addEventListener('click', saveProfileChanges);
+cancelEditButton.addEventListener('click', cancelProfileChanges);
+
+// editProfileButton.addEventListener('click', () => {
+//     window.location.href = 'createaccount.html'; // Redirect to profile editing page
+// });
