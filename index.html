@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/homeStyle.css">
+    <!-- added this at the top here as well because some functions were having issues using common function cause of loading delays -->
+    <script src = "js/common.js"></script>
 </head>
 
 
@@ -17,7 +19,6 @@
             <h1>Home Page</h1>
             <nav>
                 <ul id="pageNavigation">
-                    <li><a href="pages/viewProperties.html">View Properties</a></li>
                     <li><a href="pages/profile.html">Profile</a></li>
                     <li><a href="pages/logIn.html">Log in</a></li>
                     <li><a href="pages/createAccount.html">Create Account</a></li>
@@ -72,7 +73,8 @@
                     <button>Search</button>
                     <p>Basic search filters</p>
                 </div>
-                <div id="resultsContainer" class="innerPageContent3">
+                <!-- div container used to display all properties or searched properties -->
+                <div id="resultsContainer" class="innerPageContent2">
                     <p> here property divs will appear here property divs will appear here property divs will appear here property divs will appear</p>
                 </div>
             </div>   
@@ -83,106 +85,15 @@
             <p>social meda social media!</p>
         </div> 
     </div>
-    
 
-
-
+<script src = "js/common.js"></script>
 <script src = "js/filter.js"></script>
+
+
+
     
 
 </body>
-
-
-        <!-- <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div>
-        <div>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-            <p>content content content content content content content content content content content content content content content content </p>
-        </div> -->
 
 
 </html>
