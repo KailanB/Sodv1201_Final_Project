@@ -59,26 +59,30 @@ document.addEventListener('DOMContentLoaded', function () {
         propertiesDiv.innerHTML = '';
 
         properties.forEach((property, index) => {
-            const propertyDiv = document.createElement('div');
-            propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
-            propertyDiv.innerHTML = `
-                <h2>${property.name}</h2>
-                <p>${property.address}</p>
-                <p>${property.city} ${property.province}</p>
-                <p>${property.area} sq Meters, Max Occupants: ${property.capacity}</p>
-                <p>Parking: ${property.parking ? 'Yes' : 'No'}</p>
-                <p>Public Transport: ${property.publicTransport ? 'Yes' : 'No'}</p>
-                <div>
-                    <h3>${property.type}</h3>
-                </div>
-                <div>
-                    <p>$${property.price} - ${property.rentalTerm}</p>
-                    <p>${property.availability ? 'Available Now' : 'Not Available'}</p>
-                </div>
-                <button class="edit-button" data-index="${index}">Edit</button>
-                <button class="remove-button" data-index="${index}">Remove</button>
-            `;
-            propertiesDiv.appendChild(propertyDiv);
+            // added the check user cookie back so that only properties that belong to the logged in user are displayed
+            if(property.userId === parseInt(getUserCookie("userId")))
+            {
+                const propertyDiv = document.createElement('div');
+                propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
+                propertyDiv.innerHTML = `
+                    <h2>${property.name}</h2>
+                    <p>${property.address}</p>
+                    <p>${property.city} ${property.province}</p>
+                    <p>${property.area} sq Meters, Max Occupants: ${property.capacity}</p>
+                    <p>Parking: ${property.parking ? 'Yes' : 'No'}</p>
+                    <p>Public Transport: ${property.publicTransport ? 'Yes' : 'No'}</p>
+                    <div>
+                        <h3>${property.type}</h3>
+                    </div>
+                    <div>
+                        <p>$${property.price} - ${property.rentalTerm}</p>
+                        <p>${property.availability ? 'Available Now' : 'Not Available'}</p>
+                    </div>
+                    <button class="edit-button" data-index="${index}">Edit</button>
+                    <button class="remove-button" data-index="${index}">Remove</button>
+                `;
+                propertiesDiv.appendChild(propertyDiv);
+            }
         });
 
         // Add event listeners for edit and remove buttons
