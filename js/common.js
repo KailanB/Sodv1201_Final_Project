@@ -1,4 +1,6 @@
+
 // COOKIEEEES https://www.w3schools.com/js/js_cookies.asp
+// gives the user a cookie to track their id when they log in
 function setUserCookie(userEmail, userId)
 {
 
@@ -11,6 +13,9 @@ function setUserCookie(userEmail, userId)
 
 }
 
+// returns the users cookie by using the cookie name. Names used are:
+// userEmail   (returns email address)
+// userId      (returns unique user ID)
 function getUserCookie(cname)
 {
     
@@ -40,4 +45,23 @@ function checkCookie()
 {
     let userName = getUserCookie("userEmail");
     let userId = getCookie("userId");
+}
+
+// compares user cookie id with the id of all registered users, when the function finds a matching user it returns that user object, otherwise returns null. 
+// this can be used to retrieve other user data based on the currently browsing user
+// for instance getCurrentUser().phone
+function getCurrentUser()
+{
+    let currentUser;
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    users.find(user => 
+    {
+        if(user.userID === parseInt(getUserCookie("userId")))
+        {
+            currentUser = user;
+            
+        }
+
+    });
+    return currentUser;
 }
