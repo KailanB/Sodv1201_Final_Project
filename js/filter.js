@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function () {  
+
 let properties = [];
 
 async function fetchProperties() {
@@ -112,3 +114,53 @@ function fetchAndFilterResults() {
         resultsContainer.textContent = 'No properties found';
     }
 }
+
+// self invoking function that adds the view property link ONLY if a user is logged in and an owner
+(function () {
+    
+    let userId = parseInt(getUserCookie("userId"));
+    if(userId)
+    { 
+        let currentUser = getCurrentUser();
+        if(currentUser.role === "Owner")
+        {
+            let navList = document.getElementById("pageNavigation");
+            let listItem = document.createElement("li");
+            listItem.innerHTML = `<a href="pages/viewProperties.html">View Properties</a>`;
+            navList.appendChild(listItem);         
+        }
+        
+        
+    }
+})();
+
+// self invoking function that displays all properties as a default. This could later be changed to a limited amount or "featured" properties or some other result.
+// then a user can instead search for specifics and those results can replace these
+(function displayProperties() {
+        let resultsContainer = document.getElementById("resultsContainer");
+        resultsContainer.innerHTML = '';
+        let localProperties = JSON.parse(localStorage.getItem('properties')) || [];
+        localProperties.forEach((property) => {
+                const propertyDiv = document.createElement('div');
+                propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
+                propertyDiv.innerHTML = `
+                    <h2>${property.name}</h2>
+                    <p>${property.address}</p>
+                    <p>${property.city} ${property.province}</p>
+                    <p>${property.area} sq Meters, Max Occupants: ${property.capacity}</p>
+                    <p>Parking: ${property.parking ? 'Yes' : 'No'}</p>
+                    <p>Public Transport: ${property.publicTransport ? 'Yes' : 'No'}</p>
+                    <div>
+                        <h3>${property.type}</h3>
+                    </div>
+                    <div>
+                        <p>$${property.price} - ${property.rentalTerm}</p>
+                        <p>${property.availability ? 'Available Now' : 'Not Available'}</p>
+                    </div>
+                `;
+                resultsContainer.appendChild(propertyDiv);
+        });
+    
+    })();
+
+});
