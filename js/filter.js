@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {  
 
+let searchTab = document.getElementById("searchTab");
+let advancedSearchFilters = document.getElementById("advancedSearchFilters");
+
 let properties = [];
 
 async function fetchProperties() {
@@ -169,6 +172,56 @@ function fetchAndFilterResults() {
     function viewProperty(propertyId, userId)
     {
         window.location.href = "pages/singlePropertyView.html?propertyId=" + propertyId + "?userId=" + userId + "?";
+    }
+
+    // NEED A METHOD FOR PHONE USERS -- Maybe an X appears on the window or instead of the magnifying glass to remove the window.********** 
+    advancedSearchFilters.addEventListener("mouseleave", function() {
+
+        if(window.innerWidth <= 701)
+        {
+            {
+                advancedSearchFilters.style.display = "none";
+                advancedSearchFilters.style.position = "fixed";
+                
+            }
+        }
+    });
+    
+    searchTab.addEventListener("click", function() {
+    
+        
+        advancedSearchFilters.style.display = "flex";
+        advancedSearchFilters.style.position = "fixed";
+    
+    });
+    
+   
+    // alert(window.innerWidth);
+    window.onresize = displaySearchFilters;
+    // brings the search window back if screen size is increased again.
+    // I had a bug where after display was set to none through javascript it would no longer revert back based on screen size
+    function displaySearchFilters()
+    {
+        // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
+        if(window.innerWidth > 701)
+        {
+            
+            
+            if(advancedSearchFilters.style.display === "none")
+            {
+                advancedSearchFilters.style.display = "flex";
+                advancedSearchFilters.style.position = "absolute";
+            }
+        }
+        else
+        {
+            if(advancedSearchFilters.style.display === "flex")
+            {
+                advancedSearchFilters.style.display = "none";
+                advancedSearchFilters.style.position = "fixed";
+            }
+            
+        }
     }
 
 });
