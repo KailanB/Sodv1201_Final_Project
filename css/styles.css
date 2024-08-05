@@ -126,6 +126,11 @@ form {
     width: clamp(85px, 22vw, 275px);
 }
 
+.mouseHover{
+
+    cursor: pointer;
+}
+
 #pageNavigation {  
     display: flex;
     list-style:none;

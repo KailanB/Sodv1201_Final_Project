@@ -142,7 +142,10 @@ function fetchAndFilterResults() {
         let localProperties = JSON.parse(localStorage.getItem('properties')) || [];
         localProperties.forEach((property) => {
                 const propertyDiv = document.createElement('div');
-                propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
+                propertyDiv.addEventListener("click", function(){
+                    viewProperty(property.propertyId, property.userId)
+                });
+                propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv', 'mouseHover');
                 propertyDiv.innerHTML = `
                     <h2>${property.name}</h2>
                     <p>${property.address}</p>
@@ -162,5 +165,10 @@ function fetchAndFilterResults() {
         });
     
     })();
+
+    function viewProperty(propertyId, userId)
+    {
+        window.location.href = "pages/singlePropertyView.html?propertyId=" + propertyId + "?userId=" + userId + "?";
+    }
 
 });
