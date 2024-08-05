@@ -83,8 +83,8 @@ input[type="radio"] + label {
 
     /* border: 2px solid red; */
     position: absolute;
-    right: 10px;
-    top: 0px;
+    right: 12px;
+    top: 5px;
 }
 .dynamicallyCreatedDiv div:last-of-type { /* this refers to the div that will display in the bottom right of the property display window in both the search page and view properties page */
 

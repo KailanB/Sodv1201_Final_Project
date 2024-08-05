@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
         addPropertyOuterDiv.style.display = 'block';
+        // https://stackoverflow.com/questions/3569329/javascript-to-make-the-page-jump-to-a-specific-location
+        addPropertyOuterDiv.scrollIntoView({behavior: 'smooth'});
         editIndex = -1; // Reset edit mode
         resetForm(); //position
     });
@@ -107,15 +109,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 editIndex = this.getAttribute('data-index');
                 populateForm(properties[editIndex]);
                 addPropertyOuterDiv.style.display = 'block';
+                addPropertyOuterDiv.scrollIntoView({behavior: 'smooth'});
             });
         });
         
         document.querySelectorAll('.remove-button').forEach(button => {
             button.addEventListener('click', function () {
                 const index = this.getAttribute('data-index');
-                properties.splice(index, 1);
-                localStorage.setItem('properties', JSON.stringify(properties));
-                displayProperties();
+                let response = prompt(`Are you sure you want to permanently delete this property? \nType "yes" to delete.`);
+                response = response.toLowerCase();
+                if(response === "yes")
+                {
+                    properties.splice(index, 1);
+                    localStorage.setItem('properties', JSON.stringify(properties));
+                    displayProperties();
+                }
+                
             });
         });
     }

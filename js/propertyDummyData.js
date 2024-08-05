@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })();
 
 
-    function Property(name, address, city, province, type, area, maxOccupants, parking, transport, price, rentalTerm, available, userId, propertyId) 
+    function Property(name, address, city, province, type, area, capacity, parking, transport, price, rentalTerm, available, userId, propertyId) 
     {
         this.name = name;
         this.address = address;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.province = province;
         this.type = type;
         this.area = area;
-        this.maxOccupants = maxOccupants;
+        this.capacity = capacity;
         this.parking = parking;
         this.transport = transport;
         this.price = price;
