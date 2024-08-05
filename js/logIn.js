@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (currentUser) {
-                setUserCookie(userEmail, currentUser.userID);
+                setUserCookie(userEmail, currentUser.userId);
                 window.location.href = "../index.html";
             } else {
                 document.getElementById("logInFailedOutput").innerHTML = `Sorry, user not found. Click <a href="createAccount.html">here</a> to create an account`;

@@ -34,7 +34,6 @@ function getUserCookie(cname)
         }
         if (c.indexOf(name) === 0)
         {
-            
             return c.substring(name.length, c.length);
         }
     }
@@ -54,12 +53,13 @@ function getCurrentUser()
 {
     let currentUser;
     let users = JSON.parse(localStorage.getItem('users')) || [];
+    
     users.find(user => 
     {
-        if(user.userID === parseInt(getUserCookie("userId")))
+        if(user.userId === parseInt(getUserCookie("userId")))
         {
-            currentUser = user;
             
+            currentUser = user;  
         }
 
     });

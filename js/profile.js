@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // I used a for loop here because other methods were not altering the array
             for(let i = 0; i< users.length ; i++)
             {
-                if(users[i].userID === currentUser.userID)
+                if(users[i].userId === currentUser.userId)
                 {
                     // update their information
                     users[i].firstName = firstName;

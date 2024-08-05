@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+
+    // localStorage.clear();
+    // alert("Cleared!");
+
     // commented arguments are an alternative way of defining roles
-    function User(firstName, lastName, email, phone, city, province, role, userID /* owner, renter*/)
+    function User(firstName, lastName, email, phone, city, province, role, userId /* owner, renter*/)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -10,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.city = city;
         this.province = province;
         this.role = role;
-        this.userID = userID;
+        this.userId = userId;
         this.properties = [];
 
     }
@@ -39,22 +43,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!userExists)
         {
-            let userID;
-            if (localStorage.getItem('userID')) // check that a userID save has been created
+            let userId;
+            if (localStorage.getItem('userId')) // check that a userId save has been created
             {
-                userID = parseInt(localStorage.getItem('userID'));
-                // increase userID to ensure all IDs are unique
-                userID++;
+                userId = parseInt(localStorage.getItem('userId'));
+                // increase userId to ensure all IDs are unique
+                userId++;
             }
             else
             {
-                // if userID is not yet saved to local storage, start with 1
-                userID = 1;
+                // if userId is not yet saved to local storage, start with 1
+                userId = 1;
             }
             // this must be saved to local storage, or database so that all ID's are unique
-            localStorage.setItem('userID', JSON.stringify(userID));
+            localStorage.setItem('userId', JSON.stringify(userId));
 
-            let newUser = new User(firstName, lastName, email, phoneNumber, city, province, role, userID);
+            let newUser = new User(firstName, lastName, email, phoneNumber, city, province, role, userId);
             
             users.push(newUser);
 
@@ -88,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             let forTestingDiv = document.getElementById("forTesting").appendChild(newp);
             
-            newp.innerHTML = ` ${user.firstName} ${user.lastName} Role: ${user.role}, lives in: ${user.city}, userID: ${user.userID} user Email: ${user.email}`;
+            newp.innerHTML = ` ${user.firstName} ${user.lastName} Role: ${user.role}, lives in: ${user.city}, userID: ${user.userId} user Email: ${user.email}`;
             if(userExists)
             {
                 let emailInUseOutput = document.createElement("p");
