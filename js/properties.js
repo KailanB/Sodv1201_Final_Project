@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const propertyForm = document.getElementById('property-form');
+    const propertyForm = document.getElementById('propertyForm');
     const propertiesDiv = document.getElementById('properties');
     const addPropertyOuterDiv = document.getElementById('addNewPropertyOuterDiv');
     const addPropertyButton = document.getElementById('addNewPropertyButton');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     displayProperties();
 
-    addPropertyButton.addEventListener('click', function (e) {
+    propertyForm.addEventListener('submit', function (e) {
         e.preventDefault();
         saveProperty();
     });
@@ -39,8 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const rentalTerm = document.getElementById('rentalTermSelect').value;
         const price = document.getElementById('propertyPriceInput').value;
 
+
+        const userId = parseInt(getUserCookie("userId"));
+
         const property = {
-            name, address, city, province, area, type, capacity, parking, publicTransport, availability, rentalTerm, price
+            name, address, city, province, area, type, capacity, parking, publicTransport, availability, rentalTerm, price, userId
         };
 
         if (editIndex > -1) {
@@ -52,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('properties', JSON.stringify(properties));
         displayProperties();
         addPropertyOuterDiv.style.display = 'none';
-                        resetForm(); //position
+        resetForm(); //position
     }
 
     function displayProperties() {
