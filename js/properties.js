@@ -41,9 +41,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         const userId = parseInt(getUserCookie("userId"));
+        let propertyId;
+        if (localStorage.getItem('propertyId')) // check that a propertyId save has been created
+        {
+            propertyId = parseInt(localStorage.getItem('propertyId'));
+            // increase propertyId to ensure all IDs are unique
+            propertyId++;
+        }
+        else
+        {
+            // if propertyId is not yet saved to local storage, start with 1
+            propertyId = 1;
+        }
+        localStorage.setItem('propertyId', JSON.stringify(propertyId));
 
         const property = {
-            name, address, city, province, area, type, capacity, parking, publicTransport, availability, rentalTerm, price, userId
+            name, address, city, province, area, type, capacity, parking, publicTransport, availability, rentalTerm, price, userId, propertyId
         };
 
         if (editIndex > -1) {
