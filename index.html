@@ -22,8 +22,12 @@
             <nav>
                 <ul id="pageNavigation">
                     <li><a href="pages/profile.html">Profile</a></li>
-                    <li><a href="pages/logIn.html">Log in</a></li>
+                    <!-- Include the id to the login button -->
+                    <!-- <li><a href="pages/logIn.html">Log in</a></li> -->
+                    <li id="loginButtonContainer"><a href="pages/logIn.html" id="loginButton">Log in</a></li>
                     <li><a href="pages/createAccount.html">Create Account</a></li>
+                    <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
+                    <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton">Logout</a></li>
                 </ul>
             </nav>
         </div>
