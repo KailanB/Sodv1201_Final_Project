@@ -1,10 +1,22 @@
     
 document.addEventListener('DOMContentLoaded', function () {   
     
-    //function to return current user object so that data may be displayed 
-    
+    (function () {
 
-    function displayUser() {
+        let currentUser = getCurrentUser();
+        if(currentUser.role === "Owner")
+            {
+                let newLink = document.createElement("p");
+                newLink.innerHTML = `<li><a href="../pages/viewProperties.html">View Properties</a></li>`;
+                document.getElementById("pageNavigation").appendChild(newLink);
+
+            }
+    })();
+
+
+
+    //function to return current user object so that data may be displayed 
+        function displayUser() {
        
 
         // localStorage.clear();       
@@ -34,13 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
 
                 //this adds a link to the nav bar to view properties but only in the case that a user is the owner. Otherwise only the home page is there
-                if(currentUser.role === "Owner")
-                {
-                    let newLink = document.createElement("p");
-                    newLink.innerHTML = `<li><a href="../pages/viewProperties.html">View Properties</a></li>`;
-                    document.getElementById("pageNavigation").appendChild(newLink);
-
-                }
+                
                 let button = document.getElementById("editProfileButton")
                 button.addEventListener("click", editProfile);
                 button.innerHTML = "Edit Profile";

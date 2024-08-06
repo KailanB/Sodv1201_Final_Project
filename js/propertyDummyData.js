@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     (function displayProperties() {
 
 
-        // alert("test");
-        // localStorage.clear();
+       
         let properties = JSON.parse(localStorage.getItem('properties')) || [];
         
 
