@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {  
 
+    // localStorage.clear();
+    // alert("local storage cleared!!");
+
+
 let searchTab = document.getElementById("searchTab");
 let advancedSearchFilters = document.getElementById("advancedSearchFilters");
 
@@ -140,6 +144,10 @@ function fetchAndFilterResults() {
 // self invoking function that displays all properties as a default. This could later be changed to a limited amount or "featured" properties or some other result.
 // then a user can instead search for specifics and those results can replace these
 (function displayProperties() {
+
+
+        
+
         let resultsContainer = document.getElementById("resultsContainer");
         resultsContainer.innerHTML = '';
         let localProperties = JSON.parse(localStorage.getItem('properties')) || [];
