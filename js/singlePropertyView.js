@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let positionEnd = (url.substring(positionStart)).indexOf("?") + positionStart;
 
             // slice string section containing ID of parameter
-            return url.slice(positionEnd-1, positionEnd);
+            // slice starts after the search name within url and ends at the question mark
+            return url.slice((positionStart+name.length), positionEnd);
         }
         
     
