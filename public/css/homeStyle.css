@@ -1,0 +1,168 @@
+.dynamicallyCreatedDiv {
+
+    width: calc(100vw - calc(var(--filterContainer) + 140px));
+
+}
+
+/* container that holds the advanced search filter container, the search bar and the search results*/
+#searchAndFilterContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-around;
+}
+
+#searchAndResultsContainer {
+
+    margin-left: calc(var(--filterContainer) + 30px); /*this keeps the results window of the search to the right of the filter window that is placed absolutely on the left */
+    /* width: calc(100vw - (var(--filterContainer) + 30px)); */
+
+}
+
+/* Add query for screen sizes less than 700px to change how advanced search filter behaves */
+#advancedSearchFilters { /* this is the window for the search filters */
+
+    width: var(--filterContainer);
+    height: min-content;
+    position: absolute; /* keeps the filter window floating on the left side */
+    align-items: baseline; /* this is overriding the align-items in class innerPageContent2 which this ID uses for standard color / padding */
+    top: 10px;
+    left: 10px;
+    border: 2px solid var(--accentColor1);
+}
+
+/* Advanced Filter Container */
+/* #advancedSearchFilters {
+    background-color: var(--pageInnerContent2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+
+/* Label styling */
+#advancedSearchFilters label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--darkFont);
+}
+
+/* Select elements */
+#advancedSearchFilters select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--inputBorder);
+    border-radius: 5px;
+    background-color: var(--inputBackground);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Input field for text */
+#filterType {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--inputBorder);
+    border-radius: 5px;
+    background-color: var(--inputBackground);
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+#searchTab 
+{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid gray;
+}
+
+/* Button styling */
+button {
+    font-size: 1.3rem;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background-color: var(--buttonBackground);
+    color: var(--buttonText);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: var(--buttonHoverBackground);
+    color: var(--buttonHoverText);
+}
+
+/* used the same css as from view properties */
+/* these divs are selected in this way as these divs area created dynamically from their arrays */
+.dynamicallyCreatedDiv div:nth-last-of-type(2) { /* this refers to the div that will display in the top right of the property display window in both the search page and view properties page */
+
+    /* border: 2px solid red; */
+    position: absolute;
+    right: 12px;
+    top: 5px;
+}
+.dynamicallyCreatedDiv div:last-of-type { /* this refers to the div that will display in the bottom right of the property display window in both the search page and view properties page */
+
+    /* border: 2px solid red; */
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+/* end of dynamically displayed div custom select */
+
+
+/* Responsive Design */
+@media only screen and (max-width: 700px) {
+    #advancedSearchFilters {
+        padding: 10px;
+        left: 0px;
+        z-index: 2;
+        display: none;
+        
+    }
+
+    #searchAndResultsContainer {
+
+        margin-left: 0px; /*since the display window goes hidden, this container can use the left space */
+    }
+
+    #searchTab 
+    {
+        z-index: 2;
+        display: flex;
+        position: fixed;
+
+
+    }
+    .dynamicallyCreatedDiv { /* search container is hidden, so this container can maximize screen space */
+
+        width: 85vw;
+    
+    }
+
+    #advancedSearchFilters select, 
+    #filterType {
+        width: 100%;
+    }
+}
+
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

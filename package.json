@@ -1,0 +1,16 @@
+{
+  "name": "sodv1201_final_project",
+  "version": "1.0.0",
+  "description": "GroupC Final Project",
+  "main": "api.js",
+  "scripts": {
+    "start" : "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Deepanshi, Kajal, and Kailan.",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
