@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Properties</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Deepanshi, Kajal, and Kailan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/viewPropertyStyle.css">
+</head>
+<body>
+    <div class="mainPageContent">
+        <div id="headerBar">
+            <h1>My Properties</h1>
+            <nav>
+                <ul id="pageNavigation">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="innerPageContent1">
+            <!-- rearranged the properties container to include the dummy property and allow for equal spacing-->
+             
+            <div class="innerPageContent2" id="properties">
+                <!-- Existing property examples -->
+                <div class="innerPageContent3 dynamicallyCreatedDiv">
+                    <h2>Dramatic Theatres</h2>
+                    <p>123 main street</p>
+                    <p>Calgary AB</p>
+                    <p>500 sq Meters, Max Occupants: 5</p>
+                    <p>Parking: Yes</p>
+                    <p>Public Transport: Yes</p>
+                    <div>
+                        <h3>Recording Studio (type)</h3>
+                    </div>
+                    <div>
+                        <p>$500.00 - monthly</p>
+                        <p>Available Now</p>
+                    </div>
+                </div>
+                <div class="innerPageContent3 dynamicallyCreatedDiv">
+                    <h2>Artist Theatres</h2>
+                    <p>233 main street</p>
+                    <p>Calgary AB</p>
+                    <p>500 sq Meters, Max Occupants: 5</p>
+                    <p>Parking: Yes</p>
+                    <p>Public Transport: Yes</p>
+                    <div>
+                        <h3>Recording Studio (type)</h3>
+                    </div>
+                    <div>
+                        <p>$500.00 - monthly</p>
+                        <p>Available Now</p>
+                    </div>
+                </div>
+                <!-- Property list container -->
+                <!-- <div id="properties"></div>
+                <div> -->
+                    
+                <!-- </div> -->
+            </div>
+            <!-- put the button outside of the properties container so that it is not deleted -->
+            <button class="standardButton" id="openAddPropertyDiv">Add New Property</button>
+        </div>
+        <div class="innerPageContent1">
+            <!-- remove display none from here and put it into CSS under the id addNewPropertyOuterDiv to avoid styling conflicts-->
+            <div class="innerPageContent2" id="addNewPropertyOuterDiv">
+                <button id="cancelAddProperty">X</button>
+                <form id="propertyForm">
+                    <div class="innerPageContent3" id="addNewPropertyDiv">
+                        <!-- Property input fields -->
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyNameInput">Property Name: </label>
+                            </div>
+                            <input type="text" placeholder="My Art Studio" class="newPropInput" id="propertyNameInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyAddressInput">Property Address: </label>
+                            </div>
+                            <input type="text" placeholder="123 Main street" class="newPropInput" id="propertyAddressInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyCityInput">City: </label>
+                            </div>
+                            <input type="text" placeholder="Calgary" class="newPropInput" id="propertyCityInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyProvinces">Province: </label>
+                            </div>
+                            <div>
+                                <select name="provinces" id="propertyProvinces" required>
+                                    <option value=""></option>
+                                    <option value="AB">AB</option>
+                                    <option value="SK">SK</option>
+                                    <option value="BC">BC</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyTypeInput">Type: </label>
+                            </div>
+                            <input type="text" placeholder="Art studio, Recording studio etc.." class="newPropInput" id="propertyTypeInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertAreaInput">Square Meters: </label>
+                            </div>
+                            <input type="number" placeholder="400" id="propertAreaInput" class="numberInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyMaxOccupancyInput">Maximum Occupants: </label>
+                            </div>
+                            <input type="number" placeholder="5" id="propertyMaxOccupancyInput" class="numberInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label>Parking: </label>
+                            </div>
+                            <div>
+                                <input type="radio" name="parking" value="yes" id="propertyParkingYes" required>
+                                <label for="propertyParkingYes">Yes</label>
+                                <input type="radio" name="parking" value="no" id="propertyParkingNo">
+                                <label for="propertyParkingNo">No</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label>Public Transport: </label>
+                            </div>
+                            <div>
+                                <input type="radio" name="transport" value="yes" id="propertyTransportYes" required>
+                                <label for="propertyTransportYes">Yes</label>
+                                <input type="radio" name="transport" value="no" id="propertyTransportNo">
+                                <label for="propertyTransportNo">No</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="propertyPriceInput">Price (per term): </label>
+                            </div>
+                            <input type="number" placeholder="295.99" class="numberInput" id="propertyPriceInput" required>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label for="rentalTermSelect">Rental Term: </label>
+                            </div>
+                            <div>
+                                <select name="rentalTerm" id="rentalTermSelect" required>
+                                    <option value=""></option><!--add the empty option so that by mistaken the person will not choose   Hourly in any case-->
+                                    <option value="Hourly">Hourly</option>
+                                    <option value="Daily">Daily</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="addFlexRowProperty">
+                            <div class="propertyInputLabels">
+                                <label>Available Now: </label>
+                            </div>
+                                <input type="radio" name="availability" value="yes" id="propertyAvailableYes" required>
+                                <label for="propertyAvailableYes">Yes</label>
+                                <input type="radio" name="availability" value="no" id="propertyAvailableNo">
+                                <label for="propertyAvailableNo">No</label>
+                        </div>
+                    </div>
+<!--                     <div>
+                        <input type="submit" class="standardButton" id="addNewPropertyButton" value="Add Property"></input>
+                    </div> -->
+                </form>
+                
+            </div>
+        </div>
+        <div id="footerBar">
+            <p>&copy; 2024 DKK All rights reserved!</p>
+            <p>social media social media!</p>
+        </div>
+    </div>
+    <!-- <script src="../js/property.js"></script> -->
+    <script src = "../js/common.js"></script>
+    <script src="../js/properties.js"></script>
+    <script src="../js/propertyDummyData.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,355 @@
+/*Commented out borders are for my testing purposes  */
+:root {
+    --mainContentColor: #daeffd;
+    --pageInnerContent2: #e4ffd8;
+    --pageInnerContent3:#f5dcff;
+    --accentColor1: #6e6799;
+    --accentColor2: #984fb9;
+    --filterContainer: 230px;
+    --buttonBackground: #6e6799;
+    --buttonText: #ffffff;
+    --buttonHoverBackground: #484a6d;
+    --buttonHoverText: #ffffff;
+    --inputBackground: #ffffff;
+    --inputBorder: #ccc;
+    --darkFont: #000000;
+}
+
+
+/* reset all margin and paddings to 0px so that they may be adjusted as needed */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+li a {
+    text-decoration: none;
+    color: var(--darkFont);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.mainPageContent {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between;
+    align-items: stretch; */
+    background-color: var(--mainContentColor);
+    min-height: 100vh;
+    /* border: 5px solid lightseagreen; */
+}
+
+.innerPageContent1 {
+    padding: 10px 10px;
+    background-color:var(--mainContentColor);
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid yellow; */
+}
+
+.innerPageContent2 {
+    background-color: var(--pageInnerContent2);
+    /* border: 2px solid orange; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.innerPageContent3 {
+    background-color: var(--mainContentColor);
+    margin: 10px;
+    padding: 10px;
+    /* border: 2px solid red; */
+}
+
+.innerPageContent3b {
+    background-color: var(--pageInnerContent3);
+    padding: 10px;
+}
+
+.centerAlignContent {
+
+    flex-grow: 1;
+    /* border: 2px solid red; */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerAlignContentColumn {
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+/* ensures the window stays a reasonable size, and adjusts smaller for small screens */
+.newPropInput {
+    width: clamp(200px, 45vw, 500px);
+}
+
+.numberInput {
+
+    /* number input box set to be smaller */
+    width: 60px;
+}
+
+/* some standard settings for buttons on the pages */
+.standardButton{
+
+
+    font-size: 1.3rem;
+    border-radius: 10px;
+    padding: 5px;
+    background-color:var(--mainContentColor);
+    margin: 5px 0px 15px 0px;
+    /* border: 2px solid lightblue; */
+}
+
+.addFlexRowProperty {
+
+    /* border: 2px solid red; */
+    display: flex;
+}
+
+.propertyInputLabels{
+
+    /* border: 2px solid blue; */
+    width: clamp(85px, 22vw, 275px);
+}
+
+.mouseHover{
+
+    cursor: pointer;
+}
+
+#pageNavigation {  
+    display: flex;
+    list-style:none;
+    justify-content: center;
+}  
+
+#pageNavigation li {
+    padding: 0px min(1vw, 15px);
+}
+
+#headerBar {
+    /* border: 2px solid red; */
+    background-color:var(--accentColor1);
+    padding: 10px 10px;
+}
+
+#headerBar h1 {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#footerBar {
+    background-color: var(--accentColor1);
+    padding: 10px 10px;
+    margin-top: auto;
+}
+
+#profileDisplay{
+
+    position: relative;
+}
+
+#editProfileButton{
+
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    
+}
+#removeProfileButton {
+    position: absolute;
+    top: 45px; /* Position it below the edit button */
+    right: 5px;
+    margin-top: 40px;
+}
+
+
+.dynamicallyCreatedDiv {
+
+    /* display: flex; */
+    border-radius: 20px;
+    width: clamp(300px, 70vw, 800px);
+    position: relative;
+}
+
+/* added css for profile page */
+
+
+/* Profile Image Section (Left Side) */
+#profileImageContainer {
+    flex: 0 0 30%; /* Take up 30% of the width */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; Center content horizontally */
+    padding: 20px;
+    background-color: var(--pageInnerContent2);
+    border-radius: 10px;
+    position: relative;
+    /* Border for testing */
+    /* border: 2px solid lightcoral; */
+}
+
+#profileImage {
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid var(--accentColor1);
+    margin-bottom: 10px;
+    border-radius: 0; /* Square image */
+}
+
+
+/* Image Upload Form (Right Side of Image) */
+#uploadImageForm {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--pageInnerContent3);
+    border-radius: 10px;
+    padding: 40px;
+    padding-bottom: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    
+    max-width: 100%;
+    position: absolute;
+    right: calc(100% + 20px); /* Positioned right of the profile image container */
+}
+
+#uploadImageForm label {
+    margin-bottom: 10px;
+}
+
+#uploadImageForm input[type="file"] {
+    margin-bottom: 10px;
+}
+
+#uploadImageForm button {
+    margin-right: 10px;
+}
+
+/* Profile Actions Section (Right Side) */
+#profileActionsContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: var(--pageInnerContent3);
+    border-radius: 10px;
+    /* Border for testing */
+    /* border: 2px solid lightblue; */
+}
+
+.standardButton {
+    font-size: 1.2rem; /* Adjust font size */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--buttonBackground);
+    color: var(--buttonText);
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.standardButton:hover {
+    background-color: var(--buttonHoverBackground);
+    color: var(--buttonHoverText);
+}
+
+#editProfileForm {
+    /* display: none; Hide initially */
+    background-color: var(--pageInnerContent3);
+    border-radius: 2px;
+    padding-top: 5px;
+    text-align: 1rem;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 200px; 
+    right: 200px; 
+    top: 115px;
+    width: 100%; 
+    max-width: 200px; 
+    
+}
+
+#editProfileForm label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+#editProfileForm input {
+    margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid var(--inputBorder);
+    border-radius: 5px;
+}
+
+#editProfileForm button {
+    margin-right: 10px;
+}
+
+
+/* i hide it innitially when we will click on edit profile the inbox will show or either we can display it as it is now on browser */
+/* .hidden {
+    display: none;
+} */
+
+
+/* Responsive Design */
+@media only screen and (max-width: 700px) {
+    .profileSection {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #profileImageContainer,
+    #profileActionsContainer {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    #profileImage {
+        width: 100px; /* Adjust size for smaller screens */
+        height: 100px;
+    }
+
+    #uploadImageForm {
+        width: 100%;
+        left: 0; /* Center form on small screens */
+        top: auto;
+        transform: none;
+    }
+
+
+
+
+@media only screen and (max-width: 700px)
+{ 
+    .addFlexRowProperty { /* this changes the property inputs to align in neat columns instead of rows. For small screens */
+        flex-direction: column;
+    }
+    /* the input fields need to be adjusted to a large size since they will now be in a column instead of side by side */
+    .newPropInput {
+        width: clamp(200px, 65vw, 500px);
+    }
+
+    .propertyInputLabels{ /* allow the labels more space for small screens so text doesn't wrap and cramp */
+
+        width: clamp(175px, 50vw, 450px); 
+    }
+
+}
+}

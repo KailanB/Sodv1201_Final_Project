@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sodv1201 Group Project. Deepanshi, Kajal, and Kailan</title>
+    <meta name="author" content="Deepanshi, Kajal, and Kailan">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="mainPageContent">
+        <div id="headerBar">
+            <h1>Profile</h1>
+            <nav>
+                <ul id="pageNavigation">
+                    <li><a href="../index.html">Home Page</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="innerPageContent1">
+            <div class="innerPageContent2" id="profileDisplay">
+                <!-- Profile Image Section -->
+                <div id="profileImageContainer">
+                    <img id="profileImage" src="path/to/default/image.jpg" alt="Profile Image">
+                    <button id="editImageButton" class="standardButton">Edit Image</button>
+                    <!-- Image upload form -->
+                    <div id="uploadImageForm" class="hidden">
+                        <form id="imageForm">
+                            <label for="imageUpload">Choose a new profile image:</label>
+                            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required>
+                            <button type="submit" class="standardButton">Upload Image</button>
+                            <button type="button" id="cancelImageButton" class="standardButton">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+                <button id="editProfileButton" class="standardButton">Edit Profile</button>
+                <button id="removeProfileButton" class="standardButton">Remove Profile</button>
+                <div id="profileContainer" class="innerPageContent3">
+                    <!-- Profile Information will go here -->
+                </div>
+            </div>
+        </div>
+
+    
+        <div id="editProfileForm" class="hidden">
+            <form id="profileForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <!-- Add more fields later -->
+                <button type="submit" class="standardButton">Save Changes</button>
+                <button type="button" id="cancelEditButton" class="standardButton">Cancel</button>
+            </form>
+        </div>
+
+        <div id="footerBar">
+            <p>&copy; 2024 DKK All rights reserved!</p>
+            <p>Social media social media!</p>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

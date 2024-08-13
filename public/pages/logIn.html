@@ -1,0 +1,70 @@
+<DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>Sodv1201 Group Project. Deepanshi, Kajal, and Kailan</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Deepanshi, Kajal, and Kailan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/logIn.css">
+</head>
+
+<body>
+    <div class="mainPageContent">
+        <div id="headerBar">
+            <h1>Log In</h1>
+            <nav>
+                <ul id="pageNavigation">
+                    <li><a href="createAccount.html">Create Account</a></li>
+                    <li><a href="../index.html">Home Page</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="logInMainSection">
+            <!-- -->
+            <div class="halfPageLayout innerPageContent3b">
+                <form id="userLogInForm">
+                    <!-- labels and input inside div forcing rows-->
+                    <!-- row layout changes to column for small screens-->
+                    <div class="addFlexRowProperty">
+                        <!--propertyInputLabels sets label width to align input fields evenly-->
+                        <div class="propertyInputLabels">
+                            <label for="userNameLogIn">User Email: </label>
+                        </div>
+                        <input type="email" id="userEmailLogIn" name="userNameLogIn">
+                    </div>
+                    <br>
+                    <div class="addFlexRowProperty">
+                        <div  class="propertyInputLabels">
+                            <label for="passwordLogIn">Password: </label>
+                        </div>
+                       
+                        <input type="password" id="passwordLogIn" name="passwordLogIn">
+                    </div>
+                    <br>
+                    <div>
+                        <input type="submit" value="Log In" class="standardButton">
+                    </div>
+                    <p id="logInFailedOutput"></p>
+                </form>
+                
+                
+            </div>
+            <div class="halfPageLayout">
+                <p class="createAccountMessage">Don't have an account? Click <a href="createAccount.html">here</a> to create one!</p>
+            </div>
+
+        </div>
+        <div id="footerBar">
+            <p>&copy; 2024 DKK All rights reserved!</p>
+            <p>social meda social media!</p>
+        </div>
+        <script src="../js/logIn.js"></script>
+        <script src="../js/common.js"></script>
+
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>Sodv1201 Group Project. Deepanshi, Kajal, and Kailan</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Deepanshi, Kajal, and Kailan">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/homeStyle.css">
+    <!-- https://fonts.google.com/icons?selected=Material+Symbols+Outlined:home:FILL@0;wght@400;GRAD@0;opsz@24&icon.size=24&icon.color=%235f6368 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- added this at the top here as well because some functions were having issues using common function cause of loading delays -->
+    <script src = "js/common.js"></script>
+</head>
+
+
+
+<body>
+    <div class="mainPageContent">
+        <div id="headerBar">
+            <h1>Home Page</h1>
+            <nav>
+                <ul id="pageNavigation">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="pages/profile.html">Profile</a></li>
+                    <!-- Include the id to the login button -->
+                    <!-- <li><a href="pages/logIn.html">Log in</a></li> -->
+                    <li id="loginButtonContainer"><a href="pages/logIn.html" id="loginButton">Log in</a></li>
+                    <li><a href="pages/createAccount.html">Create Account</a></li>
+                    <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
+                    <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="innerPageContent1">
+            <h2>Welcome to Sally Art Space rentals!</h2>
+            <p>Search from thousands of properties to choose a great location for your next art extravanganza</p>
+        </div>
+        
+        <div class="innerPageContent1" id="searchAndFilterContainer">
+            <div id="searchTab">
+                <span class="material-symbols-outlined">search</span>
+            </div>            
+            <aside  class="innerPageContent2" id="advancedSearchFilters">
+                <div class="innerPageContent3">
+                    <!-- Some Changes I made for the advanced filter option and for fetch the data we need to use API -->
+                    <p>Advanced Filters</p>
+                    <label for="filterAvailability">Availability:</label>
+                    <select id="filterAvailability">
+                        <option value=""></option>
+                        <option value="">Any</option>
+                        <option value="available">Available</option>
+                        <option value="unavailable">Unavailable</option>
+                    </select><br>
+                    <label for="filterParking">Parking:</label>
+                    <select id="filterParking">
+                        <option value=""></option>
+                        <option value="">Any</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select><br>
+                    <label for="filterTransport">Public Transport:</label>
+                    <select id="filterTransport">
+                        <option value=""></option>
+                        <option value="">Any</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select><br>
+                    <label for="filterType">Type:</label>
+                    <input type="text" id="filterType" placeholder="Enter type">
+                    <button onclick="fetchAndFilterResults()">Apply Filters</button>
+                </div>   
+            </aside>
+            <div class="innerPageContent2" id="searchAndResultsContainer">
+                <div id="searchContainer" class="innerPageContent3">
+                    <input type="search" placeholder="Enter anything to search..">
+                    <button>Search</button>
+                    <p>Basic search filters</p>
+                </div>
+                <!-- div container used to display all properties or searched properties -->
+                <div id="resultsContainer" class="innerPageContent2">
+                    <p> here property divs will appear here property divs will appear here property divs will appear here property divs will appear</p>
+                </div>
+            </div>   
+        </div>
+        
+        <div id="footerBar">
+            <p>&copy; 2024 DKK All rights reserved!</p>
+            <p>social meda social media!</p>
+        </div> 
+    </div>
+
+<script src = "js/common.js"></script>
+<script src = "js/filter.js"></script>
+
+
+
+    
+
+</body>
+
+
+</html>
