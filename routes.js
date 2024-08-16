@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
@@ -12,8 +11,7 @@ const { saveProperty, retrieveData } = require('./dataScripts');
 
 // index / home page routes
 /* ******************************************************************************* */
-router.get('/', function(req, res) 
-{
+router.get('/', function(req, res){
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 
 });
@@ -25,8 +23,7 @@ router.get('/', function(req, res)
 
 // my properties routes
 /* ******************************************************************************* */
-router.get('/myProperties', function(req, res) 
-{
+router.get('/myProperties', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'myProperties.html'));
 
 });
@@ -45,8 +42,7 @@ router.put('/myProperties', function(req, res)
     // pull all properties
     const myProperties = retrieveData(PROPERTIES_FILENAME);
     myProperties.then(
-        function(resolve)
-        {
+        function(resolve) {
             // find index of the property that matches the request update property
             let propertyIndex = resolve.findIndex(property => property.propertyId === parseInt(req.body.propertyId));
             // if found
@@ -63,12 +59,10 @@ router.put('/myProperties', function(req, res)
             else
             {
                 console.log("Error: Property not found!");
+                res.status(404).send("Property not found");
             }
             
-        }
-    )
-    
-
+        });
 });
 
 // userId here refers to the user cookie added in the fetch request
@@ -100,6 +94,68 @@ router.get('/myPropertiesData/:userId', function(req, res)
 /* ******************************************************************************* */
 /* END of my properties Routes*/
 
+// Route to serve the properties data
+router.get('/properties', function(req, res) {
+    fs.readFile(PROPERTIES_FILENAME, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading properties data:", err);
+            res.status(500).send("Error reading properties data.");
+        } else {
+            res.json(JSON.parse(data));
+        }
+    });
+});
+
+router.get('/properties', function(req, res) {
+    const { availability, parking, transport, type, search } = req.query;
+    const properties = retrieveData(PROPERTIES_FILENAME);
+
+    properties.then(function(propertyList) {
+        let filteredProperties = propertyList;
+
+        // Log retrieved properties for debugging
+        console.log("Retrieved Properties:", propertyList);
+
+        if (search) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.name.toLowerCase().includes(search.toLowerCase()) ||
+                property.address.toLowerCase().includes(search.toLowerCase()) ||
+                property.city.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+
+        if (availability) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.availability.toString() === availability.toLowerCase()  // Convert boolean to string
+            );
+        }
+
+        if (parking) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.parking.toString() === parking.toLowerCase()  // Convert boolean to string
+            );
+        }
+
+        if (transport) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.publicTransport.toString() === transport.toLowerCase()  // Convert boolean to string
+            );
+        }
+
+        if (type) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.type.toLowerCase().includes(type.toLowerCase())
+            );
+        }
+
+        // Log filtered properties for debugging
+        console.log("Filtered Properties:", filteredProperties);
+
+        res.json(filteredProperties);
+    });
+});
+
+//end of advance filter
 
 // profile routes
 /* ******************************************************************************* */
