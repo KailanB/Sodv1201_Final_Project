@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Sweet ",
+    "address": "32 4th street",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "400",
+    "type": "Recording Studio",
+    "capacity": "5",
+    "parking": true,
+    "publicTransport": true,
+    "availability": true,
+    "rentalTerm": "Hourly",
+    "price": "200",
+    "userId": 1,
+    "propertyId": 1723768165284
+  },
+  {
+    "name": "SEEeet Sounds",
+    "address": "4810 40th avenue SW",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "232",
+    "type": "Studio",
+    "capacity": "2",
+    "parking": false,
+    "publicTransport": true,
+    "availability": true,
+    "rentalTerm": "Daily",
+    "price": "2131",
+    "userId": 1,
+    "propertyId": 1723768189395
+  }
+]
