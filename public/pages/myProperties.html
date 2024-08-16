@@ -14,8 +14,8 @@
             <h1>My Properties</h1>
             <nav>
                 <ul id="pageNavigation">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/profile">Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -24,7 +24,7 @@
              
             <div class="innerPageContent2" id="properties">
                 <!-- Existing property examples -->
-                <div class="innerPageContent3 dynamicallyCreatedDiv">
+                <!-- <div class="innerPageContent3 dynamicallyCreatedDiv">
                     <h2>Dramatic Theatres</h2>
                     <p>123 main street</p>
                     <p>Calgary AB</p>
@@ -53,7 +53,7 @@
                         <p>$500.00 - monthly</p>
                         <p>Available Now</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- Property list container -->
                 <!-- <div id="properties"></div>
                 <div> -->
@@ -70,25 +70,27 @@
                 <form id="propertyForm">
                     <div class="innerPageContent3" id="addNewPropertyDiv">
                         <!-- Property input fields -->
+
+                        <!-- all inputs currently have a default value filled in for TESTING PURPOSES! I did not want to type everything 100 times -->
                         <div class="addFlexRowProperty">
                             <div class="propertyInputLabels">
                                 <label for="propertyNameInput">Property Name: </label>
                             </div>
-                            <input type="text" placeholder="My Art Studio" class="newPropInput" id="propertyNameInput" required>
+                            <input type="text" placeholder="My Art Studio" class="newPropInput" id="propertyNameInput" required value="Sweet Sounds" >
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
                             <div class="propertyInputLabels">
                                 <label for="propertyAddressInput">Property Address: </label>
                             </div>
-                            <input type="text" placeholder="123 Main street" class="newPropInput" id="propertyAddressInput" required>
+                            <input type="text" placeholder="123 Main street" class="newPropInput" id="propertyAddressInput" required value="32 4th street">
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
                             <div class="propertyInputLabels">
                                 <label for="propertyCityInput">City: </label>
                             </div>
-                            <input type="text" placeholder="Calgary" class="newPropInput" id="propertyCityInput" required>
+                            <input type="text" placeholder="Calgary" class="newPropInput" id="propertyCityInput" required value="Calgary">
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
@@ -97,7 +99,7 @@
                             </div>
                             <div>
                                 <select name="provinces" id="propertyProvinces" required>
-                                    <option value=""></option>
+                                    <!-- <option value=""></option> -->
                                     <option value="AB">AB</option>
                                     <option value="SK">SK</option>
                                     <option value="BC">BC</option>
@@ -109,21 +111,21 @@
                             <div class="propertyInputLabels">
                                 <label for="propertyTypeInput">Type: </label>
                             </div>
-                            <input type="text" placeholder="Art studio, Recording studio etc.." class="newPropInput" id="propertyTypeInput" required>
+                            <input type="text" placeholder="Art studio, Recording studio etc.." class="newPropInput" id="propertyTypeInput" required value="Recording Studio">
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
                             <div class="propertyInputLabels">
                                 <label for="propertAreaInput">Square Meters: </label>
                             </div>
-                            <input type="number" placeholder="400" id="propertAreaInput" class="numberInput" required>
+                            <input type="number" placeholder="400" id="propertAreaInput" class="numberInput" required value="400">
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
                             <div class="propertyInputLabels">
                                 <label for="propertyMaxOccupancyInput">Maximum Occupants: </label>
                             </div>
-                            <input type="number" placeholder="5" id="propertyMaxOccupancyInput" class="numberInput" required>
+                            <input type="number" placeholder="5" id="propertyMaxOccupancyInput" class="numberInput" required value="5">
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
@@ -131,7 +133,7 @@
                                 <label>Parking: </label>
                             </div>
                             <div>
-                                <input type="radio" name="parking" value="yes" id="propertyParkingYes" required>
+                                <input type="radio" name="parking" value="yes" id="propertyParkingYes" required checked>
                                 <label for="propertyParkingYes">Yes</label>
                                 <input type="radio" name="parking" value="no" id="propertyParkingNo">
                                 <label for="propertyParkingNo">No</label>
@@ -143,7 +145,7 @@
                                 <label>Public Transport: </label>
                             </div>
                             <div>
-                                <input type="radio" name="transport" value="yes" id="propertyTransportYes" required>
+                                <input type="radio" name="transport" value="yes" id="propertyTransportYes" required checked>
                                 <label for="propertyTransportYes">Yes</label>
                                 <input type="radio" name="transport" value="no" id="propertyTransportNo">
                                 <label for="propertyTransportNo">No</label>
@@ -154,7 +156,7 @@
                             <div class="propertyInputLabels">
                                 <label for="propertyPriceInput">Price (per term): </label>
                             </div>
-                            <input type="number" placeholder="295.99" class="numberInput" id="propertyPriceInput" required>
+                            <input type="number" placeholder="295.99" class="numberInput" id="propertyPriceInput" required value="200">
                         </div>
                         <br>
                         <div class="addFlexRowProperty">
@@ -163,7 +165,8 @@
                             </div>
                             <div>
                                 <select name="rentalTerm" id="rentalTermSelect" required>
-                                    <option value=""></option><!--add the empty option so that by mistaken the person will not choose   Hourly in any case-->
+                                    <!-- <option value=""></option> -->
+                                    <!--add the empty option so that by mistaken the person will not choose   Hourly in any case-->
                                     <option value="Hourly">Hourly</option>
                                     <option value="Daily">Daily</option>
                                     <option value="Weekly">Weekly</option>
@@ -176,15 +179,15 @@
                             <div class="propertyInputLabels">
                                 <label>Available Now: </label>
                             </div>
-                                <input type="radio" name="availability" value="yes" id="propertyAvailableYes" required>
+                                <input type="radio" name="availability" value="yes" id="propertyAvailableYes" required checked>
                                 <label for="propertyAvailableYes">Yes</label>
                                 <input type="radio" name="availability" value="no" id="propertyAvailableNo">
                                 <label for="propertyAvailableNo">No</label>
                         </div>
                     </div>
-<!--                     <div>
+                    <div>
                         <input type="submit" class="standardButton" id="addNewPropertyButton" value="Add Property"></input>
-                    </div> -->
+                    </div>
                 </form>
                 
             </div>
