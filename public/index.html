@@ -50,37 +50,38 @@
                     <select id="filterAvailability">
                         <option value=""></option>
                         <option value="">Any</option>
-                        <option value="available">Available</option>
-                        <option value="unavailable">Unavailable</option>
+                        <option value="true">Available</option>
+                        <option value="false">Unavailable</option>
                     </select><br>
                     <label for="filterParking">Parking:</label>
                     <select id="filterParking">
                         <option value=""></option>
                         <option value="">Any</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
                     </select><br>
                     <label for="filterTransport">Public Transport:</label>
                     <select id="filterTransport">
                         <option value=""></option>
                         <option value="">Any</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
                     </select><br>
                     <label for="filterType">Type:</label>
                     <input type="text" id="filterType" placeholder="Enter type">
-                    <button onclick="fetchAndFilterResults()">Apply Filters</button>
+                    <button onclick="applyFilters()">Apply Filters</button>
                 </div>   
             </aside>
             <div class="innerPageContent2" id="searchAndResultsContainer">
                 <div id="searchContainer" class="innerPageContent3">
-                    <input type="search" placeholder="Enter anything to search..">
-                    <button>Search</button>
+                    <input type="search" id="searchInput" placeholder="Enter anything to search..">
+                    <button onclick="performSearch()">Search</button>
                     <p>Basic search filters</p>
                 </div>
                 <!-- div container used to display all properties or searched properties -->
                 <div id="resultsContainer" class="innerPageContent2">
                     <p> here property divs will appear here property divs will appear here property divs will appear here property divs will appear</p>
+                     <!-- Properties will be dynamically added here -->
                 </div>
             </div>   
         </div>
@@ -92,7 +93,7 @@
     </div>
 
 <script src = "js/common.js"></script>
-<script src = "js/index.js"></script>
+<script src = "js/script.js"></script>
 
 
 
