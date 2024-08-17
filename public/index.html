@@ -69,6 +69,28 @@
                     </select><br>
                     <label for="filterType">Type:</label>
                     <input type="text" id="filterType" placeholder="Enter type">
+                    <br>
+                    <label for="filterAddress">Address:</label>
+                    <input type="text" id="filterAddress" placeholder="Enter address"><br>
+
+                    <label for="filterCity">City:</label>
+                    <input type="text" id="filterCity" placeholder="Enter city"><br>
+
+                    <label for="filterProvince">Province:</label>
+                    <input type="text" id="filterProvince" placeholder="Enter province"><br>
+
+                    <label for="filterArea">Area (sqft):</label>
+                    <input type="number" id="filterArea" placeholder="Enter area"><br>
+
+                    <label for="filterCapacity">Capacity:</label>
+                    <input type="number" id="filterCapacity" placeholder="Enter capacity"><br>
+
+                    <label for="filterRentalTerm">Rental Term:</label>
+                    <input type="text" id="filterRentalTerm" placeholder="Enter rental term"><br>
+
+                    <label for="filterPrice">Max Price:</label>
+                    <input type="range" id="filterPrice" min="0" max="10000" step="100" value="5000" oninput="updatePriceDisplay(this.value)">
+                    <span id="priceDisplay">$5000</span><br>
                     <button onclick="applyFilters()">Apply Filters</button>
                 </div>   
             </aside>
