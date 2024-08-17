@@ -107,7 +107,7 @@ router.get('/properties', function(req, res) {
 });
 
 router.get('/properties', function(req, res) {
-    const { availability, parking, transport, type, search } = req.query;
+    const { availability, parking, transport, type, address, city, province, area, capacity, rentalTerm, price, search } = req.query;
     const properties = retrieveData(PROPERTIES_FILENAME);
 
     properties.then(function(propertyList) {
@@ -147,7 +147,47 @@ router.get('/properties', function(req, res) {
                 property.type.toLowerCase().includes(type.toLowerCase())
             );
         }
+        if (address) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.address.toLowerCase().includes(address.toLowerCase())
+            );
+        }
 
+        if (city) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.city.toLowerCase().includes(city.toLowerCase())
+            );
+        }
+
+        if (province) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.province.toLowerCase().includes(province.toLowerCase())
+            );
+        }
+
+        if (area) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.area >= parseFloat(area)
+            );
+        }
+
+        if (capacity) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.capacity >= parseFloat(capacity)
+            );
+        }
+
+        if (rentalTerm) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.rentalTerm.toLowerCase().includes(rentalTerm.toLowerCase())
+            );
+        }
+
+        if (price) {
+            filteredProperties = filteredProperties.filter(property =>
+                property.price <= parseFloat(price)
+            );
+        }
         // Log filtered properties for debugging
         console.log("Filtered Properties:", filteredProperties);
 
