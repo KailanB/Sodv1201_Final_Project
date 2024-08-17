@@ -203,6 +203,70 @@ router.get('/viewProperty', function(req, res)
 
 });
 
+
+// router.get('/myPropertiesData/:userId', function(req, res)
+// {
+
+//     let userId = parseInt(req.params.userId);
+    
+//     const myProperties = retrieveData(PROPERTIES_FILENAME);
+//     myProperties.then(
+//         function(resolve)
+//         {
+//             // create a new array
+//             let myProperties = [];
+//             resolve.forEach(property => {
+
+//                 // add properties only if the current userId matches
+//                 if(property.userId === userId)
+//                 {
+//                     myProperties.push(property);
+//                 }
+//             });
+//             // return new array only. This ensures we avoid sending the entire database and only send the relevant data
+//             res.json(myProperties);
+//         }
+//     )
+
+// });
+
+router.get('/viewProperty/:propertyId/:userId', function(req, res)
+{
+
+    let userId = parseInt(req.params.userId);
+    let propertyId = parseInt(req.params.propertyId);
+    console.log("userId: " + userId + ". PropertyId: " + propertyId);
+    const myProperties = retrieveData(PROPERTIES_FILENAME);
+    myProperties.then(
+        function(resolve)
+        {
+
+            const property = resolve.find(property => property.propertyId === propertyId);
+
+            res.json(property);
+            // const user = resolve.find(user => property.userId = userId);
+
+            // resolve.forEach(property => {
+
+            //     // add properties only if the current userId matches
+            //     if(property.userId === userId)
+            //     {
+            //         myProperties.push(property);
+            //     }
+            // });
+            // // return new array only. This ensures we avoid sending the entire database and only send the relevant data
+            // res.json(myProperties);
+        }
+    )
+
+});
+
+// router.get('/viewProperty', function(req, res) 
+// {
+//     res.sendFile(path.join(__dirname, 'public', 'pages', 'viewProperty.html'));
+
+// });
+
 /* ******************************************************************************* */
 /* END of View Property Routes */
 
