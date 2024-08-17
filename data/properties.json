@@ -30,5 +30,21 @@
     "price": "2131",
     "userId": 1,
     "propertyId": 1723768189395
+  },
+  {
+    "name": "Sweet Symphony",
+    "address": "22nd avenue North",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "650",
+    "type": "Auditorium",
+    "capacity": "30",
+    "parking": true,
+    "publicTransport": true,
+    "availability": true,
+    "rentalTerm": "Weekly",
+    "price": "1000",
+    "userId": 1,
+    "propertyId": 1723857486630
   }
 ]
