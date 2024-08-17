@@ -51,23 +51,56 @@ function viewProperty(propertyId, userId)
     window.location.href = "/viewProperty?propertyId=" + propertyId + "&userId=" + userId + "&";
 }
 
+// function performSearch() {
+//     const searchInput = document.getElementById('searchInput').value.toLowerCase();
+//     const filteredProperties = allProperties.filter(property => 
+//         property.name.toLowerCase().includes(searchInput) ||
+//         property.address.toLowerCase().includes(searchInput) ||
+//         property.type.toLowerCase().includes(searchInput)
+//     );
+//     displayProperties(filteredProperties);
+// }
+
 function performSearch() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+    
+    // Filter properties based on various fields
     const filteredProperties = allProperties.filter(property => 
         property.name.toLowerCase().includes(searchInput) ||
         property.address.toLowerCase().includes(searchInput) ||
-        property.type.toLowerCase().includes(searchInput)
+        property.city.toLowerCase().includes(searchInput) ||
+        property.province.toLowerCase().includes(searchInput) ||
+        property.area.toLowerCase().includes(searchInput) ||
+        property.type.toLowerCase().includes(searchInput) ||
+        property.rentalTerm.toLowerCase().includes(searchInput) ||
+        property.capacity.toLowerCase().includes(searchInput) ||
+        (property.price && property.price.toLowerCase().includes(searchInput)) || // Adjust if price is a number
+        (property.availability && property.availability.toString().toLowerCase().includes(searchInput)) // Adjust for boolean
     );
+    
     displayProperties(filteredProperties);
 }
 
-//Apply Filter
+//for update the price after sliding the values 
+function updatePriceDisplay(value) {
+    const priceDisplay = document.getElementById('priceDisplay');
+    priceDisplay.textContent = `$${value}`;
+}
+
+//apply filter
 function applyFilters() {
     // Retrieve filter values
     const filterAvailability = document.getElementById('filterAvailability').value;
     const filterParking = document.getElementById('filterParking').value;
     const filterTransport = document.getElementById('filterTransport').value;
     const filterType = document.getElementById('filterType').value.toLowerCase();
+    const filterAddress = document.getElementById('filterAddress').value.toLowerCase();
+    const filterCity = document.getElementById('filterCity').value.toLowerCase();
+    const filterProvince = document.getElementById('filterProvince').value.toLowerCase();
+    const filterArea = document.getElementById('filterArea').value;
+    const filterCapacity = document.getElementById('filterCapacity').value;
+    const filterRentalTerm = document.getElementById('filterRentalTerm').value.toLowerCase();
+    const filterPrice = document.getElementById('filterPrice').value;
 
     // Convert filter values to boolean
     const filterAvailabilityBoolean = filterAvailability === "" ? null : filterAvailability === "true";
@@ -80,7 +113,14 @@ function applyFilters() {
             (filterAvailabilityBoolean === null || property.availability === filterAvailabilityBoolean) &&
             (filterParkingBoolean === null || property.parking === filterParkingBoolean) &&
             (filterTransportBoolean === null || property.publicTransport === filterTransportBoolean) &&
-            (filterType === "" || property.type.toLowerCase().includes(filterType))
+            (filterType === "" || property.type.toLowerCase().includes(filterType)) &&
+            (filterAddress === "" || property.address.toLowerCase().includes(filterAddress)) &&
+            (filterCity === "" || property.city.toLowerCase().includes(filterCity)) &&
+            (filterProvince === "" || property.province.toLowerCase().includes(filterProvince)) &&
+            (filterArea === "" || property.area >= parseFloat(filterArea)) &&
+            (filterCapacity === "" || property.capacity >= parseFloat(filterCapacity)) &&
+            (filterRentalTerm === "" || property.rentalTerm.toLowerCase().includes(filterRentalTerm)) &&
+            (filterPrice === "" || property.price <= parseFloat(filterPrice))
         );
     });
 
