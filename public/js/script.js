@@ -20,20 +20,35 @@ function displayProperties(properties) {
 
     properties.forEach(property => {
         const propertyDiv = document.createElement('div');
-        propertyDiv.classList.add('property-item');
+        // create event listener to provide a link to view each property
+        propertyDiv.addEventListener("click", function(){
+            viewProperty(property.propertyId, property.userId)
+        });
+        // propertyDiv.classList.add('property-item');
+        propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv', 'mouseHover');
         propertyDiv.innerHTML = `
             <h3>${property.name}</h3>
             <p>${property.address}, ${property.city}, ${property.province}</p>
-            <p>Type: ${property.type}</p>
+            <div>
+                <p>Type: ${property.type}</p>
+            </div>
             <p>Area: ${property.area} sqft</p>
             <p>Capacity: ${property.capacity}</p>
             <p>Parking: ${property.parking ? 'Yes' : 'No'}</p>
             <p>Public Transport: ${property.publicTransport ? 'Yes' : 'No'}</p>
-            <p>Availability: ${property.availability ? 'Available' : 'Unavailable'}</p>
-            <p>Price: $${property.price}</p>
+            <div>
+                <p>Price: $${property.price} - ${property.rentalTerm}</p>
+                <p>Availability: ${property.availability ? 'Available' : 'Unavailable'}</p>
+            </div>
+            
         `;
         resultsContainer.appendChild(propertyDiv);
     });
+}
+
+function viewProperty(propertyId, userId)
+{
+    window.location.href = "/viewProperty?propertyId=" + propertyId + "&userId=" + userId + "&";
 }
 
 function performSearch() {
