@@ -15,12 +15,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
         
         addPropertyOuterDiv.style.display = 'block';
+        resetForm();
         // https://stackoverflow.com/questions/3569329/javascript-to-make-the-page-jump-to-a-specific-location
         addPropertyOuterDiv.scrollIntoView({behavior: 'smooth'});
         editIndex = -1; // Reset edit mode
         // resetForm(); //position
     });
-
+    
     // function to close add property div
     cancelAddPropertyButton.addEventListener('click', closeAddProperty);
 
