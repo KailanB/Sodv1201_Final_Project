@@ -50,7 +50,9 @@
 }
 
 /* Select elements */
-#advancedSearchFilters select {
+#advancedSearchFilters select,
+#advancedSearchFilters input[type="text"],
+#advancedSearchFilters input[type="number"] {
     width: 100%;
     margin-bottom: 15px;
     padding: 10px;
@@ -59,6 +61,35 @@
     background-color: var(--inputBackground);
     font-size: 1rem;
     box-sizing: border-box;
+}
+
+/* Range Slider Styling */
+#filterPrice {
+    width: 100%;
+    margin-bottom: 15px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: var(--inputBackground);
+    border-radius: 5px;
+    outline: none;
+}
+
+#filterPrice::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--accentColor1);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Price Display Styling */
+#priceDisplay {
+    font-size: 1.1rem;
+    color: var(--darkFont);
+    margin-left: 10px;
 }
 
 /* Input field for text */
@@ -101,6 +132,25 @@ button {
 button:hover {
     background-color: var(--buttonHoverBackground);
     color: var(--buttonHoverText);
+}
+/* Container for the search input and button */
+.searchContainer{
+    display: flex; /* Use Flexbox for layout */
+    align-items: center; /* Center items vertically */
+    gap: 10px; /* Space between input and button */
+    max-width: 600px; /* Optional: limit the maximum width of the container */
+    margin: 0 auto; /* Optional: center the container horizontally */
+}
+
+/* Search Input Styling */
+#searchInput {
+    flex: 1;
+    padding: 10px 15px; 
+    border: 1px solid var(--inputBorder); 
+    border-radius: 5px; 
+    background-color: var(--inputBackground); 
+    font-size: 1rem;
+    box-sizing: border-box; 
 }
 
 /* used the same css as from view properties */
