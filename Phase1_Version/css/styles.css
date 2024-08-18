@@ -1,4 +1,4 @@
-/*Commented out borders are for my testing purposes  */
+/* Commented out borders are for my testing purposes  */
 :root {
     --mainContentColor: #daeffd;
     --pageInnerContent2: #e4ffd8;
@@ -177,6 +177,9 @@ form {
     margin-top: 40px;
 }
 
+.hidden {
+    display: none;
+}
 
 .dynamicallyCreatedDiv {
 
@@ -302,11 +305,6 @@ form {
 }
 
 
-/* i hide it innitially when we will click on edit profile the inbox will show or either we can display it as it is now on browser */
-/* .hidden {
-    display: none;
-} */
-
 
 /* Responsive Design */
 @media only screen and (max-width: 700px) {
@@ -332,8 +330,6 @@ form {
         top: auto;
         transform: none;
     }
-
-
 
 
 @media only screen and (max-width: 700px)
