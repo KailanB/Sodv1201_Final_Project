@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const propertyForm = document.getElementById('propertyForm');
     const propertiesDiv = document.getElementById('properties');
     const addPropertyOuterDiv = document.getElementById('addNewPropertyOuterDiv');
-    const addPropertyButton = document.getElementById('addNewPropertyButton');
+    const openAddPropertyButton = document.getElementById('openAddPropertyDiv');
     const cancelAddPropertyButton = document.getElementById('cancelAddProperty');
-
+    
     let properties = JSON.parse(localStorage.getItem('properties')) || [];
     let editIndex = -1; // Index of property being edited
 
@@ -17,14 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     cancelAddPropertyButton.addEventListener('click', function () {
         addPropertyOuterDiv.style.display = 'none';
+        openAddPropertyButton.style.display = 'block'; // Show the button when form is hidden
     });
 
-    document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
+    openAddPropertyButton.addEventListener('click', function () {
         addPropertyOuterDiv.style.display = 'block';
-        // https://stackoverflow.com/questions/3569329/javascript-to-make-the-page-jump-to-a-specific-location
+        openAddPropertyButton.style.display = 'none'; // Hide the button when form is shown
         addPropertyOuterDiv.scrollIntoView({behavior: 'smooth'});
         editIndex = -1; // Reset edit mode
-        resetForm(); //position
+        resetForm(); // Position
     });
 
     function saveProperty() {
@@ -40,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const availability = document.querySelector('input[name="availability"]:checked')?.value === 'yes';
         const rentalTerm = document.getElementById('rentalTermSelect').value;
         const price = document.getElementById('propertyPriceInput').value;
-
 
         const userId = parseInt(getUserCookie("userId"));
         let propertyId;
@@ -70,7 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('properties', JSON.stringify(properties));
         displayProperties();
         addPropertyOuterDiv.style.display = 'none';
-        resetForm(); //position
+        openAddPropertyButton.style.display = 'block'; // Show the button after saving property
+        resetForm(); // Position
     }
 
     function displayProperties() {
@@ -109,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 editIndex = this.getAttribute('data-index');
                 populateForm(properties[editIndex]);
                 addPropertyOuterDiv.style.display = 'block';
+                openAddPropertyButton.style.display = 'none'; // Hide the button when editing
                 addPropertyOuterDiv.scrollIntoView({behavior: 'smooth'});
             });
         });
@@ -144,13 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('propertyPriceInput').value = property.price;
     }
 
-    // function resetForm() {
-    //     propertyForm.reset();
-    //     document.querySelectorAll('input[name="parking"]').forEach(radio => radio.checked = false);
-    //     document.querySelectorAll('input[name="transport"]').forEach(radio => radio.checked = false);
-    //     document.querySelectorAll('input[name="availability"]').forEach(radio => radio.checked = false);
-    //     document.getElementById('rentalTermSelect').value = '';
-    // }
     function resetForm() {
         document.getElementById('propertyNameInput').value = '';
         document.getElementById('propertyAddressInput').value = '';
