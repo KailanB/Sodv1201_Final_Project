@@ -9,6 +9,7 @@ const editProfileForm = document.getElementById('editProfileForm');
 const profileImageContainer = document.getElementById('profileImageContainer');
 const profileImage = document.getElementById('profileImage');
 
+
 // Function to show or hide the upload image form
 function toggleUploadImageForm() {
     uploadImageForm.classList.toggle('hidden');
@@ -17,7 +18,6 @@ function toggleUploadImageForm() {
 // Function to remove the profile image
 function removeProfileImage() {
     profileImage.src = 'path/to/default/image.jpg'; // Reset to default image
-    
 }
 
 // Function to show the edit profile form
@@ -46,9 +46,10 @@ function saveProfileChanges(event) {
     event.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value; // Added phone number
 
-    // need to add here to link with create account page so if we click on edit profile create account page should open 
-    console.log('Profile changes saved:', { name, email });
+    // Handle saving the profile changes (e.g., send data to server)
+    console.log('Profile changes saved:', { name, email, phone });
 
     alert('Profile changes saved.');
     editProfileForm.classList.add('hidden'); // Hide form after saving
@@ -65,9 +66,10 @@ removeProfileButton.addEventListener('click', removeProfileImage);
 editProfileButton.addEventListener('click', showEditProfileForm);
 cancelImageButton.addEventListener('click', toggleUploadImageForm);
 document.getElementById('imageForm').addEventListener('submit', handleImageUpload);
-saveChangesButton.addEventListener('click', saveProfileChanges);
+document.getElementById('profileForm').addEventListener('submit', saveProfileChanges); // Updated
 cancelEditButton.addEventListener('click', cancelProfileChanges);
 
+// Uncomment if you want to redirect to another page for profile editing
 // editProfileButton.addEventListener('click', () => {
 //     window.location.href = 'createaccount.html'; // Redirect to profile editing page
 // });
