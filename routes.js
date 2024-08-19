@@ -295,12 +295,21 @@ router.post('/login', (req, res) => {
         const user = users.find(u => u.email === email);
 
         if (user) {
-            res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-            return res.status(200).json({ success: true, message: 'Login successful', user });
+            res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+
+            console.log('User logged in successfully:', user);
+            return res.status(200).json({ success: true, email: user.email });
         } else {
-            return res.status(401).json({ success: false, message: 'Invalid email' });
+            return res.status(500).json({ success: false, message: 'Invalid email' });
         }
     });
+});
+
+// Logout Route
+router.post('/api/logout', (req, res) => {
+    res.clearCookie('userEmail');
+    console.log('User logged out successfully');
+    res.status(200).json({ success: true, message: 'Logged out successfully' });
 });
 
 //     // Read users.json file
