@@ -5,7 +5,9 @@ document.getElementById("createNewUserForm").addEventListener("submit", function
     // Get form values
     const firstName = document.getElementById("userFirstNameInput").value.trim();
     const lastName = document.getElementById("userLastNameInput").value.trim();
-    const email = document.getElementById("userEmailAddressInput").value.trim();
+    // added to lower case to make sure all emails are consistent.
+    // emails are not case sensitive
+    const email = (document.getElementById("userEmailAddressInput").value.trim()).toLowerCase();
     const phoneNumber = document.getElementById("userPhoneInput").value.trim();
     const city = document.getElementById("userCityInput").value.trim();
     const province = document.getElementById("userProvince").value;
