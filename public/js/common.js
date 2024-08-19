@@ -109,26 +109,6 @@ async function getCurrentUser()
         return user;
     });
     return currentUser; 
-
-
-
-    // const userId = parseInt(getUserCookie("userId"));
-    // let currentUser = await fetch(`profile/${userId}`)
-    // .then(response => {
-    //     if(response.status === 200)
-    //     {
-    //         return response.json();
-    //     }
-    //     else 
-    //     {
-    //         alert("Sorry! There was an error retrieving profile information");
-    //     }
-    // })
-    // .then(user => 
-    // {
-    //     return user;
-    // });
-    // return currentUser; 
     
 }
 
