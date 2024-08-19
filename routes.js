@@ -239,6 +239,96 @@ router.get('/profile', function(req, res)
 
 });
 
+router.get('/getUser', function(req, res) 
+{
+
+    // console.log(req.cookies);
+    let userId = parseInt(req.cookies.userId);
+    // console.log("Request received " + userId);
+    const users = retrieveData(USERS_FILENAME);
+    users.then(
+        function(allUsers)
+        {
+            
+            const user = allUsers.find(user => user.id === userId);
+            // console.log(user);
+            res.json(user);
+            // res.json(property);
+            // res.json(user);
+        }
+    );
+
+});
+
+router.get('/profile/:userId', function(req, res) 
+{
+
+    
+    let userId = parseInt(req.params.userId);
+    console.log("Request received " + userId);
+    const users = retrieveData(USERS_FILENAME);
+    users.then(
+        function(allUsers)
+        {
+            
+            const user = allUsers.find(user => user.id === userId);
+            // console.log(user);
+            res.json(user);
+            // res.json(property);
+            // res.json(user);
+        }
+    );
+
+
+});
+
+router.put('/profile', function(req, res)
+{
+
+    let userEmail = parseInt(req.params.email);
+    req.body.userId = parseInt(req.cookies.userId);
+    console.log(req.body.phoneNumber);
+    let userId = req.body.userId;
+    const users = retrieveData(USERS_FILENAME);
+    users.then(
+        function(resolve) {
+
+        let user = resolve.find(user => user.email === userEmail);
+        if(user)
+        {
+            if(user.userId !== req.body.userId)
+            {
+                res.status(400).send("Email already in use! Please try another");
+            }
+           
+        }
+        else
+        {
+
+            let userIndex = resolve.findIndex(user => user.id === userId)
+            if(userIndex !== -1)
+            {
+                resolve[userIndex] = req.body;
+
+                fs.writeFileSync(USERS_FILENAME, JSON.stringify(resolve, null, 2));
+                console.log('update successful');
+                res.status(201).send('update successful');
+
+
+            }
+            else
+            {
+                console.log("Error: User not found!");
+                res.status(400).send("Error: User not found!");
+            }
+        }
+
+
+    });
+
+
+
+});
 
 /* ******************************************************************************* */
 /* END of profile Routes */
