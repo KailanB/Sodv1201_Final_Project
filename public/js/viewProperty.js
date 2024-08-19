@@ -12,14 +12,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const propertyNameHeader = document.getElementById("propertyNameHeader");
 
         let propertyId = parseInt(getIdFromUrl("propertyId"));
-        let userId = parseInt(getIdFromUrl("userId"));
+        let userId;
 
-        fetch(`/viewProperty/${propertyId}/${userId}`)
+        await fetch(`/viewProperty/${propertyId}`)
         .then(response => response.json())
         .then(property => 
         {
 
-            // alert(property.userId + property.propertyId);
+            userId = property.userId;
+            // alert(property.propertyId);
             const propertyDiv = document.createElement('div');
             propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
             propertyDiv.innerHTML = `
@@ -43,8 +44,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
         propertyNameTitle.innerHTML = property.name + " Property Page";
         propertyNameHeader.innerHTML = property.name + " Property Page";
+        
+        });
 
-        })
+        fetch(`/viewProperty/users/${userId}`)
+        .then(response => response.json())
+        .then(user => 
+        {
+            const userDiv = document.createElement('div');
+            userDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
+            userDiv.innerHTML = `
+            <h2>Owned By: ${user.firstName} ${user.lastName}</h2>
+            <h3>Contact Information:</h3>
+            <p>Email Address: ${user.email}</p>
+            <p>Phone Number: ${user.phoneNumber}</p>
+
+        `;
+
+        propertyDisplay.appendChild(userDiv);
+
+
+        });
 
 
     }
