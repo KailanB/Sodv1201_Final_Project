@@ -14,6 +14,10 @@ app.use(express.urlencoded({ extended: false}));
 
 app.use('/', routes);
 
+const createAccountRoutes = require('./routes');
+app.use('/api', createAccountRoutes);
+
+
 app.listen(PORT, (error) => {
 
     if(!error) 

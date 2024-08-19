@@ -230,6 +230,80 @@ router.get('/createAccount', function(req, res)
 
 });
 
+// Handle form submission
+router.post('/createAccount', (req, res) => {
+    const { firstName, lastName, email, phoneNumber, city, province, role } = req.body;
+
+    if (!firstName || !lastName || !email || !phoneNumber || !city || !province || !role) {
+        return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const USER_FILENAME = path.join(__dirname, 'data', 'users.json');
+
+    fs.readFile(USER_FILENAME, 'utf8', (err, data) => {
+        let users = [];
+        if (!err && data) {
+            users = JSON.parse(data);
+        }
+
+        // Check if user with the same email already exists
+        const existingUser = users.find(user => user.email === email);
+        if (existingUser) {
+            return res.status(409).json({ message: 'User with this email already exists' });
+        }
+
+        // Add the new registration data with unique ID
+        const newUser = {
+            id: Date.now(), // Unique ID based on timestamp
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            city,
+            province,
+            role
+        };
+
+        users.push(newUser);
+
+        fs.writeFile(USER_FILENAME, JSON.stringify(users, null, 2), (err) => {
+            if (err) {
+                return res.status(500).json({ message: 'Error saving registration' });
+            }
+            return res.status(200).json({ message: 'User Created Successfully', registrationData: newUser });
+        });
+    });
+});
+
+// router.post('/createAccount', (req,res) => {
+//     const {id, firstName, lastName, email, phoneNumber, city, province, role} = req.body;
+
+//     if(!firstName || !lastName || !email ||!phoneNumber || !city || !province || !role){
+//         return res.status(500).json({ message: 'All fields are required' });
+//     }
+
+//     const creatAccountData = { id, firstName, lastName, email, phoneNumber, city, province, role};
+
+//     //path to json file 
+//     const USER_FILENAME = path.join(__dirname, 'data', 'users.json');
+
+//     fs.readFile(USER_FILENAME, 'utf8', (err, data) => {
+//     let users = [];
+//     if (!err && data) {
+//         users = JSON.parse(data);
+//     }
+
+//     //add the new registration data
+//     users.push(creatAccountData);
+
+//     fs.writeFile(USER_FILENAME, JSON.stringify(users, null, 2), (err) => {
+//         if (err) {
+//             return res.status(500).json({ message: 'Error saving registration' });
+//         }
+//         return res.status(200).json({ message: 'Registration successful', creatAccountData });
+//         });
+//     });
+// });
 /* ******************************************************************************* */
 /* END of Create Account Routes */
 
