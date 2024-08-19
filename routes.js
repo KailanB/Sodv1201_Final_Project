@@ -260,27 +260,27 @@ router.get('/getUser', function(req, res)
 
 });
 
-router.get('/profile/:userId', function(req, res) 
-{
+// router.get('/profile/:userId', function(req, res) 
+// {
 
     
-    let userId = parseInt(req.params.userId);
-    console.log("Request received " + userId);
-    const users = retrieveData(USERS_FILENAME);
-    users.then(
-        function(allUsers)
-        {
+//     let userId = parseInt(req.params.userId);
+//     console.log("Request received " + userId);
+//     const users = retrieveData(USERS_FILENAME);
+//     users.then(
+//         function(allUsers)
+//         {
             
-            const user = allUsers.find(user => user.id === userId);
-            // console.log(user);
-            res.json(user);
-            // res.json(property);
-            // res.json(user);
-        }
-    );
+//             const user = allUsers.find(user => user.id === userId);
+//             // console.log(user);
+//             res.json(user);
+//             // res.json(property);
+//             // res.json(user);
+//         }
+//     );
 
 
-});
+// });
 
 router.put('/profile', function(req, res)
 {
