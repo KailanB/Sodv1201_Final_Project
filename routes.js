@@ -3,7 +3,6 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
-
 const PROPERTIES_FILENAME = path.join(__dirname, 'data', 'properties.json');
 const { saveProperty, retrieveData } = require('./dataScripts');
 
@@ -211,12 +210,99 @@ router.get('/profile', function(req, res)
 
 // Log in routes
 /* ******************************************************************************* */
+const usersFilePath = path.join(__dirname, 'data','users.json'); 
 
-router.get('/logIn', function(req, res) 
-{
+// Serve the login page
+router.get('/logIn', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'logIn.html'));
-
 });
+
+// Handle login
+router.post('/login', (req, res) => {
+    const { email } = req.body;
+
+    if (!email) {
+        return res.status(500).json({ message: 'Email is required' });
+    }
+
+    // Read users.json file
+//     fs.readFile(usersFilePath, 'utf8', (err, data) => {
+//         if (err) {
+//             console.error('Error reading users file:', err);
+//             return res.status(500).json({ message: 'Internal Server Error' });
+//         }
+
+//         const users = JSON.parse(data);
+//         // Find the user by email (case-insensitive comparison)
+//         const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+//         if (user) {
+//             // Set a cookie with user details (e.g., user ID)
+//             res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+
+//             console.log('Login successful:', user);
+//             // Redirect or respond with success
+//             return res.status(200).json({ message: 'Login successful', user });
+//         } else {
+//             console.log('Login failed: Invalid email');
+//             return res.status(500).json({ message: 'Invalid email' });
+//         }
+//     });
+// });
+    fs.readFile(usersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading users file:', err);
+            return res.status(500).json({ success: false, message: 'Internal Server Error' });
+        }
+
+        const users = JSON.parse(data);
+
+        const user = users.find(u => u.email === email);
+
+        if (user) {
+            res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+            return res.status(200).json({ success: true, message: 'Login successful', user });
+        } else {
+            return res.status(401).json({ success: false, message: 'Invalid email' });
+        }
+    });
+});
+
+//     // Read users.json file
+//     fs.readFile(usersFilePath, 'utf8', (err, data) => {
+//         if (err) {
+//             console.error('Error reading users file:', err);
+//             return res.status(500).json({ message: 'Internal Server Error' });
+//         }
+
+//         const users = JSON.parse(data);
+
+//         // Find the user by email
+//         const user = users.find(u => u.email === email);
+
+//         if (user) {
+//             // Set a cookie with user details (e.g., user ID)
+//             res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+
+//             // Redirect or respond with success
+//             return res.status(200).json({ message: 'Login successful', user });
+//         } else {
+//             return res.status(401).json({ message: 'Invalid email' });
+//         }
+//     });
+// });
+
+//handle the cookies
+// router.get('/protected-route', (req, res) => {
+//     const userId = req.cookies.userId;
+
+//     if (userId) {
+//         // Logic for logged-in users
+//         return res.status(200).json({ message: 'Welcome back!' });
+//     } else {
+//         return res.status(401).json({ message: 'Please log in first.' });
+//     }
+// });
 
 /* ******************************************************************************* */
 /* END of log in Routes */

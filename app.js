@@ -1,7 +1,9 @@
 // NPM init, express, and nodemon are all set up. Nothing much else has been added for the time being.
 const express = require('express');
 
-const routes = require('./routes.js');
+const routes = require('./routes.js'); // Import the router module
+
+const cookieParser = require('cookie-parser'); // Middleware to parse cookies
 const app = express();
 const PORT = 3000;
 
@@ -12,6 +14,9 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false}));
 
+app.use(cookieParser());
+
+// Use the router module for handling routes
 app.use('/', routes);
 
 const createAccountRoutes = require('./routes');
