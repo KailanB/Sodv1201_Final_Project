@@ -154,7 +154,10 @@ function applyFilters() {
     // const filterParking = document.getElementById('filterParking').value;
     // changed from .value to .checked
     const filterParkingBoolean = document.getElementById('filterParking').checked;
-    const filterTransport = document.getElementById('filterTransport').value;
+
+    // const filterTransport = document.getElementById('filterTransport').value;
+    const filterTransportBoolean = document.getElementById('filterTransport').checked;
+
     const filterType = document.getElementById('filterType').value.toLowerCase();
     const filterAddress = document.getElementById('filterAddress').value.toLowerCase();
     const filterCity = document.getElementById('filterCity').value.toLowerCase();
@@ -166,9 +169,8 @@ function applyFilters() {
 
     // Convert filter values to boolean
     // const filterAvailabilityBoolean = filterAvailability === "" ? null : filterAvailability === "true";
-    alert(filterParkingBoolean);
     // const filterParkingBoolean = filterParking === "" ? null : filterParking === "true";
-    const filterTransportBoolean = filterTransport === "" ? null : filterTransport === "true";
+    // const filterTransportBoolean = filterTransport === "" ? null : filterTransport === "true";
 
     // Filter properties based on the selected filters
     const filteredProperties = allProperties.filter(property => {
@@ -177,7 +179,8 @@ function applyFilters() {
             (filterAvailabilityBoolean === false || property.availability === filterAvailabilityBoolean) &&
             // change === from null to false
             (filterParkingBoolean === false || property.parking === filterParkingBoolean) &&
-            (filterTransportBoolean === null || property.publicTransport === filterTransportBoolean) &&
+            // change === from null to false
+            (filterTransportBoolean === false || property.publicTransport === filterTransportBoolean) &&
             (filterType === "" || property.type.toLowerCase().includes(filterType)) &&
             (filterAddress === "" || property.address.toLowerCase().includes(filterAddress)) &&
             (filterCity === "" || property.city.toLowerCase().includes(filterCity)) &&

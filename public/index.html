@@ -16,7 +16,9 @@
 
 
 <body>
+    
     <div class="mainPageContent">
+         
         <div id="headerBar">
             <h1>Home Page</h1>
             <nav>
@@ -33,19 +35,26 @@
                 </ul>
             </nav>
         </div>
-        <div class="innerPageContent1">
+        <div id="searchTab">
+            <span class="material-symbols-outlined">search</span>
+        </div> 
+          
+        <div class="innerPageContent1" id="homePageTitle">
+            
             <h2>Welcome to Sally Art Space rentals!</h2>
             <p>Search from thousands of properties to choose a great location for your next art extravanganza</p>
+
         </div>
+
+        
         
         <div class="innerPageContent1" id="searchAndFilterContainer">
-            <div id="searchTab">
-                <span class="material-symbols-outlined">search</span>
-            </div>            
+                      
             <aside  class="innerPageContent2" id="advancedSearchFilters">
                 <div class="innerPageContent3">
                     <!-- Some Changes I made for the advanced filter option and for fetch the data we need to use API -->
-                    <p>Advanced Filters</p>
+                    <h3>Advanced Filters</h3>
+                    <br>
                     <!-- <label for="filterAvailability">Availability:</label>
                     <select id="filterAvailability">
                         <option value=""></option>
@@ -69,13 +78,18 @@
                     <input type="checkbox" id="filterParking">
                     <br>
                     <br>
-                    <label for="filterTransport">Public Transport:</label>
+                    <!-- <label for="filterTransport">Public Transport:</label>
                     <select id="filterTransport">
                         <option value=""></option>
                         <option value="">Any</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
-                    </select><br>
+                    </select>
+                    <br> -->
+                    <label for="filterTransport">Public Transport:</label>
+                    <input type="checkbox" id="filterTransport">
+                    <br>
+                    <br>
                     <label for="filterType">Type:</label>
                     <input type="text" id="filterType" placeholder="Enter type">
                     <br>
@@ -85,17 +99,56 @@
                     <label for="filterCity">City:</label>
                     <input type="text" id="filterCity" placeholder="Enter city"><br>
 
-                    <label for="filterProvince">Province:</label>
-                    <input type="text" id="filterProvince" placeholder="Enter province"><br>
+                    <div class="flexTwoColumn"> 
+                        <label for="filterProvince">Province:</label>
+                        <div class="smallInput">
+                            <select name="provinces" id="filterProvince" required>
+                                <!-- <option value=""></option> -->
+                                <option value="AB">AB</option>
+                                <option value="BC">BC</option>
+                                <option value="MB">MB</option>
+                                <option value="NB">NB</option>
+                                <option value="NL">NL</option>
+                                <option value="NS">NS</option>
+                                <option value="NT">NT</option>
+                                <option value="NU">NU</option>
+                                <option value="ON">ON</option>
+                                <option value="PE">PE</option>
+                                <option value="QC">QC</option>
+                                <option value="SK">SK</option>
+                                <option value="YT">YT</option>
+                            </select>
+                        </div>
+                    </div>
+                   
+                    <!-- <input type="text" id="filterProvince" placeholder="Enter province"><br> -->
 
-                    <label for="filterArea">Area (sqft):</label>
-                    <input type="number" id="filterArea" placeholder="Enter area"><br>
-
-                    <label for="filterCapacity">Capacity:</label>
-                    <input type="number" id="filterCapacity" placeholder="Enter capacity"><br>
-
-                    <label for="filterRentalTerm">Rental Term:</label>
-                    <input type="text" id="filterRentalTerm" placeholder="Enter rental term"><br>
+                    <div class="flexTwoColumn">
+                        <label for="filterArea">Area (sqft):</label>
+                        <div class="smallInput">
+                            <input type="number" id="filterArea" placeholder="200"><br>
+                        </div>
+                    </div>
+                    <div class="flexTwoColumn">
+                        <label for="filterCapacity">Capacity:</label>
+                        <div class="smallInput">
+                            <input type="number" id="filterCapacity" placeholder="10"><br>
+                        </div>
+                    </div>
+                    <div class="flexTwoColumn">
+                        <label for="filterRentalTerm">Rental Term:</label>
+                        <div class="smallInput">
+                            <select name="RentalTerm" id="filterRentalTerm" required>
+                                <!-- <option value=""></option> -->
+                                <option value="Hourly">Hourly</option>
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- <input type="text" id="filterRentalTerm" placeholder="Enter rental term"><br> -->
 
                     <label for="filterPrice">Max Price:</label>
                     <input type="range" id="filterPrice" min="0" max="10000" step="100" value="5000" oninput="updatePriceDisplay(this.value)">
