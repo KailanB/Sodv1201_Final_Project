@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1724033676649,
+    "firstName": "Deepanshi",
+    "lastName": "Deepanshi",
+    "email": "deepanshi20ac@gmail.com",
+    "phoneNumber": "8257360220",
+    "city": "Calgary",
+    "province": "AB",
+    "role": "Owner"
+  },
+  {
+    "id": 1724033709375,
+    "firstName": "Deepanshi",
+    "lastName": "Baliyan",
+    "email": "deepanshi@gmail.com",
+    "phoneNumber": "8257360220",
+    "city": "Calgary",
+    "province": "AB",
+    "role": "Renter"
+  }
+]
