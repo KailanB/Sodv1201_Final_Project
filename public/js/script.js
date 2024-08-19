@@ -148,8 +148,12 @@ function updatePriceDisplay(value) {
 //apply filter
 function applyFilters() {
     // Retrieve filter values
-    const filterAvailability = document.getElementById('filterAvailability').value;
-    const filterParking = document.getElementById('filterParking').value;
+    // const filterAvailability = document.getElementById('filterAvailability').value;
+    // changed from .value to .checked
+    const filterAvailabilityBoolean = document.getElementById('filterAvailability').checked;
+    // const filterParking = document.getElementById('filterParking').value;
+    // changed from .value to .checked
+    const filterParkingBoolean = document.getElementById('filterParking').checked;
     const filterTransport = document.getElementById('filterTransport').value;
     const filterType = document.getElementById('filterType').value.toLowerCase();
     const filterAddress = document.getElementById('filterAddress').value.toLowerCase();
@@ -161,15 +165,18 @@ function applyFilters() {
     const filterPrice = document.getElementById('filterPrice').value;
 
     // Convert filter values to boolean
-    const filterAvailabilityBoolean = filterAvailability === "" ? null : filterAvailability === "true";
-    const filterParkingBoolean = filterParking === "" ? null : filterParking === "true";
+    // const filterAvailabilityBoolean = filterAvailability === "" ? null : filterAvailability === "true";
+    alert(filterParkingBoolean);
+    // const filterParkingBoolean = filterParking === "" ? null : filterParking === "true";
     const filterTransportBoolean = filterTransport === "" ? null : filterTransport === "true";
 
     // Filter properties based on the selected filters
     const filteredProperties = allProperties.filter(property => {
         return (
-            (filterAvailabilityBoolean === null || property.availability === filterAvailabilityBoolean) &&
-            (filterParkingBoolean === null || property.parking === filterParkingBoolean) &&
+            // change === from null to false
+            (filterAvailabilityBoolean === false || property.availability === filterAvailabilityBoolean) &&
+            // change === from null to false
+            (filterParkingBoolean === false || property.parking === filterParkingBoolean) &&
             (filterTransportBoolean === null || property.publicTransport === filterTransportBoolean) &&
             (filterType === "" || property.type.toLowerCase().includes(filterType)) &&
             (filterAddress === "" || property.address.toLowerCase().includes(filterAddress)) &&
