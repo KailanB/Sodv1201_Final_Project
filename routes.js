@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
+const USERS_FILENAME = path.join(__dirname, 'data', 'users.json');
 const PROPERTIES_FILENAME = path.join(__dirname, 'data', 'properties.json');
 const { saveProperty, retrieveData } = require('./dataScripts');
 
@@ -29,7 +30,8 @@ router.get('/myProperties', function(req, res) {
 
 router.post('/myProperties', function(req, res) 
 {
-    
+    req.body.userId = parseInt(req.cookies.userId);
+    // console.log("Req body: " + req.body.userId + "req cookies " + req.cookies.userId);
     saveProperty(req.body, PROPERTIES_FILENAME);
     console.log("save Property success");
     res.status(201).send();
@@ -39,8 +41,11 @@ router.post('/myProperties', function(req, res)
 router.put('/myProperties', function(req, res) 
 {
     // pull all properties
-    const myProperties = retrieveData(PROPERTIES_FILENAME);
-    myProperties.then(
+
+    // userId is sent in as "null", so we need to update userId to be current requesting user
+    req.body.userId = parseInt(req.cookies.userId);
+    const properties = retrieveData(PROPERTIES_FILENAME);
+    properties.then(
         function(resolve) {
             // find index of the property that matches the request update property
             let propertyIndex = resolve.findIndex(property => property.propertyId === parseInt(req.body.propertyId));
@@ -58,20 +63,50 @@ router.put('/myProperties', function(req, res)
             else
             {
                 console.log("Error: Property not found!");
-                res.status(404).send("Property not found");
+                res.status(400).send("Property not found");
             }
             
         });
 });
 
-// userId here refers to the user cookie added in the fetch request
-router.get('/myPropertiesData/:userId', function(req, res)
+router.delete('/myProperties/:propertyId', function(req, res) 
 {
 
-    let userId = parseInt(req.params.userId);
+    console.log(req.params.propertyId);
+    let propertyId = parseInt(req.params.propertyId);
+    const properties = retrieveData(PROPERTIES_FILENAME);
+    properties.then(
+        function(resolve)
+        {
+            let propIndex = resolve.findIndex(property => property.propertyId === propertyId);
+            if(propIndex === -1)
+            {
+                res.status(400).send("Property not found");
+            }
+            else
+            {
+
+                resolve.splice(propIndex, 1);
+                fs.writeFileSync(PROPERTIES_FILENAME, JSON.stringify(resolve, null, 2));
+                res.sendStatus(204).send('Property deleted successfully');
+            }
+
+        })
+
+
+});
+
+// userId here refers to the user cookie added in the fetch request
+router.get('/myPropertiesData', function(req, res)
+{
+
+    // let userId = parseInt(req.params.userId);
+
+    // console.log(req.cookies);
+    let userId = parseInt(req.cookies.userId);
     
-    const myProperties = retrieveData(PROPERTIES_FILENAME);
-    myProperties.then(
+    const properties = retrieveData(PROPERTIES_FILENAME);
+    properties.then(
         function(resolve)
         {
             // create a new array
@@ -86,8 +121,7 @@ router.get('/myPropertiesData/:userId', function(req, res)
             });
             // return new array only. This ensures we avoid sending the entire database and only send the relevant data
             res.json(myProperties);
-        }
-    )
+        })
 
 });
 /* ******************************************************************************* */
@@ -204,6 +238,7 @@ router.get('/profile', function(req, res)
     res.sendFile(path.join(__dirname, 'public', 'pages', 'profile.html'));
 
 });
+
 
 /* ******************************************************************************* */
 /* END of profile Routes */
@@ -403,69 +438,41 @@ router.get('/viewProperty', function(req, res)
 
 });
 
-
-// router.get('/myPropertiesData/:userId', function(req, res)
-// {
-
-//     let userId = parseInt(req.params.userId);
-    
-//     const myProperties = retrieveData(PROPERTIES_FILENAME);
-//     myProperties.then(
-//         function(resolve)
-//         {
-//             // create a new array
-//             let myProperties = [];
-//             resolve.forEach(property => {
-
-//                 // add properties only if the current userId matches
-//                 if(property.userId === userId)
-//                 {
-//                     myProperties.push(property);
-//                 }
-//             });
-//             // return new array only. This ensures we avoid sending the entire database and only send the relevant data
-//             res.json(myProperties);
-//         }
-//     )
-
-// });
-
-router.get('/viewProperty/:propertyId/:userId', function(req, res)
+router.get('/viewProperty/:propertyId', function(req, res)
 {
-
-    let userId = parseInt(req.params.userId);
+    
     let propertyId = parseInt(req.params.propertyId);
-    console.log("userId: " + userId + ". PropertyId: " + propertyId);
-    const myProperties = retrieveData(PROPERTIES_FILENAME);
-    myProperties.then(
-        function(resolve)
-        {
-
-            const property = resolve.find(property => property.propertyId === propertyId);
-
+    const properties = retrieveData(PROPERTIES_FILENAME);
+    properties.then(
+        function(allProperties)
+        {            
+            const property = allProperties.find(property => property.propertyId === propertyId);
             res.json(property);
-            // const user = resolve.find(user => property.userId = userId);
 
-            // resolve.forEach(property => {
-
-            //     // add properties only if the current userId matches
-            //     if(property.userId === userId)
-            //     {
-            //         myProperties.push(property);
-            //     }
-            // });
-            // // return new array only. This ensures we avoid sending the entire database and only send the relevant data
-            // res.json(myProperties);
+            
         }
     )
+    
+});
+
+router.get('/viewProperty/users/:userId', function(req, res)
+{
+    let userId = parseInt(req.params.userId);
+    
+    const users = retrieveData(USERS_FILENAME);
+    users.then(
+        function(allUsers)
+        {
+            
+            const user = allUsers.find(user => user.id === userId);
+            res.json(user);
+        }
+    );
+
+
 
 });
 
-// router.get('/viewProperty', function(req, res) 
-// {
-//     res.sendFile(path.join(__dirname, 'public', 'pages', 'viewProperty.html'));
-
-// });
 
 /* ******************************************************************************* */
 /* END of View Property Routes */
