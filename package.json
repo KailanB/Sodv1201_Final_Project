@@ -4,12 +4,13 @@
   "description": "GroupC Final Project",
   "main": "api.js",
   "scripts": {
-    "start" : "nodemon app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Deepanshi, Kajal, and Kailan.",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.19.2",
     "nodemon": "^3.1.4"
   }

@@ -16,22 +16,6 @@
     "propertyId": 1723768165284
   },
   {
-    "name": "SEEeet Sounds",
-    "address": "4810 40th avenue SW",
-    "city": "Calgary",
-    "province": "AB",
-    "area": "232",
-    "type": "Studio",
-    "capacity": "2",
-    "parking": false,
-    "publicTransport": true,
-    "availability": true,
-    "rentalTerm": "Daily",
-    "price": "2131",
-    "userId": 1,
-    "propertyId": 1723768189395
-  },
-  {
     "name": "Sweet Symphony",
     "address": "22nd avenue North",
     "city": "Calgary",
@@ -110,5 +94,21 @@
     "price": "400",
     "userId": 1,
     "propertyId": 1723872206646
+  },
+  {
+    "name": "Beauty Boulevard",
+    "address": "54 Art Avenue",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "500",
+    "type": "Beautification depot",
+    "capacity": "15",
+    "parking": false,
+    "publicTransport": false,
+    "availability": true,
+    "rentalTerm": "Weekly",
+    "price": "2000",
+    "userId": 1724049239417,
+    "propertyId": 1724051447187
   }
 ]

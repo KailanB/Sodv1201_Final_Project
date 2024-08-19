@@ -18,5 +18,36 @@
     "city": "Calgary",
     "province": "AB",
     "role": "Renter"
+  },
+  {
+    "id": 1,
+    "firstName": "Kailan",
+    "lastName": "Bates",
+    "email": "kailanbates@gmail.com",
+    "phoneNumber": "306361021",
+    "city": "Calgary",
+    "province": "AB",
+    "role": "Owner",
+    "userId": 1
+  },
+  {
+    "id": 1724049239417,
+    "firstName": "Sally",
+    "lastName": "Souther",
+    "email": "SallyS@gmail.com",
+    "phoneNumber": "21124124",
+    "city": "Saskatoon",
+    "province": "SK",
+    "role": "Owner"
+  },
+  {
+    "id": 1724053843449,
+    "firstName": "Kailan",
+    "lastName": "Bates",
+    "email": "kaibates@gmail.com",
+    "phoneNumber": "3063616021",
+    "city": "Calgary",
+    "province": "AB",
+    "role": "Owner"
   }
 ]

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // localStorage.clear();
     // alert("local storage cleared!!");
 
+    // alert(document.cookie);
 
 let searchTab = document.getElementById("searchTab");
 let advancedSearchFilters = document.getElementById("advancedSearchFilters");
