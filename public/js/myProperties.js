@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const availability = document.querySelector('input[name="availability"]:checked')?.value === 'yes';
         const rentalTerm = document.getElementById('rentalTermSelect').value;
         const price = document.getElementById('propertyPriceInput').value;
-        const userId = parseInt(getUserCookie("userId"));
+        // userId is filled in server side by user cookie id 
+        const userId = null;
         let propertyId = Date.now();
         if(editIndex > -1)
         {
@@ -119,20 +120,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
         /**********************************************************************************************************************/
         // TEMPORARY FUNCTION TO SET A DUMMY USER COOKIE !!
-        setUserCookie("userEmail123@gmail.com", 1);
+        // setUserCookie("kailanbates@gmail.com", 1);
         /**********************************************************************************************************************/
 
         propertiesDiv.innerHTML = '';
-        const userId = parseInt(getUserCookie("userId"));
+
+
+        // const userId = parseInt(getUserCookie("userId"));
+
+
+
         // add userId pulled from cookie to fetch route in order to only display properties belonging to that user
-        fetch(`/myPropertiesData/${userId}`)
+        // fetch(`/myPropertiesData/${userId}`)
+        fetch(`/myPropertiesData`)
             .then(response => response.json())
             .then(properties => 
             {
                 properties.forEach((property, index) => {
                     // added the check user cookie back so that only properties that belong to the logged in user are displayed
-                    if(property.userId === parseInt(getUserCookie("userId")))
-                    {
+
+
+                    // if(property.userId === parseInt(getUserCookie("userId")))
+                    // {
+
+
                         const propertyDiv = document.createElement('div');
                         propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
                         propertyDiv.innerHTML = `
@@ -156,7 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         
                         propertiesDiv.appendChild(propertyDiv);
                     }
-                });
+                // }
+            
+            );
 
                 // Add event listeners for edit and remove buttons
                 document.querySelectorAll('.edit-button').forEach((button, index) => {
@@ -172,19 +185,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 document.querySelectorAll('.remove-button').forEach(button => {
                     button.addEventListener('click', function () {
-                        const index = this.getAttribute('propertyId');
-                        let response = prompt(`Are you sure you want to permanently delete this property? \nType "yes" to delete.`);
-
-                        // ADD DELETE METHOD
-                        // response = response.toLowerCase();
-                        // if(response === "yes")
-                        // {
-                        //     properties.splice(index, 1);
-                        //     localStorage.setItem('properties', JSON.stringify(properties));
-                        //     displayProperties();
-                        // }
-                        
-                    });
+                    editIndex = this.getAttribute('propertyId');
+                    deleteProperty(editIndex);
+                });
+                    
                 });
             })
             .catch(error => console.error('Error fetching data ' + error));
@@ -194,6 +198,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    async function deleteProperty(propertyId) 
+    {
+        let response = prompt(`Are you sure you want to permanently delete this property? \nType "yes" to delete.`);
+
+        response = response.toLowerCase();
+        if(response === "yes")
+        {
+
+            propertyId = parseInt(propertyId);
+            await fetch(`/myProperties/${propertyId}`, {method: 'DELETE'})
+            .then(response => {
+
+                // once client has received "OK" status re-display myProperty data
+                if(response.status === 201)
+                {
+                    //display Properties again
+                    // resetForm();
+                    // closeAddProperty();
+                    displayProperties();
+                }
+            })
+            .catch(error => console.error('Error: deleting Property was unsuccessful.' + error));
+
+
+            // properties.splice(index, 1);
+            // localStorage.setItem('properties', JSON.stringify(properties));
+            displayProperties();
+        }
+    }
 
 
     function resetForm() 
