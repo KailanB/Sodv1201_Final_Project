@@ -34,15 +34,28 @@ form {
     align-items: center;
 }
 
+.smallInput{
+    
+    display: inline-block;
+    width: 85px;
+
+}
+
+.flexTwoColumn{
+
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+}
+
 
 .mainPageContent {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between;
-    align-items: stretch; */
     background-color: var(--mainContentColor);
     min-height: 100vh;
-    /* border: 5px solid lightseagreen; */
+    
 }
 
 .innerPageContent1 {
@@ -50,15 +63,18 @@ form {
     background-color:var(--mainContentColor);
     display: flex;
     flex-direction: column;
+    
     /* border: 2px solid yellow; */
 }
 
 .innerPageContent2 {
     background-color: var(--pageInnerContent2);
-    /* border: 2px solid orange; */
+    /* ensures that the filter box doesn't break the screen*/
+    height: min(650px, fit-content);
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 15px;
 }
 
 

@@ -4,8 +4,19 @@
 
 }
 
+
+#homePageTitle {
+
+    /* border: 2px solid black; */
+    position: relative;
+    align-items: center;
+}
+
+
+
 /* container that holds the advanced search filter container, the search bar and the search results*/
 #searchAndFilterContainer {
+
     display: flex;
     flex-direction: row;
     position: relative;
@@ -54,12 +65,12 @@
 #advancedSearchFilters input[type="text"],
 #advancedSearchFilters input[type="number"] {
     width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
+    margin-bottom: 12px;
+    padding: 5px;
     border: 1px solid var(--inputBorder);
     border-radius: 5px;
     background-color: var(--inputBackground);
-    font-size: 1rem;
+    font-size: 0.9rem;
     box-sizing: border-box;
 }
 
@@ -110,6 +121,7 @@
     height: 40px;
     background-color: white;
     position: absolute;
+    top: 0px;
     left: 0px;
     display: none;
     align-items: center;
@@ -187,13 +199,26 @@ button:hover {
         margin-left: 0px; /*since the display window goes hidden, this container can use the left space */
     }
 
+    #homePageTitle{
+        display: inline-block;
+        margin: auto;
+        width: 75vw;
+    }
+    
     #searchTab 
     {
+        background-color: var(--buttonBackground);
+        border: 2px solid var(--buttonHoverBackground);
         z-index: 2;
         display: flex;
-        position: fixed;
+        position: sticky;
+        top: 0;
+    }
 
-
+    #searchTab:hover
+    {
+        cursor: pointer;
+        background-color: var(--buttonHoverBackground);
     }
     .dynamicallyCreatedDiv { /* search container is hidden, so this container can maximize screen space */
 
