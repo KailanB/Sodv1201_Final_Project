@@ -28,7 +28,7 @@ document.getElementById('userLogInForm').addEventListener('submit', async functi
 
 async function loginUser(email) {
     try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ async function loginUser(email) {
 async function logoutUser() {
     // console.log("logout user");
     try {
-        const response = await fetch('/api/logout', {
+        const response = await fetch('/logout', {
             method: 'POST',
             credentials: 'include' // Ensure cookies are sent with the request
         });
