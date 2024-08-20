@@ -322,7 +322,7 @@ router.post('/login', (req, res) => {
     const { email } = req.body;
 
     if (!email) {
-        return res.status(500).json({ message: 'Email is required' });
+        return res.status(400).json({ message: 'Email is required' });
     }
 
     // Read users.json file
@@ -349,33 +349,36 @@ router.post('/login', (req, res) => {
 //         }
 //     });
 // });
-    fs.readFile(usersFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading users file:', err);
-            return res.status(500).json({ success: false, message: 'Internal Server Error' });
-        }
+fs.readFile(usersFilePath, 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading users file:', err);
+        return res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
 
-        const users = JSON.parse(data);
+    const users = JSON.parse(data);
+    const user = users.find(u => u.email === email);
 
-        const user = users.find(u => u.email === email);
-
-        if (user) {
-            res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-            res.cookie('userId', user.userId, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-            console.log('User logged in successfully:', user);
-            return res.status(200).json({ success: true, email: user.email });
-        } else {
-            return res.status(500).json({ success: false, message: 'Invalid email' });
-        }
-    });
+    if (user) {
+        res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+        res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+        console.log('User logged in successfully:', user);
+        return res.status(200).json({ success: true, email: user.email });
+    } else {
+        console.log('Login failed: Invalid email');
+        return res.status(400).json({ success: false, message: 'Invalid email' });
+    }
+});
 });
 
 // Logout Route
 router.post('/api/logout', (req, res) => {
     res.clearCookie('userEmail');
+    res.clearCookie('userId');
     console.log('User logged out successfully');
     res.status(200).json({ success: true, message: 'Logged out successfully' });
 });
+
+module.exports = router;
 
 //     // Read users.json file
 //     fs.readFile(usersFilePath, 'utf8', (err, data) => {
