@@ -319,37 +319,12 @@ router.get('/logIn', function(req, res) {
 
 // Handle login
 router.post('/login', (req, res) => {
-    const { email } = req.body;
+    const { email} = req.body;
 
     if (!email) {
         return res.status(400).json({ message: 'Email is required' });
     }
-
-    // Read users.json file
-//     fs.readFile(usersFilePath, 'utf8', (err, data) => {
-//         if (err) {
-//             console.error('Error reading users file:', err);
-//             return res.status(500).json({ message: 'Internal Server Error' });
-//         }
-
-//         const users = JSON.parse(data);
-//         // Find the user by email (case-insensitive comparison)
-//         const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
-
-//         if (user) {
-//             // Set a cookie with user details (e.g., user ID)
-//             res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-
-//             console.log('Login successful:', user);
-//             // Redirect or respond with success
-//             return res.status(200).json({ message: 'Login successful', user });
-//         } else {
-//             console.log('Login failed: Invalid email');
-//             return res.status(500).json({ message: 'Invalid email' });
-//         }
-//     });
-// });
-fs.readFile(usersFilePath, 'utf8', (err, data) => {
+    fs.readFile(usersFilePath, 'utf8', (err, data) => {
     if (err) {
         console.error('Error reading users file:', err);
         return res.status(500).json({ success: false, message: 'Internal Server Error' });
@@ -359,10 +334,10 @@ fs.readFile(usersFilePath, 'utf8', (err, data) => {
     const user = users.find(u => u.email === email);
 
     if (user) {
-        res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+        res.cookie('userEmail', user.email, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
         res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
         console.log('User logged in successfully:', user);
-        return res.status(200).json({ success: true, email: user.email });
+        return res.status(200).json({ success: true, email: user.email});
     } else {
         console.log('Login failed: Invalid email');
         return res.status(400).json({ success: false, message: 'Invalid email' });
@@ -371,14 +346,38 @@ fs.readFile(usersFilePath, 'utf8', (err, data) => {
 });
 
 // Logout Route
+// router.post('/api/logout', (req, res) => {
+//     res.clearCookie('userEmail');
+//     res.clearCookie('userId');
+//     res.json({ success: true });
+//     console.log('User logged out successfully');
+//     res.status(200).json({ success: true, message: 'Logged out successfully' });
+// });
+
+// Logout Route
 router.post('/api/logout', (req, res) => {
-    res.clearCookie('userEmail');
-    res.clearCookie('userId');
-    console.log('User logged out successfully');
-    res.status(200).json({ success: true, message: 'Logged out successfully' });
+    const userEmail = req.cookies.userEmail;
+    const userId = req.cookies.userId;
+
+    if (userEmail && userId) {
+        // Log the detailed information before logging out
+        console.log("user logged out", userEmail);
+        
+        // Clear the cookies
+        res.clearCookie('userEmail');
+        res.clearCookie('userId');
+
+        // Send the response
+        res.status(200).json({ success: true, message: 'Logged out successfully' });
+    } else {
+        // If the userEmail or userId cookie doesn't exist, log that no user was logged in
+        console.log('Logout attempted but no user was logged in or cookies were missing.');
+        res.status(500).json({ success: false, message: 'No user was logged in' });
+    }
 });
 
-module.exports = router;
+
+// module.exports = router;
 
 //     // Read users.json file
 //     fs.readFile(usersFilePath, 'utf8', (err, data) => {
