@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    
 
     const propertyForm = document.getElementById('propertyForm');
     const propertiesDiv = document.getElementById('properties');
@@ -143,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     // if(property.userId === parseInt(getUserCookie("userId")))
                     // {
 
-
+                   
                         const propertyDiv = document.createElement('div');
                         propertyDiv.classList.add('innerPageContent3', 'dynamicallyCreatedDiv');
                         propertyDiv.innerHTML = `

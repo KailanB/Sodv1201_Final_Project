@@ -43,6 +43,7 @@ router.put('/myProperties', function(req, res)
     // pull all properties
 
     // userId is sent in as "null", so we need to update userId to be current requesting user
+    console.log(req.body.userId);
     req.body.userId = parseInt(req.cookies.userId);
     const properties = retrieveData(PROPERTIES_FILENAME);
     properties.then(
@@ -104,7 +105,7 @@ router.get('/myPropertiesData', function(req, res)
 
     // console.log(req.cookies);
     let userId = parseInt(req.cookies.userId);
-    
+    console.log(req.cookies.userId);
     const properties = retrieveData(PROPERTIES_FILENAME);
     properties.then(
         function(resolve)
@@ -241,46 +242,20 @@ router.get('/profile', function(req, res)
 
 router.get('/getUser', function(req, res) 
 {
-
-    // console.log(req.cookies);
+    // gets requester cookie and verifies user
     let userId = parseInt(req.cookies.userId);
-    // console.log("Request received " + userId);
     const users = retrieveData(USERS_FILENAME);
     users.then(
         function(allUsers)
         {
             
             const user = allUsers.find(user => user.id === userId);
-            // console.log(user);
             res.json(user);
-            // res.json(property);
-            // res.json(user);
+
         }
     );
 
 });
-
-// router.get('/profile/:userId', function(req, res) 
-// {
-
-    
-//     let userId = parseInt(req.params.userId);
-//     console.log("Request received " + userId);
-//     const users = retrieveData(USERS_FILENAME);
-//     users.then(
-//         function(allUsers)
-//         {
-            
-//             const user = allUsers.find(user => user.id === userId);
-//             // console.log(user);
-//             res.json(user);
-//             // res.json(property);
-//             // res.json(user);
-//         }
-//     );
-
-
-// });
 
 router.put('/profile', function(req, res)
 {
@@ -386,7 +361,7 @@ router.post('/login', (req, res) => {
 
         if (user) {
             res.cookie('userEmail', user.email, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-
+            res.cookie('userId', user.userId, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
             console.log('User logged in successfully:', user);
             return res.status(200).json({ success: true, email: user.email });
         } else {
