@@ -363,6 +363,7 @@ router.post('/api/logout', (req, res) => {
         // Log the detailed information before logging out
         console.log("user logged out", userEmail);
         console.log(res.cookie);
+        
         // Clear the cookies
         res.clearCookie('userEmail');
         res.clearCookie('userId');
