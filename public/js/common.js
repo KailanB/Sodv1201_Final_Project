@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function setUserCookie(userEmail, userId)
-{
+// function setUserCookie(userEmail, userId)
+// {
 
 //     let days = 1; // update these variables to set cookie expiration
 //     // let hours = 5;
