@@ -20,7 +20,7 @@
 <body>
     
     <div class="mainPageContent">
-         
+        
         <div id="headerBar">
             <h1>Home Page</h1>
             <nav>
@@ -33,7 +33,7 @@
                     <li><a href="/createAccount">Create Account</a></li>
                     <!-- <li><a href="/myProperties">My Properties</a></li> -->
                     <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
-                    <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton">Logout</a></li>
+                    <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
                 </ul>
             </nav>
         </div>
