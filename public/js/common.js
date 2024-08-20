@@ -14,17 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// function setUserCookie(userEmail, userId)
-// {
-
-//     let days = 1; // update these variables to set cookie expiration
-//     // let hours = 5;
-//     const expireDate = new Date(); 
-//     expireDate.setTime(expireDate.getTime() + (days * 24 * 60 * 60 * 1000));
-//     document.cookie = "userEmail=" + userEmail + ";" + expireDate + ";path=/";
-//     document.cookie = "userId=" + userId + ";" + expireDate + ";path=/";
-
-// }
 
 // Set user cookies
 function setUserCookie(userEmail, userId) {
@@ -77,20 +66,6 @@ function checkUserLoggedIn() {
         
     }
 }
-// // it will clear the cookie after I click on the log out button
-// function clearCookies() {
-//     const futureDate = new Date();
-//     futureDate.setFullYear(futureDate.getFullYear() + 1); // Set expiration to 1 year from now.
-//     const expires = "expires=" + futureDate.toUTCString(); //is used to create a string representation of the expiration date for a cookie in the correct format
-//     //document.cookie: returns a string containing all cookies, separated by semicolons. and split(";") divides this string into an array.
-//     //c.split("=")[0] splits the cookie string at the = sign and takes the first part, which is the cookie name.
-//     //expires + "; path=/" appends the expires attribute to set the expiration date, and path=/ ensures the cookie is valid for the entire domain
-//     document.cookie.split(";").forEach(function(c) {
-//         let cookieName = c.trim().split("=")[0];
-//         // Set the cookie with the same name, but with an updated expiration date
-//         document.cookie = cookieName + "=; " + expires + "; path=/";
-//     });
-// }
 
 // Clear all cookies
 function clearCookies() {
