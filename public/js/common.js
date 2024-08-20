@@ -18,7 +18,8 @@ function setUserCookie(userEmail, userId)
 // userId      (returns unique user ID)
 function getUserCookie(cname)
 {
-    // let name = cname + "=";
+    
+    let name = cname + "=";
     
     let decodedCookie = decodeURIComponent(document.cookie);
     let cookieValues = decodedCookie.split(";");
@@ -38,6 +39,7 @@ function getUserCookie(cname)
     }
     return "";
 }
+
 
 // function checkCookie()
 // {
@@ -76,7 +78,30 @@ function clearCookies() {
     });
 }
 
+// added Clear cookies
+function clearCookies() {
+    const expires = "expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie.split(";").forEach(function(c) {
+        let cookieName = c.trim().split("=")[0];
+        document.cookie = cookieName + "=; " + expires + "; path=/";
+    });
+}
 
+// Logout functionality
+document.addEventListener('DOMContentLoaded', function () {
+    checkUserLoggedIn(); // Update the navigation bar
+
+    const logoutButton = document.getElementById("logoutButton");
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            clearCookies();
+            checkUserLoggedIn(); // Update the navigation bar after logout
+            console.log("User has logged out.");
+            window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
+        });
+    }
+});
 // Event listener for logout button
 document.addEventListener('DOMContentLoaded', function () {
     checkUserLoggedIn();
