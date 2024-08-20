@@ -74,18 +74,3 @@ async function logoutUser() {
 
 
 
-//not require this part it is not working and give us null value so you can remove the line 78-88 
-// Add event listener to logout button
-// document.addEventListener('DOMContentLoaded', () => {
-//     const logoutButton = document.getElementById('logoutButton');
-//     console.log(logoutButton);
-//     if (logoutButton) {
-        
-//         logoutButton.addEventListener('click', async function() {
-//             await logoutUser();
-//         });
-//     }
-// });
-
-
-
