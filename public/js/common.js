@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearCookies();
         window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
     });
-});
+
 
 
 // function setUserCookie(userEmail, userId)
@@ -63,6 +63,7 @@ function getUserCookie(cname) {
 
 // Check if user is logged in
 function checkUserLoggedIn() {
+
     let userEmail = getUserCookie("userEmail");
     let loginButtonContainer = document.getElementById("loginButtonContainer");
     let logoutButtonContainer = document.getElementById("logoutButtonContainer");
@@ -73,6 +74,7 @@ function checkUserLoggedIn() {
     } else {
         loginButtonContainer.style.display = "block";
         logoutButtonContainer.style.display = "none";
+        
     }
 }
 // // it will clear the cookie after I click on the log out button
@@ -144,3 +146,5 @@ async function addMyPropertiesNav()
         navBar.appendChild(newLi);
     }
 }
+
+});
