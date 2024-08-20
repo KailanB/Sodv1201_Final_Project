@@ -6,11 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function displayUser()
 {
+    
     let currentUser = await getCurrentUser();
     const profileContainer = document.getElementById('profileContainer');
     profileContainer.innerHTML = '';
 
-
+    
     profileContainer.innerHTML = `
         <h2>Name: ${currentUser.firstName} ${currentUser.lastName}</h2>
         <br>

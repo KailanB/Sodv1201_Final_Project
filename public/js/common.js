@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
     });
 
-
+});
 
 // function setUserCookie(userEmail, userId)
 // {
@@ -110,7 +110,7 @@ function clearCookies() {
 async function getCurrentUser()
 {
     
-
+    console.log("test");
     let currentUser = await fetch(`/getUser`)
     .then(response => {
         if(response.status === 200)
@@ -126,6 +126,7 @@ async function getCurrentUser()
     {
         return user;
     });
+    
     return currentUser; 
     
 }
@@ -147,4 +148,3 @@ async function addMyPropertiesNav()
     }
 }
 
-});
