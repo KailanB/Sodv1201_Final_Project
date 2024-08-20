@@ -1,6 +1,19 @@
 // COOKIEEEES https://www.w3schools.com/js/js_cookies.asp
 // gives the user a cookie to track their id when they log in
 
+// Event listener for logout button
+document.addEventListener('DOMContentLoaded', function () {
+
+    addMyPropertiesNav();
+
+    checkUserLoggedIn();
+    document.getElementById("logoutButton").addEventListener("click", function() {
+        clearCookies();
+        window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
+    });
+});
+
+
 function setUserCookie(userEmail, userId)
 {
 
@@ -77,14 +90,7 @@ function clearCookies() {
 }
 
 
-// Event listener for logout button
-document.addEventListener('DOMContentLoaded', function () {
-    checkUserLoggedIn();
-    document.getElementById("logoutButton").addEventListener("click", function() {
-        clearCookies();
-        window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
-    });
-});
+
 
 // compares user cookie id with the id of all registered users, when the function finds a matching user it returns that user object, otherwise returns null. 
 // this can be used to retrieve other user data based on the currently browsing user
@@ -112,3 +118,19 @@ async function getCurrentUser()
     
 }
 
+
+async function addMyPropertiesNav()
+{
+
+    let currentUser = await getCurrentUser();
+    
+    // alert(currentUser.firstName);
+    if (currentUser.role === 'Owner')
+    {
+        let navBar = document.getElementById('pageNavigation');
+        let newLi = document.createElement('li');
+        newLi.innerHTML = `
+        <a href="/myProperties">My Properties</a>`;
+        navBar.appendChild(newLi);
+    }
+}
