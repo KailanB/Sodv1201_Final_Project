@@ -6,15 +6,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const propertiesDiv = document.getElementById('properties');
     const addPropertyOuterDiv = document.getElementById('addNewPropertyOuterDiv');
     const cancelAddPropertyButton = document.getElementById('cancelAddProperty');
-    
+    const openAddPropertyDiv = document.getElementById('openAddPropertyDiv');
+
+    const addNewPropertyButton = document.getElementById('addNewPropertyButton');
+
     let editIndex = -1; // Index of property being edited
 
 
     displayProperties();
 
     // function to open add property div
-    document.getElementById('openAddPropertyDiv').addEventListener('click', function () {
-        
+    openAddPropertyDiv.addEventListener('click', function () {
+
+        openAddPropertyDiv.style.display = 'none';
+        addNewPropertyButton.value = 'Add Property';
         addPropertyOuterDiv.style.display = 'block';
         resetForm();
         // https://stackoverflow.com/questions/3569329/javascript-to-make-the-page-jump-to-a-specific-location
@@ -29,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeAddProperty()
     {
         addPropertyOuterDiv.style.display = 'none';
+        openAddPropertyDiv.style.display = 'block';
     }
     
 
@@ -36,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     propertyForm.addEventListener('submit', function (e) {
         e.preventDefault();
         saveProperty();
+        openAddPropertyDiv.style.display = 'block';
     });
 
     async function saveProperty()
@@ -177,9 +184,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     button.addEventListener('click', function () {
                         // editIndex is updated to the propertyId. This value gets sent in the fetch request to find the corresponding property in the server data
                         editIndex = this.getAttribute('propertyId');
+                        
                         // properties here is still referring to the response array from the fetch.
                         populateForm(properties[index]);
                         addPropertyOuterDiv.style.display = 'block';
+                        openAddPropertyDiv.style.display = 'none';
+                        addNewPropertyButton.value = "Edit Property";
                         addPropertyOuterDiv.scrollIntoView({behavior: 'smooth'});
                     });
                 });

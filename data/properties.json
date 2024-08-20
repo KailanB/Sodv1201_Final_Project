@@ -110,5 +110,21 @@
     "price": "2000",
     "userId": 1724049239417,
     "propertyId": 1724051447187
+  },
+  {
+    "name": "Beauty Boulevard",
+    "address": "123",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "500",
+    "type": "Studio",
+    "capacity": "12",
+    "parking": false,
+    "publicTransport": true,
+    "availability": true,
+    "rentalTerm": "Weekly",
+    "price": "234",
+    "userId": 1,
+    "propertyId": 1724164057386
   }
 ]
