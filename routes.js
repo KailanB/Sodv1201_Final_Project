@@ -355,7 +355,7 @@ router.post('/login', (req, res) => {
 // });
 
 // Logout Route
-router.post('/api/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     const userEmail = req.cookies.userEmail;
     // const userId = req.cookies.userId;
     if (userEmail) {
