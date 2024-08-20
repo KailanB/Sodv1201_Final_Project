@@ -332,10 +332,10 @@ router.post('/login', (req, res) => {
 
     const users = JSON.parse(data);
     const user = users.find(u => u.email === email);
-
+    
     if (user) {
         res.cookie('userEmail', user.email, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-        res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+        res.cookie('userId', user.id, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
         console.log('User logged in successfully:', user);
         return res.status(200).json({ success: true, email: user.email});
     } else {
