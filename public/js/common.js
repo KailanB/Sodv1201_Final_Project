@@ -102,6 +102,35 @@ function clearCookies() {
 }
 
 
+// Add event listener to logout button
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async function() {
+            await logoutUser();
+        });
+    }
+});
+
+async function logoutUser() {
+    try {
+        const response = await fetch('/api/logout', {
+            method: 'POST',
+            credentials: 'include' // Ensure cookies are sent with the request
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            console.log('Logged out successfully');
+            // Redirect or update UI
+            window.location.href = '/login'; // Or another page
+        } else {
+            console.error('Logout failed:', data.message);
+        }
+    } catch (error) {
+        console.error('Error during logout:', error);
+    }
+}
 
 
 // compares user cookie id with the id of all registered users, when the function finds a matching user it returns that user object, otherwise returns null. 

@@ -139,6 +139,7 @@ async function loginUser(email) {
 }
 
 async function logoutUser() {
+    alert('test');
     try {
         const response = await fetch('/api/logout', {
             method: 'POST',
