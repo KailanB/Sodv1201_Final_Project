@@ -319,7 +319,7 @@ router.get('/logIn', function(req, res) {
 
 // Handle login
 router.post('/login', (req, res) => {
-    const { email} = req.body;
+    const {email} = req.body;
 
     if (!email) {
         return res.status(400).json({ message: 'Email is required' });
@@ -334,9 +334,9 @@ router.post('/login', (req, res) => {
     const user = users.find(u => u.email === email);
 
     if (user) {
-        res.cookie('userEmail', user.email, { maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+        res.cookie('userEmail', user.email, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
         res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-        // console.log('User logged in successfully:', user);
+        console.log('User logged in successfully:', user);
         return res.status(200).json({ success: true, email: user.email});
     } else {
         console.log('Login failed: Invalid email');
@@ -357,16 +357,15 @@ router.post('/login', (req, res) => {
 // Logout Route
 router.post('/api/logout', (req, res) => {
     const userEmail = req.cookies.userEmail;
-    const userId = req.cookies.userId;
-    console.log("userEmail: " + userEmail + ". userId: " +userId);
-    if (userEmail && userId) {
+    // const userId = req.cookies.userId;
+    if (userEmail) {
         // Log the detailed information before logging out
         console.log("user logged out", userEmail);
-        console.log(res.cookie);
+        
         // Clear the cookies
         res.clearCookie('userEmail');
         res.clearCookie('userId');
-        
+
         // Send the response
         res.status(200).json({ success: true, message: 'Logged out successfully' });
     } else {
