@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
+// Handle login form submission
 document.getElementById('userLogInForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -64,25 +64,6 @@ document.getElementById('userLogInForm').addEventListener('submit', function(eve
         } else {
             // Display error message
             document.getElementById('logInFailedOutput').textContent = 'Login failed: Invalid email.';
-        }
-    })
-    .catch(error => console.error('Error:', error));
-});
-
-document.getElementById('logoutButton').addEventListener('click', () => {
-    fetch('/api/logout', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Redirect to the login page or home page on successful logout
-            window.location.href = '/logIn';
-        } else {
-            console.error('Logout failed:', data.message);
         }
     })
     .catch(error => console.error('Error:', error));
