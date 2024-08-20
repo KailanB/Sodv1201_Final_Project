@@ -3,7 +3,7 @@
     --mainContentColor: #daeffd;
     --pageInnerContent2: #e4ffd8;
     --pageInnerContent3:#f5dcff;
-    --accentColor1: #6e6799;
+    --accentColor1: #9f99c9;
     --accentColor2: #984fb9;
     --filterContainer: 230px;
     --buttonBackground: #6e6799;
@@ -20,6 +20,35 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family: "Cormorant", "serif";
+    font-weight: 600;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Tangerine", "serif";
+}
+
+/* the google font styles seemed to be a little small so all sizes are updated to adjust */
+h1 {
+    font-size: 2.8em;
+}
+h2 {
+    font-size: 2.5em;
+}
+h3 {
+    font-size: 2.2em;
+}
+h4 {
+    font-size: 2em;
+}
+h5 {
+    font-size: 1.8em;
+}
+h6 {
+    font-size: 1.5em;
+}
+p, li, a, input, label{
+    font-size: 1.1em;
 }
 
 
