@@ -51,7 +51,7 @@ async function loginUser(email) {
 }
 
 async function logoutUser() {
-    console.log("logout user");
+    // console.log("logout user");
     try {
         const response = await fetch('/api/logout', {
             method: 'POST',
