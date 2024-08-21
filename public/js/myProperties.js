@@ -95,8 +95,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     closeAddProperty();
                     displayProperties();
                 }
+                // https://www.reddit.com/r/reactjs/comments/14j76b4/is_there_a_way_to_get_the_text_from/
+                else if (response.status === 400)
+                {
+                    response.text()
+                    .then(json => {
+                        alert(json);
+                    });
+                }
             })
-            .catch(error => console.error('Error: Updating Property was unsuccessful.' + error));
+            .catch(error => {
+                
+                console.error('Error: Updating Property was unsuccessful.');
+                // alert("Error updating Property: " + error);
+
+            });
 
         } else 
         {
