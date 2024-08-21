@@ -14,54 +14,45 @@
 <body>
     <div class="mainPageContent">
         <div id="headerBar">
-            <h1>My Properties</h1>
+            <div class="headerSections" id="LogoDiv">
+                <img id="headerLogo" src="img/logo.png">  
+                <div id="headerTitle">
+                    <h5>À la mode Atelier</h5>
+                    <h5>Comfort meets style</h5>
+                </div>
+            </div>
+            
+
+            <ul class="pageNavigation headerSections" id="mainNav">
+                <li><a href="/">Home</a></li>
+                <!-- Include the id to the login button -->                    
+            </ul>
+            <ul class="pageNavigation headerSections">
+                <li id="loginButtonContainer"><a href="/logIn" id="loginButton">Log in</a></li>
+                <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
+                <li id="createAccount"><a href="/createAccount">Create Account</a></li>
+                <li id="profileLink"><a href="/profile">Profile</a></li>
+                <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
+            </ul>
+
+
+<!-- 
             <nav>
                 <ul id="pageNavigation">
                     <li><a href="/">Home</a></li>
                     <li><a href="/profile">Profile</a></li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
+
+        <div class="pageHeader">
+            <h1>My Properties</h1>
+        </div>
+        
         <div class="innerPageContent1">
             <!-- rearranged the properties container to include the dummy property and allow for equal spacing-->
              
             <div class="innerPageContent2" id="properties">
-                <!-- Existing property examples -->
-                <!-- <div class="innerPageContent3 dynamicallyCreatedDiv">
-                    <h2>Dramatic Theatres</h2>
-                    <p>123 main street</p>
-                    <p>Calgary AB</p>
-                    <p>500 sq Meters, Max Occupants: 5</p>
-                    <p>Parking: Yes</p>
-                    <p>Public Transport: Yes</p>
-                    <div>
-                        <h3>Recording Studio (type)</h3>
-                    </div>
-                    <div>
-                        <p>$500.00 - monthly</p>
-                        <p>Available Now</p>
-                    </div>
-                </div>
-                <div class="innerPageContent3 dynamicallyCreatedDiv">
-                    <h2>Artist Theatres</h2>
-                    <p>233 main street</p>
-                    <p>Calgary AB</p>
-                    <p>500 sq Meters, Max Occupants: 5</p>
-                    <p>Parking: Yes</p>
-                    <p>Public Transport: Yes</p>
-                    <div>
-                        <h3>Recording Studio (type)</h3>
-                    </div>
-                    <div>
-                        <p>$500.00 - monthly</p>
-                        <p>Available Now</p>
-                    </div>
-                </div> -->
-                <!-- Property list container -->
-                <!-- <div id="properties"></div>
-                <div> -->
-                    
-                <!-- </div> -->
             </div>
             <!-- put the button outside of the properties container so that it is not deleted -->
             <button class="standardButton" id="openAddPropertyDiv">Add New Property</button>

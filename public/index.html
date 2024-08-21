@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/homeStyle.css">
     <!-- https://fonts.google.com/icons?selected=Material+Symbols+Outlined:home:FILL@0;wght@400;GRAD@0;opsz@24&icon.size=24&icon.color=%235f6368 -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- added this at the top here as well because some functions were having issues using common function cause of loading delays -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -19,31 +18,38 @@
 
 <body>
     
-    <div class="mainPageContent">
+    <div class="mainPageContent" id="homePageBody">
         
         <div id="headerBar">
-            <h1>Home Page</h1>
-            <nav>
-                <ul id="pageNavigation">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                    <!-- Include the id to the login button -->
-                    <!-- <li><a href="pages/logIn.html">Log in</a></li> -->
-                    <li id="loginButtonContainer"><a href="/logIn" id="loginButton">Log in</a></li>
-                    <li><a href="/createAccount">Create Account</a></li>
-                    <!-- <li><a href="/myProperties">My Properties</a></li> -->
-                    <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
-                    <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
-                </ul>
-            </nav>
+            <div class="headerSections" id="LogoDiv">
+                <img id="headerLogo" src="img/logo.png">  
+                <div id="headerTitle">
+                    <h5>À la mode Atelier</h5>
+                    <h5>Comfort meets style</h5>
+                </div>
+            </div>
+
+            <ul class="pageNavigation headerSections" id="mainNav">
+                <li><a href="/">Home</a></li>
+                
+                <!-- Include the id to the login button -->                    
+            </ul>
+            <ul class="pageNavigation headerSections">
+                <li id="loginButtonContainer"><a href="/logIn" id="loginButton">Log in</a></li>
+                <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
+                <li id="createAccount"><a href="/createAccount">Create Account</a></li>
+                <li id="profileLink"><a href="/profile">Profile</a></li>
+                <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
+            </ul>
+            
         </div>
         <div id="searchTab">
             <span class="material-symbols-outlined">search</span>
         </div> 
           
-        <div class="innerPageContent1" id="homePageTitle">
+        <div class="innerPageContent1 pageHeader">
             
-            <h2>Welcome to À la mode Atelier Art Space rentals!</h2>
+            <h1>Welcome!</h1>
             <p>Search from thousands of properties to choose a great location for your next art extravanganza</p>
 
         </div>
@@ -55,46 +61,19 @@
             <aside  class="innerPageContent2" id="advancedSearchFilters">
                 <div class="innerPageContent3">
                     <!-- Some Changes I made for the advanced filter option and for fetch the data we need to use API -->
-                    <h3>Advanced Filters</h3>
-                    <br>
-                    <!-- <label for="filterAvailability">Availability:</label>
-                    <select id="filterAvailability">
-                        <option value=""></option>
-                        <option value="">Any</option>
-                        <option value="true">Available</option>
-                        <option value="false">Unavailable</option>
-                    </select><br> -->
+                    <h4>Advanced Filters</h4>
                     <label for="filterAvailability">Available Now:</label>
                     <input type="checkbox" id="filterAvailability">
                     <br>
-                    <br>
-                    <!-- <label for="filterParking">Parking:</label>
-                    <select id="filterParking">
-                        <option value=""></option>
-                        <option value="">Any</option>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                    <br> -->
                     <label for="filterParking">Parking:</label>
                     <input type="checkbox" id="filterParking">
                     <br>
-                    <br>
-                    <!-- <label for="filterTransport">Public Transport:</label>
-                    <select id="filterTransport">
-                        <option value=""></option>
-                        <option value="">Any</option>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                    <br> -->
                     <label for="filterTransport">Public Transport:</label>
                     <input type="checkbox" id="filterTransport">
                     <br>
-                    <br>
                     <label for="filterType">Type:</label>
                     <input type="text" id="filterType" placeholder="Enter type">
-                    <br>
+
                     <label for="filterAddress">Address:</label>
                     <input type="text" id="filterAddress" placeholder="Enter address"><br>
 
@@ -153,20 +132,22 @@
                     <!-- <input type="text" id="filterRentalTerm" placeholder="Enter rental term"><br> -->
 
                     <label for="filterPrice">Max Price:</label>
+                    <br>
+                    <br>
                     <input type="range" id="filterPrice" min="0" max="10000" step="100" value="5000" oninput="updatePriceDisplay(this.value)">
-                    <span id="priceDisplay">$5000</span><br>
-                    <button onclick="applyFilters()">Apply Filters</button>
+                    <span id="priceDisplay">$5000</span>
+                    <br>
+                    <br>
+                    <button class="standardButton" onclick="applyFilters()">Apply Filters</button>
                 </div>   
             </aside>
             <div class="innerPageContent2" id="searchAndResultsContainer">
-                <div id="searchContainer" class="innerPageContent3">
+                <div id="searchContainer">
                     <input type="search" id="searchInput" placeholder="Enter anything to search..">
-                    <button onclick="performSearch()">Search</button>
-                    <p>Basic search filters</p>
+                    <button class="standardButton" onclick="performSearch()">Search</button>
                 </div>
                 <!-- div container used to display all properties or searched properties -->
                 <div id="resultsContainer" class="innerPageContent2">
-                    <p> here property divs will appear here property divs will appear here property divs will appear here property divs will appear</p>
                      <!-- Properties will be dynamically added here -->
                 </div>
             </div>   

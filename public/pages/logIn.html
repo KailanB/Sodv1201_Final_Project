@@ -15,17 +15,31 @@
 <body>
     <div class="mainPageContent">
         <div id="headerBar">
-            <h1>Log In</h1>
-            <nav>
-                <ul id="pageNavigation">
-                    <li><a href="/createAccount">Create Account</a></li>
-                    <li><a href="/">Home Page</a></li>
-                </ul>
-            </nav>
+            <div class="headerSections" id="LogoDiv">
+                <img id="headerLogo" src="../img/logo.png">  
+                <div id="headerTitle">
+                    <h5>À la mode Atelier</h5>
+                    <h5>Comfort meets style</h5>
+                </div>
+            </div>
+
+            <ul class="pageNavigation headerSections" id="mainNav">
+                <li><a href="/">Home</a></li>
+                <!-- Include the id to the login button -->                    
+            </ul>
+            <ul class="pageNavigation headerSections">
+                <li id="loginButtonContainer"><a href="/logIn" id="loginButton">Log in</a></li>
+                <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
+                <li id="createAccount"><a href="/createAccount">Create Account</a></li>
+            </ul>
         </div>
+
+
         <div id="logInMainSection">
+            
             <!-- -->
             <div class="halfPageLayout innerPageContent3b">
+                
                 <form id="userLogInForm">
                     <!-- labels and input inside div forcing rows-->
                     <!-- row layout changes to column for small screens-->
@@ -64,8 +78,6 @@
         </div>
         <script src="../js/logIn.js"></script>
         <script src="../js/common.js"></script>
-
-
 
     </div>
 </body>
