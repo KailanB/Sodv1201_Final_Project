@@ -244,16 +244,22 @@ router.get('/getUser', function(req, res)
 {
     // gets requester cookie and verifies user
     let userId = parseInt(req.cookies.userId);
-    const users = retrieveData(USERS_FILENAME);
-    users.then(
-        function(allUsers)
-        {
-            
-            const user = allUsers.find(user => user.id === userId);
-            res.json(user);
-
-        }
-    );
+    console.log("user cookies: " + req.cookies.userId);
+    if(req.cookies.userId)
+    {
+        
+        const users = retrieveData(USERS_FILENAME);
+        users.then(
+            function(allUsers)
+            {
+                const user = allUsers.find(user => user.id === userId);
+                
+                res.json(user);
+                console.log(user.firstName);
+    
+            }
+        );
+    }    
 
 });
 
@@ -262,7 +268,7 @@ router.put('/profile', function(req, res)
 
     let userEmail = parseInt(req.params.email);
     req.body.userId = parseInt(req.cookies.userId);
-    console.log(req.body.phoneNumber);
+    // console.log(req.body.phoneNumber);
     let userId = req.body.userId;
     const users = retrieveData(USERS_FILENAME);
     users.then(
