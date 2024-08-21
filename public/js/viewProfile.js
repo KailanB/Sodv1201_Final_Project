@@ -1,19 +1,21 @@
 
 document.addEventListener('DOMContentLoaded', function () {
+    
 
+    const profileContainer = document.getElementById('profileContainer');
+    const Editbutton = document.getElementById("editProfileButton");
+    const cancelEditButton = document.getElementById("cancelEditProfile");
+    Editbutton.addEventListener("click", editProfile);
     displayUser();
-
-
+    
+    
 async function displayUser()
 {
-    
     let currentUser = await getCurrentUser();
-    const profileContainer = document.getElementById('profileContainer');
-    profileContainer.innerHTML = '';
-
     
+    profileContainer.innerHTML = '';
     profileContainer.innerHTML = `
-        <h2>Name: ${currentUser.firstName} ${currentUser.lastName}</h2>
+        <h3>Name: ${currentUser.firstName} ${currentUser.lastName}</h3>
         <br>
         <p>Email: ${currentUser.email}</p>
         <br>
@@ -28,43 +30,49 @@ async function displayUser()
     `;
 
     //this adds a link to the nav bar to view properties but only in the case that a user is the owner. Otherwise only the home page is there
-    
-    let button = document.getElementById("editProfileButton")
-    button.addEventListener("click", editProfile);
-    button.innerHTML = "Edit Profile";
-    button.removeEventListener("click", displayUser);
+    Editbutton.style.display = 'block'
+    cancelEditButton.style.display = 'none';
     
 }
 
 
 async function editProfile()
 {
-
     let currentUser = await getCurrentUser();
     profileContainer.innerHTML = `
-        <label>First Name: &nbsp;</label><input id="firstNameInput" value="${currentUser.firstName}"><label> &nbsp; Last Name: &nbsp;</label><input id="lastNameInput" value="${currentUser.lastName}">
+        <div class="editProfileInputs">
+            <label>First Name: &nbsp;</label><input id="firstNameInput" value="${currentUser.firstName}">
+        </div>
         <br>
+        <div class="editProfileInputs">
+            <label>Last Name: &nbsp;</label><input id="lastNameInput" value="${currentUser.lastName}">
+        </div>
         <br>
-        <label>Email: &nbsp;</label><input id="emailInput" value="${currentUser.email}">
+        <div class="editProfileInputs">
+            <label>Email: &nbsp;</label><input id="emailInput" value="${currentUser.email}">
+        </div>
         <br>
+        <div class="editProfileInputs">
+            <label>Phone: &nbsp;</label><input id="phoneInput" value="${currentUser.phoneNumber}"</input>
+        </div>
         <br>
-        <label>Phone: &nbsp;</label><input id="phoneInput" value="${currentUser.phoneNumber}"</input>
+        <div class="editProfileInputs">
+            <label>City: &nbsp;</label><input id="cityInput" value="${currentUser.city}"</label>
+        </div>
         <br>
-        <br>
-        <label>City: &nbsp;</label><input id="cityInput" value="${currentUser.city}"</label>
-        <br>
-        <br>
-        <label>Province: &nbsp;</label><input id="provinceInput" value="${currentUser.province}"</label>
-        <br>
+        <div class="editProfileInputs">
+            <label>Province: &nbsp;</label><input id="provinceInput" value="${currentUser.province}"</label>
+        </div>
         <br>
         <button class="standardButton" id="saveProfileButton">Save Changes</button>
+
+       
     
     `;
     document.getElementById("saveProfileButton").addEventListener("click", saveProfile);
-    let button = document.getElementById("editProfileButton")
-    button.removeEventListener("click", editProfile);
-    button.innerHTML = "X";
-    button.addEventListener("click", displayUser);
+    Editbutton.style.display = 'none'
+    cancelEditButton.style.display = 'block';
+    cancelEditButton.addEventListener("click", displayUser);
 
 }
 
