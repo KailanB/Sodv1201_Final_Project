@@ -268,10 +268,22 @@ form {
 
 /* added css for profile page */
 
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 5px; 
+    height: 5px;
+}
 
+/* Track (background of the scrollbar) */
+::-webkit-scrollbar-track {
+    background-color: var(--accentColor1);
+}
 
-
-
+/* Thumb (scrollable part) */
+::-webkit-scrollbar-thumb {
+    background-color: var(--pageInnerContent2); 
+    border-radius: 6px; 
+}
 
 /* i hide it innitially when we will click on edit profile the inbox will show or either we can display it as it is now on browser */
 /* .hidden {
