@@ -95,15 +95,7 @@ input[type="radio"] + label {
 /* end of dynamically displayed div custom select */
 
 /* Styling for Edit and Remove Buttons */
-.edit-button, .remove-button{
-    background-color: var(--accentColor1); /* Change to your desired background color */
-    color: white; /* Text color */
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 1em;
-    cursor: pointer;
-}
+
 
 @media only screen and (max-width: 700px)
 { 
