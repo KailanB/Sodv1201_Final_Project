@@ -94,7 +94,3 @@ label {
     color: var(--darkFont);
     transition: color 0.3s ease;
 }
-
-.createAccountMessage a:hover {
-    color: var(--accentColor2); /* Change this to your desired hover color */
-}
