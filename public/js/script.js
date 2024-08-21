@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetchProperties();
 
-
     let searchTab = document.getElementById("searchTab");
     let advancedSearchFilters = document.getElementById("advancedSearchFilters");
 
@@ -109,16 +108,6 @@ function viewProperty(propertyId, userId)
     window.location.href = "/viewProperty?propertyId=" + propertyId + "&";
 }
 
-// function performSearch() {
-//     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-//     const filteredProperties = allProperties.filter(property => 
-//         property.name.toLowerCase().includes(searchInput) ||
-//         property.address.toLowerCase().includes(searchInput) ||
-//         property.type.toLowerCase().includes(searchInput)
-//     );
-//     displayProperties(filteredProperties);
-// }
-
 function performSearch() {
     const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
     
@@ -166,12 +155,6 @@ function applyFilters() {
     const filterCapacity = document.getElementById('filterCapacity').value;
     const filterRentalTerm = document.getElementById('filterRentalTerm').value.toLowerCase();
     const filterPrice = document.getElementById('filterPrice').value;
-
-    // Convert filter values to boolean
-    // const filterAvailabilityBoolean = filterAvailability === "" ? null : filterAvailability === "true";
-    // const filterParkingBoolean = filterParking === "" ? null : filterParking === "true";
-    // const filterTransportBoolean = filterTransport === "" ? null : filterTransport === "true";
-
     // Filter properties based on the selected filters
     const filteredProperties = allProperties.filter(property => {
         return (
@@ -194,10 +177,6 @@ function applyFilters() {
 
     // Display filtered properties
     displayProperties(filteredProperties);
-
-
-
-
 
     // NEED A METHOD FOR PHONE USERS -- Maybe an X appears on the window or instead of the magnifying glass to remove the window.********** 
     advancedSearchFilters.addEventListener("mouseleave", function() {

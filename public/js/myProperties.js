@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 <p>$${property.price} - ${property.rentalTerm}</p>
                                 <p>${property.availability ? 'Available Now' : 'Not Available'}</p>
                             </div>  
-                            <button class="edit-button" propertyId="${property.propertyId}">Edit</button>
-                            <button class="remove-button" propertyId="${property.propertyId}">Remove</button>
+                            <button class="edit-button standardButton" propertyId="${property.propertyId}">Edit</button>
+                            <button class="remove-button standardButton" propertyId="${property.propertyId}">Remove</button>
                         `;
                         // here the buttons have the propertyId attached to them so that we can pull that data for the PUT request
                         
