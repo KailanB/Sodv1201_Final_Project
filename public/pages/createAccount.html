@@ -15,16 +15,25 @@
 <body>
     <div class="mainPageContent">
         <div id="headerBar">
-            <h1>Create Account</h1>
-            <nav>
-                <ul id="pageNavigation">
-                    <li id="loginButtonContainer"><a href="/logIn" id="loginButton">Log in</a></li>
-                    <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
-                    <!-- <li><a href="/logIn">Log in</a></li> -->
-                    <li><a href="/">Home Page</a></li>
-                </ul>
-            </nav>
+            <div class="headerSections" id="LogoDiv">
+                <img id="headerLogo" src="img/logo.png">  
+                <div id="headerTitle">
+                    <h5>À la mode Atelier</h5>
+                    <h5>Comfort meets style</h5>
+                </div>
+            </div>
+            <ul class="pageNavigation headerSections" id="mainNav">
+                <li><a href="/">Home</a></li>
+                <!-- Include the id to the login button -->                    
+            </ul>
+            <ul class="pageNavigation headerSections">
+                <li id="loginButtonContainer"><a href="/logIn" id="loginButton">Log in</a></li>
+                <li id="logoutButtonContainer" style="display:none;"><a href="#" id="logoutButton" onclick="logoutUser()">Logout</a></li>
+                <li id="createAccount"><a href="/createAccount">Create Account</a></li>
+                <li id="profileLink"><a href="/profile">Profile</a></li>
+            </ul>            
         </div>
+        <h1 class="pageHeader">Create Account</h1>
         <div class="innerPageContent1">
             <div class="innerPageContent2">
                 <form id="createNewUserForm">
@@ -35,28 +44,28 @@
                     <div class="addFlexRowProperty">
                         <!--propertyInputLabels sets label width to align input fields evenly-->
                         <div class="propertyInputLabels">
-                            <label for="UserFirstNameInput">*First Name: </label>
+                            <label for="UserFirstNameInput">First Name: </label>
                         </div>
                         <input type="text" placeholder="Sally" class="newPropInput" id="userFirstNameInput" required>
                     </div>
                     <br>
                     <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
-                            <label for="UserLastNameInput">*Last Name: </label>
+                            <label for="UserLastNameInput">Last Name: </label>
                         </div>
                         <input type="text" placeholder="Southington" class="newPropInput" id="userLastNameInput" required>
                     </div>
                     <br>
                     <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
-                            <label for="propertyAddressInput">*Email: </label>
+                            <label for="propertyAddressInput">Email: </label>
                         </div>
                         <input type="email" placeholder="sallyS@gmail.com" class="newPropInput" id="userEmailAddressInput" required>
                     </div>
                     <br>
                     <div class="addFlexRowProperty">
                         <div class="propertyInputLabels">
-                            <label for="userPhoneInput">*Phone Number: </label>
+                            <label for="userPhoneInput">Phone Number: </label>
                         </div>
                         <input type="number" placeholder="123-456-7890" id="userPhoneInput" required>
                     </div>
@@ -66,7 +75,7 @@
                         <div class="propertyInputLabels">
                             <label for="userCityInput">City: </label>
                         </div>
-                        <input type="text" placeholder="Calgary" class="newPropInput" id="userCityInput">
+                        <input type="text" placeholder="Calgary" class="newPropInput" id="userCityInput" required>
                     </div>
                     <br>
                     <div class="addFlexRowProperty">
@@ -74,11 +83,21 @@
                             <label for="propertyProvinces">Province: </label>
                         </div>
                         <div>
-                            <select name="provinces" id="userProvince">
+                            <select name="provinces" id="userProvince" required>
                                 <option value=""></option>
                                 <option value="AB">AB</option>
-                                <option value="SK">SK</option>
                                 <option value="BC">BC</option>
+                                <option value="MB">MB</option>
+                                <option value="NB">NB</option>
+                                <option value="NL">NL</option>
+                                <option value="NS">NS</option>
+                                <option value="NT">NT</option>
+                                <option value="NU">NU</option>
+                                <option value="ON">ON</option>
+                                <option value="PE">PE</option>
+                                <option value="QC">QC</option>
+                                <option value="SK">SK</option>
+                                <option value="YT">YT</option>
                             </select>
                         </div>
                     </div>
@@ -88,14 +107,14 @@
                             <label>I am a: </label>
                         </div>
                         <div>
-                            <input type="radio" name="ownerRenter" value="Renter" id="userRenterInput">
+                            <input type="radio" name="ownerRenter" value="Renter" id="userRenterInput" required>
                             <label for="userRenter">Renter</label>
-                            <input type="radio" name="ownerRenter" value="Owner" id="userOwnerInput">
+                            <input type="radio" name="ownerRenter" value="Owner" id="userOwnerInput" required>
                             <label for="userOwner">Owner</label>
                         </div>
                     </div>
                     <br>
-                    <p><em>Fields marked with an * are required</em></p>   
+                    <p><em>All fields are required</em></p>   
                        
                 </div>
                 <div>
