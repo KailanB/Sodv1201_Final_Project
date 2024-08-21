@@ -43,7 +43,6 @@ router.put('/myProperties', function(req, res)
     // pull all properties
 
     // userId is sent in as "null", so we need to update userId to be current requesting user
-    console.log(req.body.userId);
     req.body.userId = parseInt(req.cookies.userId);
     const properties = retrieveData(PROPERTIES_FILENAME);
     properties.then(
@@ -67,7 +66,12 @@ router.put('/myProperties', function(req, res)
                 res.status(400).send("Property not found");
             }
             
-        });
+        }, 
+        function(error) {
+
+            console.log("Error retrieving property data");
+            res.status(400).send("Error retrieving property data.");
+    });
 });
 
 router.delete('/myProperties/:propertyId', function(req, res) 
@@ -100,10 +104,7 @@ router.delete('/myProperties/:propertyId', function(req, res)
 // userId here refers to the user cookie added in the fetch request
 router.get('/myPropertiesData', function(req, res)
 {
-
-    // let userId = parseInt(req.params.userId);
-
-    // console.log(req.cookies);
+    
     let userId = parseInt(req.cookies.userId);
     console.log(req.cookies.userId);
     const properties = retrieveData(PROPERTIES_FILENAME);
@@ -122,6 +123,11 @@ router.get('/myPropertiesData', function(req, res)
             });
             // return new array only. This ensures we avoid sending the entire database and only send the relevant data
             res.json(myProperties);
+        },
+        function(error)
+        {
+            console.log(error);
+            res.status(400).send("Properties not found");
         })
 
 });
@@ -134,6 +140,7 @@ router.get('/properties', function(req, res) {
         if (err) {
             console.error("Error reading properties data:", err);
             res.status(500).send("Error reading properties data.");
+            // rej(err);
         } else {
             res.json(JSON.parse(data));
         }
@@ -244,7 +251,6 @@ router.get('/getUser', function(req, res)
 {
     // gets requester cookie and verifies user
     let userId = parseInt(req.cookies.userId);
-    console.log("user cookies: " + req.cookies.userId);
     if(req.cookies.userId)
     {
         
@@ -252,14 +258,19 @@ router.get('/getUser', function(req, res)
         users.then(
             function(allUsers)
             {
+
                 const user = allUsers.find(user => user.id === userId);
-                
+                console.log(`user ${user.firstName} is logged in`);
                 res.json(user);
-                console.log(user.firstName);
     
             }
         );
-    }    
+    }
+    else 
+    {
+        res.status(400).send('User Not logged in!');
+    }  
+
 
 });
 
@@ -335,19 +346,22 @@ router.post('/login', (req, res) => {
         console.error('Error reading users file:', err);
         return res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
-
-    const users = JSON.parse(data);
-    const user = users.find(u => u.email === email);
-    
-    if (user) {
-        res.cookie('userEmail', user.email, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-        res.cookie('userId', user.id, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-        console.log('User logged in successfully:', user);
-        return res.status(200).json({ success: true, email: user.email});
-    } else {
-        console.log('Login failed: Invalid email');
-        return res.status(400).json({ success: false, message: 'Invalid email' });
+    else 
+    {
+        const users = JSON.parse(data);
+        const user = users.find(u => u.email === email);
+            
+        if (user) {
+            res.cookie('userEmail', user.email, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+            res.cookie('userId', user.id, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+            console.log('User logged in successfully:', user);
+            return res.status(200).json({ success: true, email: user.email});
+        } else {
+            console.log('Login failed: Invalid email');
+            return res.status(400).json({ success: false, message: 'Invalid email' });
+        }
     }
+    
 });
 });
 

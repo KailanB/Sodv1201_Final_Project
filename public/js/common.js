@@ -50,15 +50,12 @@ function getUserCookie(cname) {
     return "";
 }
 
-// function checkCookie()
-// {
-//     let userName = getUserCookie("userEmail");
-//     let userId = getCookie("userId");
-// }
-
 
 // Check if user is logged in
 function checkUserLoggedIn() {
+
+    console.log('All Cookies:', document.cookie); // Debug log for all cookies
+    // Check if the user is logged in by checking the presence of the 'userEmail' cookie
 
     let userEmail = getUserCookie("userEmail");
     let loginButtonContainer = document.getElementById("loginButtonContainer");
@@ -109,7 +106,7 @@ async function getCurrentUser()
         }
         else 
         {
-            alert("Sorry! There was an error retrieving profile information");
+            console.log("User not logged in or data not found.");
         }
     })
     .then(user => 
@@ -136,5 +133,26 @@ async function addMyPropertiesNav()
     }
    
     
+}
+
+async function logoutUser() {
+    // console.log("logout user");
+    try {
+        const response = await fetch('/logout', {
+            method: 'POST',
+            credentials: 'include' // Ensure cookies are sent with the request
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            console.log('Logged out successfully');
+            // Redirect or update UI
+            window.location.href = '/login'; // Or another page
+        } else {
+            console.error('Logout failed:', data.message);
+        }
+    } catch (error) {
+        console.error('Error during logout:', error);
+    }
 }
 
