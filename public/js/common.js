@@ -4,12 +4,19 @@
 // Event listener for logout button
 document.addEventListener('DOMContentLoaded', function () {
 
+    
     addMyPropertiesNav();
-
+    
     checkUserLoggedIn();
     document.getElementById("logoutButton").addEventListener("click", function() {
         clearCookies();
         window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
+    });
+
+    document.getElementById("LogoDiv").addEventListener("click", function() {
+
+        alert('test');
+        window.location.href = "/";
     });
 
 });
@@ -57,13 +64,21 @@ function checkUserLoggedIn() {
     let loginButtonContainer = document.getElementById("loginButtonContainer");
     let logoutButtonContainer = document.getElementById("logoutButtonContainer");
 
+    let createAccount = document.getElementById("createAccount");
+    let profileLink = document.getElementById("profileLink");
+
     if (userEmail) {
         loginButtonContainer.style.display = "none";
         logoutButtonContainer.style.display = "block";
+
+        createAccount.style.display = "none";
+        profileLink.style.display = "block";
     } else {
         loginButtonContainer.style.display = "block";
         logoutButtonContainer.style.display = "none";
         
+        createAccount.style.display = "block";
+        profileLink.style.display = "none";
     }
 }
 
@@ -85,7 +100,7 @@ function clearCookies() {
 async function getCurrentUser()
 {
     
-    console.log("test");
+    // console.log("test");
     let currentUser = await fetch(`/getUser`)
     .then(response => {
         if(response.status === 200)
@@ -111,15 +126,15 @@ async function addMyPropertiesNav()
 {
 
     let currentUser = await getCurrentUser();
-    
-    // alert(currentUser.firstName);
     if (currentUser.role === 'Owner')
     {
-        let navBar = document.getElementById('pageNavigation');
+        let navBar = document.getElementById('mainNav');
         let newLi = document.createElement('li');
         newLi.innerHTML = `
         <a href="/myProperties">My Properties</a>`;
         navBar.appendChild(newLi);
     }
+   
+    
 }
 
