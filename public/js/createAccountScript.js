@@ -15,7 +15,6 @@ document.getElementById("createNewUserForm").addEventListener("submit", function
     
     // Validate form inputs
     if (!firstName || !lastName || !email || !phoneNumber || !city || !province || !role) {
-        alert("Please fill in all fields.");
         return;
     }
 
@@ -47,6 +46,9 @@ document.getElementById("createNewUserForm").addEventListener("submit", function
 
             // Clear form fields after submission
             clearFormFields();
+            // redirect to login after account creation
+            window.location.href = "/logIn";
+
         } else {
             alert(data.message);
         }
