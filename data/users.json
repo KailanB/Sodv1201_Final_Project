@@ -1,61 +1,30 @@
 [
   {
-    "id": 1724033709375,
-    "firstName": "Deepanshi",
-    "lastName": "Baliyan",
-    "email": "deepanshi@gmail.com",
-    "phoneNumber": "8257360220",
+    "id": 1724295082170,
+    "firstName": "Kailan",
+    "lastName": "Bates",
+    "email": "kailanbates@gmail.com",
+    "phoneNumber": "444-555-5555",
+    "city": "Calgary",
+    "province": "AB",
+    "role": "Owner"
+  },
+  {
+    "id": 1724295452850,
+    "firstName": "Kailan",
+    "lastName": "Bates",
+    "email": "kailanbates2@gmail.com",
+    "phoneNumber": "444-555-5555",
     "city": "Calgary",
     "province": "AB",
     "role": "Renter"
   },
   {
-    "id": 1,
+    "id": 1724295569880,
     "firstName": "Kailan",
     "lastName": "Bates",
-    "email": "kailanbates@gmail.com",
-    "phoneNumber": "306361021",
-    "city": "Calgary",
-    "province": "AB",
-    "role": "Owner",
-    "userId": 1
-  },
-  {
-    "id": 1724049239417,
-    "firstName": "Sally",
-    "lastName": "Souther",
-    "email": "SallyS@gmail.com",
-    "phoneNumber": "21124124",
-    "city": "Saskatoon",
-    "province": "SK",
-    "role": "Owner"
-  },
-  {
-    "id": 1724053843449,
-    "firstName": "Kailan",
-    "lastName": "Bates",
-    "email": "kaibates@gmail.com",
-    "phoneNumber": "3063616021",
-    "city": "Calgary",
-    "province": "AB",
-    "role": "Owner"
-  },
-  {
-    "id": 1724130696065,
-    "firstName": "Deepanshi",
-    "lastName": "Baliyan",
-    "email": "deepanshi20ac@gmail.com",
-    "phoneNumber": "8257360220",
-    "city": "Calgary",
-    "province": "AB",
-    "role": "Owner"
-  },
-  {
-    "id": 1724132154270,
-    "firstName": "xxx",
-    "lastName": "xxx",
-    "email": "xx@gmail.com",
-    "phoneNumber": "1234567890",
+    "email": "kailanbates3@gmail.com",
+    "phoneNumber": "344-555-6645",
     "city": "Calgary",
     "province": "AB",
     "role": "Owner"
