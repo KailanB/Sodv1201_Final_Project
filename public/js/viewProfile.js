@@ -107,6 +107,13 @@ async function saveProfile()
         {
             displayUser();
         }
+        else if(response.status === 400)
+        {
+            response.text()
+            .then(json => {
+                alert(json);
+            });
+        }
     })
     .catch(error => alert("Error: " + error));
 
