@@ -1,18 +1,18 @@
 [
   {
-    "name": "Sweet ",
-    "address": "32 4th street",
+    "name": "Sweet Place",
+    "address": "32 40th street",
     "city": "Calgary",
-    "province": "AB",
-    "area": "400",
+    "province": "MB",
+    "area": "4000",
     "type": "Recording Studio",
-    "capacity": "5",
+    "capacity": "8",
     "parking": true,
-    "publicTransport": true,
+    "publicTransport": false,
     "availability": true,
-    "rentalTerm": "Hourly",
-    "price": "200",
-    "userId": 1,
+    "rentalTerm": "Daily",
+    "price": "250",
+    "userId": 1724295082170,
     "propertyId": 1723768165284
   },
   {
@@ -28,7 +28,7 @@
     "availability": true,
     "rentalTerm": "Weekly",
     "price": "1000",
-    "userId": 1,
+    "userId": 1724295082170,
     "propertyId": 1723857486630
   },
   {
@@ -44,7 +44,7 @@
     "availability": true,
     "rentalTerm": "Weekly",
     "price": "1200",
-    "userId": 1,
+    "userId": 1724295082170,
     "propertyId": 1723870827421
   },
   {
@@ -60,7 +60,7 @@
     "availability": false,
     "rentalTerm": "Daily",
     "price": "2500",
-    "userId": 1,
+    "userId": 1724295082170,
     "propertyId": 1723870903165
   },
   {
@@ -76,7 +76,7 @@
     "availability": true,
     "rentalTerm": "Monthly",
     "price": "3000",
-    "userId": 1,
+    "userId": 1724295082170,
     "propertyId": 1723871246316
   },
   {
@@ -92,7 +92,7 @@
     "availability": false,
     "rentalTerm": "Weekly",
     "price": "400",
-    "userId": 1,
+    "userId": 1724295082170,
     "propertyId": 1723872206646
   },
   {
@@ -108,7 +108,7 @@
     "availability": true,
     "rentalTerm": "Weekly",
     "price": "2000",
-    "userId": 1724049239417,
+    "userId": 1724295082170,
     "propertyId": 1724051447187
   },
   {
@@ -124,7 +124,23 @@
     "availability": true,
     "rentalTerm": "Weekly",
     "price": "234",
-    "userId": 1,
+    "userId": 1724295082170,
     "propertyId": 1724164057386
+  },
+  {
+    "name": "Funny Farm",
+    "address": "33 5th street S",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "700",
+    "type": "Studio",
+    "capacity": "15",
+    "parking": true,
+    "publicTransport": false,
+    "availability": true,
+    "rentalTerm": "Monthly",
+    "price": "600",
+    "userId": 1724295569880,
+    "propertyId": 1724295685448
   }
 ]
