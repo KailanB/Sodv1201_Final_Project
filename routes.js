@@ -63,7 +63,7 @@ router.put('/myProperties', function(req, res)
             else
             {
                 console.log("Error: Property not found!");
-                res.status(400).send("Property not found");
+                res.status(400).send("Property not found!");
             }
             
         }, 
@@ -77,12 +77,13 @@ router.put('/myProperties', function(req, res)
 router.delete('/myProperties/:propertyId', function(req, res) 
 {
 
-    console.log(req.params.propertyId);
+    // console.log(req.params.propertyId);
     let propertyId = parseInt(req.params.propertyId);
     const properties = retrieveData(PROPERTIES_FILENAME);
     properties.then(
         function(resolve)
         {
+            // find index of property to be deleted
             let propIndex = resolve.findIndex(property => property.propertyId === propertyId);
             if(propIndex === -1)
             {
@@ -90,13 +91,19 @@ router.delete('/myProperties/:propertyId', function(req, res)
             }
             else
             {
-
+                // remove property from array and save data
                 resolve.splice(propIndex, 1);
                 fs.writeFileSync(PROPERTIES_FILENAME, JSON.stringify(resolve, null, 2));
-                res.sendStatus(204).send('Property deleted successfully');
+                // send success message
+                res.status(201).send('Property deleted successfully');
             }
 
-        })
+        },
+        function(error)
+        {
+            console.log(error);
+            res.status(400).send("Properties data not found");
+        });
 
 
 });
@@ -127,7 +134,7 @@ router.get('/myPropertiesData', function(req, res)
         function(error)
         {
             console.log(error);
-            res.status(400).send("Properties not found");
+            res.status(400).send("Properties data not found");
         })
 
 });
@@ -140,7 +147,6 @@ router.get('/properties', function(req, res) {
         if (err) {
             console.error("Error reading properties data:", err);
             res.status(500).send("Error reading properties data.");
-            // rej(err);
         } else {
             res.json(JSON.parse(data));
         }
@@ -260,8 +266,15 @@ router.get('/getUser', function(req, res)
             {
 
                 const user = allUsers.find(user => user.id === userId);
-                console.log(`user ${user.firstName} is logged in`);
-                res.json(user);
+                if(user)
+                {
+                    // console.log(`user ${user.firstName} is logged in`);
+                    res.json(user);
+                }
+                else
+                {
+                    res.status(400).send("User ID not found in data!");
+                }
     
             }
         );
@@ -276,46 +289,54 @@ router.get('/getUser', function(req, res)
 
 router.put('/profile', function(req, res)
 {
-
-    let userEmail = parseInt(req.params.email);
-    req.body.userId = parseInt(req.cookies.userId);
-    // console.log(req.body.phoneNumber);
-    let userId = req.body.userId;
+    let userEmail = req.body.email;
+    // add the userId via cookies, since the request body cannot contain an id as a user does not have access to this. 
+    // this needs to be updated otherwise the updated user will have a null id
+    req.body.id = parseInt(req.cookies.userId);
+    let userId = parseInt(req.cookies.userId);
     const users = retrieveData(USERS_FILENAME);
     users.then(
         function(resolve) {
 
-        let user = resolve.find(user => user.email === userEmail);
+        // check if request email is already in use in user data
+        let user = resolve.find(user => user.email.toLowerCase() === userEmail.toLowerCase());
         if(user)
         {
-            if(user.userId !== req.body.userId)
+            // if email is in database AND it is not the current requesting user 
+            // cancel update request and return
+            // otherwise proceed because this means that the email in the user data belongs to the requester -- in other words they were not changing their email
+            if(user.id !== req.body.id)
             {
                 res.status(400).send("Email already in use! Please try another");
-            }
-           
+                return;
+            }  
+        }
+
+        // find index of user within user data
+        let userIndex = resolve.findIndex(user => user.id === userId)
+        // -1 indicates that no user was found
+        if(userIndex !== -1)
+        {
+            // since a user was found, update the data of the requesting user at appropriate index with req.body
+            resolve[userIndex] = req.body;
+            // update cookie to reflect new email
+            res.cookie('userEmail', userEmail, {maxAge: 24 * 60 * 60 * 1000 }); // 1 day
+             // save file - update success
+            fs.writeFileSync(USERS_FILENAME, JSON.stringify(resolve, null, 2));
+            console.log('update successful');
+            res.status(201).send('update successful');
+
         }
         else
         {
-
-            let userIndex = resolve.findIndex(user => user.id === userId)
-            if(userIndex !== -1)
-            {
-                resolve[userIndex] = req.body;
-
-                fs.writeFileSync(USERS_FILENAME, JSON.stringify(resolve, null, 2));
-                console.log('update successful');
-                res.status(201).send('update successful');
-
-
-            }
-            else
-            {
-                console.log("Error: User not found!");
-                res.status(400).send("Error: User not found!");
-            }
+            // otherwise -1 means no user was found and update cannot happen
+            console.log("Error: User not found!");
+            res.status(400).send("Error: User not found!");
         }
 
+    }, function(error) {
 
+        res.status(400).send("Error retrieving data!");
     });
 
 
@@ -365,14 +386,6 @@ router.post('/login', (req, res) => {
 });
 });
 
-// Logout Route
-// router.post('/api/logout', (req, res) => {
-//     res.clearCookie('userEmail');
-//     res.clearCookie('userId');
-//     res.json({ success: true });
-//     console.log('User logged out successfully');
-//     res.status(200).json({ success: true, message: 'Logged out successfully' });
-// });
 
 // Logout Route
 router.post('/logout', (req, res) => {
@@ -394,45 +407,6 @@ router.post('/logout', (req, res) => {
         res.status(500).json({ success: false, message: 'No user was logged in' });
     }
 });
-
-
-// module.exports = router;
-
-//     // Read users.json file
-//     fs.readFile(usersFilePath, 'utf8', (err, data) => {
-//         if (err) {
-//             console.error('Error reading users file:', err);
-//             return res.status(500).json({ message: 'Internal Server Error' });
-//         }
-
-//         const users = JSON.parse(data);
-
-//         // Find the user by email
-//         const user = users.find(u => u.email === email);
-
-//         if (user) {
-//             // Set a cookie with user details (e.g., user ID)
-//             res.cookie('userId', user.id, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 1 day
-
-//             // Redirect or respond with success
-//             return res.status(200).json({ message: 'Login successful', user });
-//         } else {
-//             return res.status(401).json({ message: 'Invalid email' });
-//         }
-//     });
-// });
-
-//handle the cookies
-// router.get('/protected-route', (req, res) => {
-//     const userId = req.cookies.userId;
-
-//     if (userId) {
-//         // Logic for logged-in users
-//         return res.status(200).json({ message: 'Welcome back!' });
-//     } else {
-//         return res.status(401).json({ message: 'Please log in first.' });
-//     }
-// });
 
 /* ******************************************************************************* */
 /* END of log in Routes */
@@ -463,7 +437,7 @@ router.post('/createAccount', (req, res) => {
         }
 
         // Check if user with the same email already exists
-        const existingUser = users.find(user => user.email === email);
+        const existingUser = users.find(user => user.email.toLowerCase() === email.toLowerCase());
         if (existingUser) {
             return res.status(409).json({ message: 'User with this email already exists' });
         }
@@ -491,35 +465,6 @@ router.post('/createAccount', (req, res) => {
     });
 });
 
-// router.post('/createAccount', (req,res) => {
-//     const {id, firstName, lastName, email, phoneNumber, city, province, role} = req.body;
-
-//     if(!firstName || !lastName || !email ||!phoneNumber || !city || !province || !role){
-//         return res.status(500).json({ message: 'All fields are required' });
-//     }
-
-//     const creatAccountData = { id, firstName, lastName, email, phoneNumber, city, province, role};
-
-//     //path to json file 
-//     const USER_FILENAME = path.join(__dirname, 'data', 'users.json');
-
-//     fs.readFile(USER_FILENAME, 'utf8', (err, data) => {
-//     let users = [];
-//     if (!err && data) {
-//         users = JSON.parse(data);
-//     }
-
-//     //add the new registration data
-//     users.push(creatAccountData);
-
-//     fs.writeFile(USER_FILENAME, JSON.stringify(users, null, 2), (err) => {
-//         if (err) {
-//             return res.status(500).json({ message: 'Error saving registration' });
-//         }
-//         return res.status(200).json({ message: 'Registration successful', creatAccountData });
-//         });
-//     });
-// });
 /* ******************************************************************************* */
 /* END of Create Account Routes */
 
