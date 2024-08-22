@@ -103,11 +103,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         alert(json);
                     });
                 }
+
+
+                
             })
             .catch(error => {
                 
-                console.error('Error: Updating Property was unsuccessful.');
-                // alert("Error updating Property: " + error);
+                console.error('Error: Updating Property was unsuccessful.' + error);
 
             });
 
@@ -138,18 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function displayProperties()
     {
 
-
-        /**********************************************************************************************************************/
-        // TEMPORARY FUNCTION TO SET A DUMMY USER COOKIE !!
-        // setUserCookie("kailanbates@gmail.com", 1);
-        /**********************************************************************************************************************/
-
         propertiesDiv.innerHTML = '';
-
-
-        // const userId = parseInt(getUserCookie("userId"));
-
-
 
         // add userId pulled from cookie to fetch route in order to only display properties belonging to that user
         // fetch(`/myPropertiesData/${userId}`)
@@ -234,20 +225,18 @@ document.addEventListener('DOMContentLoaded', function () {
             await fetch(`/myProperties/${propertyId}`, {method: 'DELETE'})
             .then(response => {
 
-                // once client has received "OK" status re-display myProperty data
+                // once client has received "OK" status notify delete success
                 if(response.status === 201)
                 {
-                    //display Properties again
-                    // resetForm();
-                    // closeAddProperty();
-                    displayProperties();
+                    response.text()
+                    .then(json => {
+                        alert(json);
+                    });
                 }
             })
             .catch(error => console.error('Error: deleting Property was unsuccessful.' + error));
 
-
-            // properties.splice(index, 1);
-            // localStorage.setItem('properties', JSON.stringify(properties));
+            // re-display myProperty data
             displayProperties();
         }
     }
