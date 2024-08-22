@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/myProperties.css">
+    <!-- https://fonts.google.com/icons?selected=Material+Symbols+Outlined:home:FILL@0;wght@400;GRAD@0;opsz@24&icon.size=24&icon.color=%235f6368 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -16,6 +17,7 @@
     <div class="mainPageContent">
         <div id="headerBar">
             <div class="headerSections" id="LogoDiv">
+                <!-- Logo image was created here https://logodesign.ai/create/choose-logo -->
                 <img id="headerLogo" src="img/logo.png">  
                 <div id="headerTitle">
                     <h5>À la mode Atelier</h5>
@@ -36,14 +38,6 @@
                 <!-- Try to create log out button and make its display none. Why not in styles.css file as the css is read first by dom, so, it always hide the logout button whenever we run this file -->
             </ul>
 
-
-<!-- 
-            <nav>
-                <ul id="pageNavigation">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                </ul>
-            </nav> -->
         </div>
 
         <div class="pageHeader">
@@ -51,7 +45,6 @@
         </div>
         
         <div class="innerPageContent1">
-            <!-- rearranged the properties container to include the dummy property and allow for equal spacing-->
              
             <div class="innerPageContent2" id="properties">
             </div>
@@ -59,14 +52,12 @@
             <button class="standardButton" id="openAddPropertyDiv">Add New Property</button>
         </div>
         <div class="innerPageContent1">
-            <!-- remove display none from here and put it into CSS under the id addNewPropertyOuterDiv to avoid styling conflicts-->
             <div class="innerPageContent2" id="addNewPropertyOuterDiv">
                 <button id="cancelAddProperty">X</button>
                 <form id="propertyForm">
                     <div class="innerPageContent3" id="addNewPropertyDiv">
                         <!-- Property input fields -->
 
-                        <!-- all inputs currently have a default value filled in for TESTING PURPOSES! I did not want to type everything 100 times -->
                         <div class="addFlexRowProperty">
                             <div class="propertyInputLabels">
                                 <label for="propertyNameInput">Property Name: </label>
@@ -171,7 +162,7 @@
                             <div>
                                 <select name="rentalTerm" id="rentalTermSelect" required>
                                     <!-- <option value=""></option> -->
-                                    <!--add the empty option so that by mistaken the person will not choose   Hourly in any case-->
+                                
                                     <option value="Hourly">Hourly</option>
                                     <option value="Daily">Daily</option>
                                     <option value="Weekly">Weekly</option>
@@ -202,7 +193,6 @@
             <p>social media social media!</p>
         </div>
     </div>
-    <!-- <script src="../js/property.js"></script> -->
     <script src = "../js/common.js"></script>
     <script src="../js/myProperties.js"></script>
     
