@@ -4,7 +4,7 @@
     "firstName": "Kailan",
     "lastName": "Bates",
     "email": "kailanbates@gmail.com",
-    "phoneNumber": "444-555-5555",
+    "phoneNumber": "444-555-5544",
     "city": "Calgary",
     "province": "AB",
     "role": "Owner"
@@ -58,5 +58,15 @@
     "city": "Calgary",
     "province": "AB",
     "role": "Renter"
+  },
+  {
+    "id": 1724347126779,
+    "firstName": "Kailan",
+    "lastName": "Bates",
+    "email": "kailanbates4@gmail.com",
+    "phoneNumber": "535-505-5636",
+    "city": "Calgary",
+    "province": "AB",
+    "role": "Owner"
   }
 ]
