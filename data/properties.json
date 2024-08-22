@@ -158,5 +158,21 @@
     "price": "22",
     "userId": 1724297642764,
     "propertyId": 1724297762679
+  },
+  {
+    "name": "Art Gallery",
+    "address": "123 main avenue",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "500",
+    "type": "Art Gallery",
+    "capacity": "10",
+    "parking": true,
+    "publicTransport": true,
+    "availability": true,
+    "rentalTerm": "Daily",
+    "price": "300",
+    "userId": 1724339121524,
+    "propertyId": 1724339341498
   }
 ]

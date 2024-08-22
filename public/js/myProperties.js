@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <p>Parking: ${property.parking ? 'Yes' : 'No'}</p>
                             <p>Public Transport: ${property.publicTransport ? 'Yes' : 'No'}</p>
                             <div>
-                                <h3>${property.type}</h3>
+                                <p>Type: ${property.type}</p>
                             </div>
                             <div>
                                 <p>$${property.price} - ${property.rentalTerm}</p>
