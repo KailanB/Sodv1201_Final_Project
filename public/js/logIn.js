@@ -1,3 +1,4 @@
+// Sodv1201 Group project August 22, 2024 - Deepanshi, Kajal and Kailan
 document.addEventListener('DOMContentLoaded', () => {
 
     
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('userLogInForm').addEventListener('submit', async function(event) {
         event.preventDefault();
     
-        const userEmail = document.getElementById('userEmailLogIn').value.trim();
+        const userEmail = document.getElementById('userEmailLogIn').value.trim().toLowerCase();
     
         await loginUser(userEmail);
         

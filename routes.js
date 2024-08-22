@@ -1,3 +1,4 @@
+/* Sodv1201 Group project August 22, 2024 - Deepanshi, Kajal and Kailan  */
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
@@ -113,7 +114,7 @@ router.get('/myPropertiesData', function(req, res)
 {
     
     let userId = parseInt(req.cookies.userId);
-    console.log(req.cookies.userId);
+    // console.log(req.cookies.userId);
     const properties = retrieveData(PROPERTIES_FILENAME);
     properties.then(
         function(resolve)
@@ -429,7 +430,7 @@ router.post('/createAccount', (req, res) => {
     }
 
     const USER_FILENAME = path.join(__dirname, 'data', 'users.json');
-
+   
     fs.readFile(USER_FILENAME, 'utf8', (err, data) => {
         let users = [];
         if (!err && data) {

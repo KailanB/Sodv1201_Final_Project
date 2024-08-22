@@ -1,6 +1,7 @@
+// Sodv1201 Group project August 22, 2024 - Deepanshi, Kajal and Kailan
+
 // COOKIEEEES https://www.w3schools.com/js/js_cookies.asp
 // gives the user a cookie to track their id when they log in
-
 // Event listener for logout button
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById("LogoDiv").addEventListener("click", function() {
 
-        alert('test');
+
         window.location.href = "/";
     });
 

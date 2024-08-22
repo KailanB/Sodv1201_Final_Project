@@ -1,3 +1,4 @@
+// Sodv1201 Group project August 22, 2024 - Deepanshi, Kajal and Kailan
 //Pattern for phone number
 function formatPhoneNumber(input) {
             let value = input.value.replace(/\D/g, ''); // Remove non-digit characters
@@ -21,7 +22,7 @@ document.getElementById("createNewUserForm").addEventListener("submit", function
     const lastName = document.getElementById("userLastNameInput").value.trim();
     // added to lower case to make sure all emails are consistent.
     // emails are not case sensitive
-    const email = (document.getElementById("userEmailAddressInput").value.trim());
+    const email = (document.getElementById("userEmailAddressInput").value.trim().toLowerCase());
     const phoneNumber = document.getElementById("userPhoneInput").value.trim();
     const city = document.getElementById("userCityInput").value.trim();
     const province = document.getElementById("userProvince").value;
@@ -31,7 +32,7 @@ document.getElementById("createNewUserForm").addEventListener("submit", function
     if (!firstName || !lastName || !email || !phoneNumber || !city || !province || !role) {
         return;
     }
-
+   
     // Create registration object with unique ID
     const registrationDetails = {
         id: Date.now(), // Unique ID based on timestamp
