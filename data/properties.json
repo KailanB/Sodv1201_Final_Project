@@ -142,5 +142,21 @@
     "price": "600",
     "userId": 1724295569880,
     "propertyId": 1724295685448
+  },
+  {
+    "name": "Bow Valley College",
+    "address": "456 8th Avenue SW",
+    "city": "Calgary",
+    "province": "AB",
+    "area": "233",
+    "type": "Educational Building",
+    "capacity": "2",
+    "parking": true,
+    "publicTransport": true,
+    "availability": true,
+    "rentalTerm": "Daily",
+    "price": "22",
+    "userId": 1724297642764,
+    "propertyId": 1724297762679
   }
 ]
