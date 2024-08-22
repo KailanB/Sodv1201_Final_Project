@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
     addMyPropertiesNav();
     
     checkUserLoggedIn();
-    document.getElementById("logoutButton").addEventListener("click", function() {
-        clearCookies();
-        window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
-    });
+    // document.getElementById("logoutButton").addEventListener("click", function() {
+    //     clearCookies();
+    //     window.location.href = "pages/logIn.html"; // Redirect to login page after logging out
+    // });
 
     document.getElementById("LogoDiv").addEventListener("click", function() {
 
@@ -137,11 +137,12 @@ async function addMyPropertiesNav()
 }
 
 async function logoutUser() {
-    // console.log("logout user");
+   
+    
     try {
         const response = await fetch('/logout', {
             method: 'POST',
-            credentials: 'include' // Ensure cookies are sent with the request
+            // credentials: 'include' // Ensure cookies are sent with the request
         });
 
         const data = await response.json();
