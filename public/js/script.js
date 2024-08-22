@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let searchTab = document.getElementById("searchTab");
     let advancedSearchFilters = document.getElementById("advancedSearchFilters");
 
-     // NEED A METHOD FOR PHONE USERS -- Maybe an X appears on the window or instead of the magnifying glass to remove the window.********** 
+    // the search filters adjusts into a clickable icon for small screens so that it does not take up the entire view
+    // here on mouseleave the filter window collapses into the small icon again
      advancedSearchFilters.addEventListener("mouseleave", function() {
 
         if(window.innerWidth <= 701)

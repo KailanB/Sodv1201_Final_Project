@@ -42,7 +42,6 @@ router.post('/myProperties', function(req, res)
 router.put('/myProperties', function(req, res) 
 {
     // pull all properties
-
     // userId is sent in as "null", so we need to update userId to be current requesting user
     req.body.userId = parseInt(req.cookies.userId);
     const properties = retrieveData(PROPERTIES_FILENAME);

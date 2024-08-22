@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     displayProperty();
-    // alert(parseInt(getIdFromUrl("userId")) + " " + parseInt(getIdFromUrl("propertyId")));
 
     async function displayProperty()
     {
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         else
         {
 
-            // find the first question mark after the search parameter is found
+            // find the first & mark after the search parameter is found
             let positionEnd = (url.substring(positionStart)).indexOf("&") + positionStart;
 
             // slice string section containing ID of parameter

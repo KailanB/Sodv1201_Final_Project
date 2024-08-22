@@ -1,20 +1,6 @@
 // Sodv1201 Group project August 22, 2024 - Deepanshi, Kajal and Kailan
 document.addEventListener('DOMContentLoaded', () => {
 
-    
-    // const cookies = document.cookie.split('; ');
-    // const isLoggedIn = cookies.some(cookie => cookie.startsWith('userEmail='));
-
-    // console.log('User is logged in:', isLoggedIn); // Debug log
-
-    // // Toggle UI elements based on login status
-    // if (isLoggedIn) {
-    //     document.getElementById('loginButtonContainer').style.display = 'none';
-    //     document.getElementById('logoutButtonContainer').style.display = 'block';
-    // } else {
-    //     document.getElementById('loginButtonContainer').style.display = 'block';
-    //     document.getElementById('logoutButtonContainer').style.display = 'none';
-    // }
     document.getElementById('userLogInForm').addEventListener('submit', async function(event) {
         event.preventDefault();
     
@@ -56,26 +42,6 @@ async function loginUser(email) {
 
 }
 
-// async function logoutUser() {
-//     // console.log("logout user");
-//     try {
-//         const response = await fetch('/logout', {
-//             method: 'POST',
-//             credentials: 'include' // Ensure cookies are sent with the request
-//         });
-
-//         const data = await response.json();
-//         if (data.success) {
-//             console.log('Logged out successfully');
-//             // Redirect or update UI
-//             window.location.href = '/login'; // Or another page
-//         } else {
-//             console.error('Logout failed:', data.message);
-//         }
-//     } catch (error) {
-//         console.error('Error during logout:', error);
-//     }
-// }
 
 
 
